@@ -11,3 +11,24 @@
 @mixin font-default($weight, $size, $lineHeight, $color) {
     @include font-face("Inter", $weight, $size, $lineHeight, $color);
 }
+
+
+@mixin flex-row($justifyContent: unset, $alignItems: unset) {
+    display: flex;
+    flex-direction: row;
+    justify-content: $justifyContent;
+    align-items: $alignItems;
+}
+
+@mixin flex-col($justifyContent: unset, $alignItems: unset) {
+    display: flex;
+    flex-direction: column;
+    justify-content: $justifyContent;
+    align-items: $alignItems;
+}
+
+@mixin center-element {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
