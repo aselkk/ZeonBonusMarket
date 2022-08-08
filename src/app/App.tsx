@@ -1,5 +1,5 @@
 import React, {FC, useState} from "react";
-
+import "./null.scss";
 import './App.css'
 import {Routes, Route, BrowserRouter} from "react-router-dom";
 import {Coupon} from "../pages/Coupon";
