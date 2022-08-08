@@ -4,8 +4,8 @@ import css from "./styles.module.scss";
 
 export const Footer: FC = () => {
     return (
-        <div className={css.root}>
-            Footer
+        <div className={css.footer}>
+            Footer jyst examplegit 
         </div>
     );
 };
