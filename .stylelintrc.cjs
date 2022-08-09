@@ -7,17 +7,32 @@ module.exports = {
         "src/assets/**",
         "build/**"
     ],
-    customSyntax: "postcss",
+    customSyntax: "postcss-scss",
     rules: {
         "indentation": 4, // отступы, вложеноость
         "max-empty-lines": 3, // максимальное кол-во пустых строк
-        "rule-empty-line-before": "always", // пустая строка между блоками
+        "no-duplicate-at-import-rules": true,
+        "no-invalid-position-at-import-rule": true,
 
+        // пустая строка перед селектором
+        "rule-empty-line-before": [
+            "always", {
+                except: ["first-nested"]
+            }
+        ],
 
         // паттерн для наименования класса селектора (специально для React css модулей)
         "selector-class-pattern":  "^[a-z][a-zA-Z0-9]+$",
 
-        "block-opening-brace-space-before": "always", // пробел перед открывающей скобкой блока селектора
+
+        /* Блок */
+        // нельзя оставлять пустые селекторы, нужно хотя-бы комментарий внутри оставить
+        "block-no-empty": true,
+        // пробел перед открывающей скобкой блока
+        "block-opening-brace-space-before": "always",
+        // пробел перед закрывающей скобкой блока
+        "block-closing-brace-empty-line-before": "never",
+
 
         "function-comma-space-after": "always", // пробелы в аргументах
         "value-list-comma-space-after": "always", // пробелы в списках значений свойств
@@ -39,7 +54,7 @@ module.exports = {
         "at-rule-no-unknown": null,
         "scss/at-rule-no-unknown": true,
         // any other rules you'd want to change e.g.
-        "scss/dollar-variable-pattern": "^foo",
+        "scss/dollar-variable-pattern": /[a-z][a-zA-Z]+/,
         "scss/selector-no-redundant-nesting-selector": true,
     }
 };

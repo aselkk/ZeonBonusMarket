@@ -12,7 +12,8 @@ module.exports = {
     ignorePatterns: [
         "node_modules/*",
         "src/assets/**",
-        "build/**"
+        "build/**",
+        "@types/assets/index.d.ts"
     ],
     rules: {
         "max-len": ["warn", 150], // максимальная длина строки
@@ -35,6 +36,9 @@ module.exports = {
 
         /* imports */
         "import/no-relative-parent-imports": "error", // использование относительных импортов из родительской директории
+        "import/newline-after-import": ["warn", {count: 2}], // как минимум 2 пустых строки после импортов
+                        // TODO:  https://github.com/import-js/eslint-plugin-import/issues/2522
+
         "no-duplicate-imports": ["error"],  // повторный импорт одного и того же модуля
         "react/jsx-uses-react": "error", // чтобы не ругалось на не используемый импорт import React from "react
 
