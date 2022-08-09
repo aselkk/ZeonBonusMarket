@@ -75,4 +75,11 @@
             }
         }
     }
+    .wrapper {
+        display: flex;
+        gap: 12px;
+        justify-content: flex-start;
+        margin-top: 36px;
+        margin-bottom: 20px;
+    }
 }
