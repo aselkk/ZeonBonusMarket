@@ -1,0 +1,78 @@
+.root {
+    width: 466px;
+    .logoWrapper {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        .logo {
+            width: 72px;
+            height: 72px;
+            border-radius: 12px;
+            border: 2px solid #EDF1FD;
+        }
+        .logoTitle {
+            font-weight: 700;
+            font-size: 20px;
+            line-height: 24px;
+            color: #171717;
+            margin-left: 16px;
+        }
+    }
+    .sale {
+        margin-top: 38px;
+        font-weight: 400;
+        font-size: 15px;
+        line-height: 22px;
+        color: #98949E;
+        text-align: left;
+    }
+    .saleDesc{
+        color: #181818;
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 24px;
+        text-align: left;
+        margin-bottom: 36px;
+    }
+    .priceWrap{
+        height: 38px;
+        width: 100%;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        margin-bottom: 8px;
+        margin-left: 10px;
+        .priceTitle{
+            font-weight: 400;
+            font-size: 18px;
+            line-height: 22px;
+            color: #98949E;
+            display: inline-block;
+            width: 166px;
+            height: 100%;
+            text-align: start;
+            padding: 8px 0;
+        }
+        .priceInner {
+            height: 100%;
+            padding: 8px 20px;
+            background: #F7F7F7;
+            border-radius: 12px;
+            display: flex;
+            gap: 16px;           
+            .priceNew {
+                font-weight: 600;
+                font-size: 18px;
+                line-height: 22px;
+                color: #2C29A5;
+            }
+            .priceOld {
+                font-weight: 500;
+                font-size: 18px;
+                line-height: 22px;
+                color: #98949E;
+                text-decoration-line: line-through;
+            }
+        }
+    }
+}
