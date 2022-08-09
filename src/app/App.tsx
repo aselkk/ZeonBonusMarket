@@ -8,9 +8,7 @@ import {Footer} from "./Footer";
 import "./styles/null.scss";
 import "./styles/global.scss";
 
-
 export const App: FC = () => {
-
     return (
         <BrowserRouter>
             <Header/>
