@@ -1,10 +1,12 @@
 import React, {FC} from "react";
-import css from "./styles.module.scss";
 import { Swiper, SwiperSlide } from "swiper/react"
-import "swiper/css";
-import "swiper/css/navigation"
-
 import { Navigation } from 'swiper'
+import "swiper/css/navigation"
+import "swiper/css";
+import { Slide } from "./Slide";
+import "./mySlider.scss"
+
+import css from "./styles.module.scss";
 
 
 export const Carousel: FC = () => {
@@ -15,9 +17,9 @@ export const Carousel: FC = () => {
                 modules={[Navigation]}
                 observer={true}
             >
-                <SwiperSlide>slide1</SwiperSlide>
-                <SwiperSlide>slide2</SwiperSlide>
-                <SwiperSlide>slide3</SwiperSlide>
+                <SwiperSlide><Slide/></SwiperSlide>
+                <SwiperSlide><Slide/></SwiperSlide>
+                <SwiperSlide><Slide/></SwiperSlide>
             </Swiper>
         </div>
     );
