@@ -1,73 +1,103 @@
 import React, {FC} from "react";
 import PropTypes from "prop-types";
 import cn from "classnames";
-// import * as KeyCode from "keycode-js";
-// import {Utils} from "src/shared/utils";
-// import {Api} from "src/shared/utils/api";
+import {useNavigate} from "react-router-dom";
+import {ReactComponent as SearchIcon} from "@/assets/icons/searchIcon.svg";
 import css from "./styles.module.scss";
-// import searchIcon from "src/assets/icons/search.svg";
 
 type PropTypes = {
-    className: string,
-    onRedirectToResult: () => void
+  className: string,
+  onRedirectToResult: () => void
 };
 
 export const SearchControl: FC<PropTypes> = ({className, onRedirectToResult}) => {
-    const [searchResult, setSearchResult] = React.useState<any>({});
-    const [isShowSearchResult, setIsShowSearchResult] = React.useState(false);
+  const navigate = useNavigate();
 
-    const searchInputHandle = (e:any) => {
-        setIsShowSearchResult(true);
+  const [searchResult, setSearchResult] = React.useState<any>([]);
+  const [isShowSearchResult, setIsShowSearchResult] = React.useState<boolean>(false);
 
-        const text = e.target.value;
-        if (!text) {
-            setSearchResult({});
-            return;
+  const inputRef = React.useRef<HTMLInputElement>(null);
+  
+  const searchInputHandle = (e: any) => {
+    setIsShowSearchResult(true);
+    const text = e.target.value;
+    if (!text) {
+        setSearchResult([]);
+        return;
+    }
+
+    (async () => {
+        try {
+            setSearchResult([
+              "lol",
+              "kek",
+              "kek",
+              "kek",
+              "kek",
+              "kek",
+              "kek",
+              "kek",
+              "kek",
+              "kek",
+              "chebrek",
+              "Bassein"
+            ]);
+        } catch (err) {
+            console.error("search", err);
         }
-    };
+    })();
+  };
+  
 
-    const inputRef = React.useRef(null);
+  const searchSubmitByEnter = (e: any) => {
+    if (e.type === "keydown" && e.code === "Enter") {
+      submitSearch();
+      navigate("coupon/232"); // TODO: redirect to Search page
+    }
+  };
 
-    const searchSubmitByEnter = (e: any) => {
-        // if (e.type === "keydown" && e.code === KeyCode.CODE_ENTER) {
-            // navigateToSearchResult();
-            // submitSearch();
-        // }
-    };
+  const submitSearch = () => {
+    if (inputRef.current)
+      inputRef.current.value = "";
+    setIsShowSearchResult(false);
+    onRedirectToResult?.();
+};
 
-    return (
-        <div className={cn(css.root, className)}>
-            <input ref={inputRef}
-                type="text"
-                placeholder="Поиск"
-                onChange={searchInputHandle}
-                onKeyDown={searchSubmitByEnter}
-            />
-            <div className={css.searchIcon} >
-                <img src={"searchIcon"} alt={"s"}/>
-            </div>
-            {
-                (isShowSearchResult && searchResult.count)
-                    ? (
-                        <div className={css.searchResult}>
-                            {
-                                searchResult.matches.map((x: any, i: any) => {
-                                    return (
-                                        <div key={i}
-                                            className={css.searchItem}
-                                            // onClick={() => searchResultItemClicked(x.id)}
-                                        >
-                                            {x.title}
-                                        </div>
-                                    );
-                                })
-                            }
-                        </div>
-                    )
-                    : null
-            }
-        </div>
-    );
+  return (
+    <div className={cn(css.root, className)}>
+      <input 
+        ref={inputRef}
+        type="text"
+        placeholder="Поиск"
+        onChange={searchInputHandle}
+        onKeyDown={searchSubmitByEnter}
+      />
+      <div className={css.searchIcon} >
+        <SearchIcon/>
+      </div>
+      {
+        (isShowSearchResult && searchResult.length)
+          ? (
+            <ul className={css.searchResult}>
+              {
+                searchResult.map((x: any, i: number) => {
+                  return (
+                    <div 
+                      key={i}
+                      className={css.searchItem}
+                      // onClick={() => searchResultItemClicked(x.id)}
+                    >
+                        {x}
+                    </div>
+                  );
+                })
+              }
+            </ul>
+          )
+          : null
+      }
+    </div>
+  );
 };
 
 // SearchControl.propTypes = propTypes;
