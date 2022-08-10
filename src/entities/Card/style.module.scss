@@ -1,0 +1,112 @@
+@import "@/shared/styles/mixins.scss";
+
+
+.card {
+    position: relative;
+    width: 286px;
+    height: 403px;
+    border: 1px solid #EDF1FD;
+    border-radius: 12px;
+    background-color: #FFFFFF;
+
+    .discountBadge {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 49px;
+        height: 30px;
+        @include center-element();
+        background: #E31B4B;
+        border-radius: 8px 0px 6px 6px;
+        @include font-default(700, 15px, 18px, white);
+    }
+
+    .btnFavorite {
+        position: absolute;
+        top: 8px;
+        right: 5px;
+        background-color: transparent;
+        @include center-element();
+
+
+        &:active {
+            transform: scale(0.8);
+        }
+
+        .btnFavoriteIcon {
+            fill: white;
+            stroke: #4B5FA5;
+            width:24px;
+            height: 24px;
+
+            &:hover {
+                fill: #EF888E;
+                stroke: #EF888E;
+            }
+        }
+
+        .btnFavoriteIconActive {
+            fill: red;
+            stroke: red;
+        }
+    }
+
+    .info {
+        @include flex-col(space-between, space-between);
+        padding: 16px 12px;
+        gap: 8px;
+
+        .partner {
+            margin-top: -33px;
+            @include flex-row(unset, flex-end);
+            gap: 12px;
+
+            .title {
+                @include font-default(700, 15px, 150%, #171717);
+            }
+
+            .logo {
+                margin-top: -0px;
+                width: 48px;
+                height: 48px;
+            }
+        }
+
+        .description {
+            //margin-bottom: 12px;
+            @include font-default(400, 14px, 150%, #171717);
+        }
+
+        .pricePane {
+            @include flex-row(unset, center);
+            gap: 12px;
+            padding: 8px 10px 8px 12px;
+            border: 1px solid #F2F2F2;
+            border-radius: 8px;
+
+            .icon {
+                width: 18.75px;
+                height: 24px;
+            }
+
+            .pricePaneTitle {
+                @include font-default(500, 13px, 16px, #98949E);
+            }
+
+            .pricePanePrice {
+                margin-top: 4px;
+                display: flex;
+                @include font-default(800, 16px, 19px, #2C29A5);
+            }
+
+            .pricePaneOldPrice {
+                margin-left: 4px;
+                display: block;
+                @include font-default(500, 13px, 16px, #4F70E2);
+                text-decoration-line: line-through;
+            }
+        }
+    }
+
+    // container
+}
