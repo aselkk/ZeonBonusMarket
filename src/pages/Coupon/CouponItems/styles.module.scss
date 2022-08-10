@@ -1,3 +1,23 @@
 .root {
-    
+    padding: 0 16px;
+
+    .left {
+        width: 668px;
+    }
+
+    .right {
+
+    }
+    .wrap {
+        padding-bottom: 24px;
+    }
+    .wrapTerm {
+        margin-bottom: 65px;
+    }
+    .wrapAddr {
+        margin-bottom: 30px;
+    }
+    .wrapDesc {
+        margin-bottom: 30px;
+    }
 }
