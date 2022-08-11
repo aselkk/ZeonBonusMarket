@@ -5,6 +5,7 @@ import { Terms } from "./Terms";
 import { Data } from "./data";
 import { Addresses } from "./Addresses";
 import { Description } from "./Description";
+import { CouponInfo } from "./CouponInfo";
 
 
 export const CouponItems: FC = () => {
@@ -24,6 +25,9 @@ export const CouponItems: FC = () => {
                 <div className={css.wrapDesc}>
                     <Description description={Data.description}/>
                 </div>
+            </div>
+            <div className={css.right}>
+                <CouponInfo info={Data.info}/>
             </div>
         </div>
     );
