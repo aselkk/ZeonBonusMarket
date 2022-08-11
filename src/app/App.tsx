@@ -5,6 +5,7 @@ import {Coupon} from "@/pages/Coupon";
 import {Main} from "@/pages/Main";
 import {Header} from "./Header";
 import {Footer} from "./Footer";
+import css from "./App.module.scss";
 import "./styles/null.scss";
 import "./styles/global.scss";
 
