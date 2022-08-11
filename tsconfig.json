@@ -17,7 +17,7 @@
         "moduleResolution": "Node",
         "resolveJsonModule": true,
         "isolatedModules": true,
-        "typeRoots": ["./@types", "./node_modules/@types"], // TODO: проверить у Болотбека в VSCode
+        "typeRoots": ["./@types", "./node_modules/@types"],
         "noEmit": true,
         "jsx": "react-jsx",
         "baseUrl": "./src",

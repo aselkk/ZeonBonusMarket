@@ -1,7 +1,117 @@
 .footer {
-    background-color: red;
-    width: 100%;
-    height: 100px;
+  background-color: #fcfcfc;
+  width: 100%;
+  margin: 0;
 
-    
+  .container {
+    width: 100%;
+    padding: 48px 70px 12px 15px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    @media (max-width: 992.98px) {
+      padding: 48px 20px 12px 15px;
+    }
+
+    @media (max-width: 768.98px) {
+      display: grid;
+      grid-template-columns: repeat(2, 3fr);
+      grid-column-gap: 10px;
+      grid-row-gap: 1em;
+    }
+
+    @media (max-width: 470.98px) {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .box {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+
+      .title {
+        border-bottom: 1px solid #edf1fd;
+        width: 100%;
+        margin-bottom: 16px;
+        @media (max-width: 768.98px) {
+          max-width: 160px;
+        }
+        @media (max-width: 470.98px) {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+        }
+
+        h3 {
+          font-family: "Inter";
+          font-style: normal;
+          font-weight: 400;
+          font-size: 14px;
+          line-height: 17px;
+          color: #98949e;
+          margin-bottom: 16px;
+        }
+      }
+
+      ul {
+        max-width: 160px;
+        display: flex;
+        flex-direction: column;
+        @media (max-width: 470.98px) {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+        }
+
+        li {
+          display: flex;
+          text-align: left;
+          margin-bottom: 20px;
+
+          .linkTo {
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            @media (max-width: 470.98px) {
+              display: flex;
+              flex-direction: row;
+              align-items: center;
+              justify-content: center;
+            }
+
+            div {
+              width: 18px;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              margin-right: 10px;
+
+              .icons {
+                color: #4f70e2;
+              }
+            }
+
+            p {
+              font-family: "Inter";
+              font-style: normal;
+              font-weight: 400;
+              font-size: 14px;
+              line-height: 17px;
+              color: #171717;
+
+              &:hover {
+                color: #4b5fa5;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
 }

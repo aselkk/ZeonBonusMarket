@@ -7,7 +7,6 @@
     font-style: normal;
 }
 
-
 @mixin font-default($weight, $size, $lineHeight, $color) {
     @include font-face("Inter", $weight, $size, $lineHeight, $color);
 }

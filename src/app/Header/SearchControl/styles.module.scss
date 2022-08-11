@@ -1,0 +1,91 @@
+@import "@/shared/styles/mixins";
+
+.root {
+	position: relative;
+	width: 541px;
+	height: 44px;
+	border-radius: 12px;
+	background-color: #FBFBFB;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0 13px;
+	border: 1px solid #EDF1FD;
+
+	input {
+		background-color: transparent;
+		padding-left: 7px;
+		width: 90%;
+		color: #313131;
+		height: 100%;
+
+		&::placeholder {
+				color: #98949E;
+				font-size: 15px;
+		}
+	}
+
+	.searchIcon {
+			height: 35px;
+			width: 35px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			border-radius: 50%;
+
+			img {
+					width: 18px;
+					height: 18px;
+			}
+
+			&:hover {
+					background-color: rgba(226, 218, 218, 0.929);
+					border-radius: 50%;
+			}
+	}
+
+	.searchResult {
+		position: absolute;
+		top: 45px;
+		left: 0;
+		z-index: 2;
+		width: 100%;
+		background-color: #fff;
+		border-radius: 12px;
+		border: 1px solid #EDF1FD;
+		padding: 24px 20px;
+		height: 281px;
+		overflow-y: scroll;
+		width: 100%;
+		
+			&::-webkit-scrollbar {
+				width: 4px;
+				background: #EDF1FD;
+				border-radius: 4px;
+				height: 133px;
+			}
+			
+			&::-webkit-scrollbar-track {
+				border-radius: 10px;
+				height: 233px;
+			}
+			
+			&:-webkit-scrollbar-thumb {
+				background: #8b9ddf;
+				border-radius: 4px;
+			}
+			.searchItem {
+				padding: 16px 5px;
+				width: 100%;
+				border-bottom: 1px solid #EDF1FD;
+				font-size: 14px;
+				cursor: pointer;
+
+					&:hover {
+						background: rgb(229, 230, 231);
+						background: linear-gradient(90deg, rgba(229, 230, 231, 1) 0%, rgba(225, 225, 233, 1) 67%, rgba(224, 224, 228, 1) 75%);
+					}
+			}
+	}
+}

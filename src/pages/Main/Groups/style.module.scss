@@ -1,0 +1,124 @@
+@import "@/shared/styles/mixins";
+@import "@/shared/styles/vars.scss";
+
+
+.groups {
+    padding: 20px 15px;
+    @include flex-row();
+    gap: 16px;
+    overflow-x: scroll;
+    background-color: white;
+
+    &::-webkit-scrollbar {
+        height: 5px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background-color: rgba(248, 248, 248, 0.7);
+        border-radius: 10px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: #373a3a;
+        border-radius: 10px;
+    }
+
+    li {
+        @include flex-col(center, center);
+        gap: 6px;
+        text-align: center;
+        user-select: none;
+
+        .label {
+            height: 40px;
+            max-width: 85px;
+            @include font-default(500, 14px, 150%, #171717);
+        }
+    }
+
+    .icon {
+        width: 90px;
+        height: 90px;
+
+        &:hover {
+            cursor: pointer;
+            fill: var(--color);
+
+            [color] {
+                fill: white;
+            }
+        }
+    }
+
+    .iconAllGroups {
+        --color: #0888FD;
+    }
+
+    .iconBeauty {
+        --color: #FD9B08;
+    }
+
+    .iconHealth {
+        --color: #26AD5C;
+    }
+
+    .iconRestaurants {
+        --color: #E31B4B;
+    }
+
+    .iconEntertainment {
+        --color: #FF9162;
+    }
+
+    .iconEducation {
+        --color: #1AB5BF;
+    }
+
+    .iconAuto {
+        --color: #6A52FF;
+    }
+
+    .iconFitness {
+        --color: #FC69FF;
+    }
+
+    .iconConcerts {
+        --color: #CE2BBE;
+    }
+
+    .iconChildren {
+        --color: #FF3998;
+    }
+
+    .iconOther {
+        --color: #0888FD;
+    }
+
+    .iconDiscount {
+        --color: #1C08FD;
+    }
+}
+
+
+
+@media (max-width: $width-md) {
+    .groups {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+
+        .icon {
+            width: 76px;
+            height: 76px;
+        }
+    }
+}
+
+
+@media (max-width: $width-sm) {
+    .groups {
+        overflow-x: scroll;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+    }
+}
