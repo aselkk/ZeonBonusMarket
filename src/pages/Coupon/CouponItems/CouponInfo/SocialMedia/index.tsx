@@ -13,11 +13,11 @@ export const SocialMedia: FC = () => {
         <div className={css.root}>
             <span className={css.span}>Поделиться</span>
             <div className={css.wrap}>
-                <Vk/>
-                <Facebook/>
-                <Od/>
-                <Telegram/>
-                <Whatsup/>
+                <a href="#" target="_blank" ><Vk/></a>
+                <a href="#" target="_blank" ><Facebook/></a>
+                <a href="#" target="_blank" ><Od/></a>
+                <a href="#" target="_blank" ><Telegram/></a>
+                <a href="#" target="_blank" ><Whatsup/></a>
             </div>
         </div>
     );

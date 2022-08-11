@@ -21,6 +21,9 @@
             align-items: center;
         }
     }
+    .bottom {
+        margin-top: 36px;
+    }
 }
 .span {
     @include font-default(400, 15px, 22px, #98949E)
