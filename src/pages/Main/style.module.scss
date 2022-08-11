@@ -3,7 +3,7 @@
 
 .main {
     .container {
-        // container
+        @include flex-col(center, center);
     }
 
     .cards {
@@ -13,5 +13,12 @@
         justify-content: flex-start;
         gap: 8px;
         padding: 15px;
+    }
+
+    .button {
+        width: 152px;
+        height: 44px;
+        align-self: center;
+        @include font-default(400, 14px, 150%, white);
     }
 }

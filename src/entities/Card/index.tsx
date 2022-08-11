@@ -1,4 +1,4 @@
-import React, {FC} from "react";
+import React, {FC, PropsWithChildren} from "react";
 import css from "./style.module.scss";
 import cn from "classnames";
 
@@ -11,19 +11,24 @@ import {ReactComponent as HotDiscountLogo} from "@/assets/icons/hot-discount.svg
 import {ReactComponent as DollarsLogo} from "@/assets/icons/dollars.svg";
 import {ReactComponent as HeartLogo} from "@/assets/icons/heart.svg";
 
-const info = {
-    partnerTitle: "Колбасофф",
-    description: "Блюда в четырех ресторанах «Чайхана №1» за полцены",
-    price: 9999,
-    discount: 50,
-    productPrice: 1600,
-    isFavorite: false
+
+
+interface CardInfo {
+    partnerTitle: string,
+    description: string
+    price: number,
+    discount: number,
+    productPrice: number,
+    isFavorite: boolean,
+}
+
+interface Props {
+    info: CardInfo
 }
 
 
-export const Card: FC = () => {
+export const Card = ({info}: Props) => {
     const productPriceWithoutDiscount = Math.round(info.price - (info.price * info.discount / 100));
-
 
     const onBtnFavoriteClick = () => {
         console.log("Favorite");
@@ -79,5 +84,8 @@ export const Card: FC = () => {
         </main>
     );
 };
+
+
+
 
 
