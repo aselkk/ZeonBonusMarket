@@ -1,12 +1,18 @@
-import React, {FC} from "react";
-import { Swiper, SwiperSlide, useSwiper } from "swiper/react"
-import { Navigation } from 'swiper'
-import "swiper/css/navigation"
+import React, {FC, useState} from "react";
+
+import { Swiper, SwiperSlide } from "swiper/react";
+import { FreeMode, Navigation, Thumbs } from "swiper";
+
 import "swiper/css";
-import { Slide } from "./Slide";
+import "swiper/css/free-mode";
+import "swiper/css/navigation";
+import "swiper/css/thumbs";
+
+// import "./styles.css";
 import "./mySlider.scss"
 import cn from "classnames";
 import css from "./styles.module.scss";
+import { Slide } from "./Slide";
 
 
 
@@ -15,13 +21,52 @@ type PropType = {
 };
 
 export const Carousel: FC<PropType> = (props) => {
+    const [thumbsSwiper, setThumbsSwiper] = useState(null);
+    //const [thumbsSwiper, setThumbsSwiper]:[null | NodeJS.Timeout, (interval: null | NodeJS.Timeout) => void] = useState<null | NodeJS.Timeout>(null);
 
-    const [activeSlideIndex, setActiveSlideIndex] = React.useState(0);
-    // const [swiper, setSwiper] = React.useState(null);
+    //const [activeSlideIndex, setActiveSlideIndex] = React.useState(0);
     
     return (
         <div className={css.root}>
+             <Swiper
+                // style={{
+                // "--swiper-navigation-color": "#fff",
+                // "--swiper-pagination-color": "#fff",
+                // }}
+                spaceBetween={10}
+                navigation={true}
+                thumbs={{ swiper: thumbsSwiper }}
+                modules={[FreeMode, Navigation, Thumbs]}
+                className="mySwiper2"
+            >
+                {  
+                    props.images.map((x: any, i: any) => {
+                        return (
+                            <SwiperSlide key={i}><Slide imgSrc={x} /></SwiperSlide>
+                        )
+                    })
+                }
+            </Swiper>
             <Swiper
+                // onSwiper={setThumbsSwiper}
+                spaceBetween={10}
+                slidesPerView={4}
+                freeMode={true}
+                watchSlidesProgress={true}
+                modules={[FreeMode, Navigation, Thumbs]}
+                className="mySwiper"
+            >
+                  {  
+                    props.images.map((item: string, index: number) => {
+                        return (
+                            <SwiperSlide key={index}>
+                                <img className={css.sketch} src={item} alt="image" />
+                            </SwiperSlide>
+                        )
+                    })
+                }
+            </Swiper>
+            {/* <Swiper
                 navigation={true}
                 modules={[Navigation]}
                 observer={true}
@@ -59,7 +104,7 @@ export const Carousel: FC<PropType> = (props) => {
                         )
                     })
                 }
-            </div>
+            </div> */}
         </div>
     );
 };
