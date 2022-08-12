@@ -1,17 +1,18 @@
-import { FC, useState } from "react";
+import { useState } from "react";
 
-import css from "./styles.module.scss"
-import { RadioButtons } from "./RadioButtons";
+import { RadioButtons } from "@/shared/ui/RadioButtons";
 import { Terms } from "./Terms";
 import { Data } from "./data";
 import { Addresses } from "./Addresses";
 import { Description } from "./Description";
 import { CouponInfo } from "./CouponInfo";
+import css from "./styles.module.scss"
+
 
 
 const titles = ['Условия', "Описание", "Адреса"];
 
-export const CouponItems: FC = () => {
+export const CouponItems = () => {
     const [selectedTab, setSelectedTab] = useState<number>(0);
 
     return (

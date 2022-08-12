@@ -1,13 +1,13 @@
 @import "@/shared/styles/mixins";
-.root {
 
+
+.root {
     height: 49px;
     background: #EDF1FD;
     border-radius: 12px;
     padding: 8px;
     display: inline-block;
     gap: 8px;
-    // justify-content:flex-start;
 
     .button {
         width: 136px;
