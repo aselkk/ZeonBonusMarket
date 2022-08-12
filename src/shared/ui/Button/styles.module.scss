@@ -1,0 +1,24 @@
+@import "@/shared/styles/mixins.scss";
+
+
+.button {
+    @include center-element();
+    padding: 5px 15px;
+    border-radius: 12px;
+    color: white;
+    background-color: #4B5FA5;
+
+    &:hover {
+        background-color: #5f79da;
+        transition: 0.2s;
+    }
+
+    &:enabled:active {
+        transform: scale(0.98);
+    }
+
+    &:disabled {
+        cursor: default;
+        background-color: gray;
+    }
+}
