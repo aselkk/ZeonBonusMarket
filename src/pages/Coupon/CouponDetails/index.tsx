@@ -1,6 +1,8 @@
 import React, {FC} from "react";
 import css from "./styles.module.scss";
 import { Data } from "../data";
+import { Favorite } from "./Favorite";
+import { ActiveButton } from "./ActiveButton";
 
 export const CouponDetails: FC = () => {
     return (
@@ -23,6 +25,10 @@ export const CouponDetails: FC = () => {
                     <span className={css.priceNew}>1500 сом</span>
                     <span className={css.priceOld}>3000 сом</span>
                 </span>
+            </div>
+            <div className={css.wrapper}>
+                <ActiveButton/>
+                <Favorite/>
             </div>
         </div>
     );

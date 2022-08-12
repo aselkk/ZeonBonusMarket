@@ -1,0 +1,30 @@
+.root {
+    padding: 0 16px;
+    display: flex;
+    gap: 32px;
+    justify-content: center;
+
+    .left {
+        width: 668px;
+    }
+
+    .right {
+        width: 466px;
+    }
+
+    .wrap {
+        padding-bottom: 24px;
+    }
+
+    .wrapTerm {
+        margin-bottom: 65px;
+    }
+
+    .wrapAddr {
+        margin-bottom: 30px;
+    }
+
+    .wrapDesc {
+        margin-bottom: 30px;
+    }
+}

@@ -1,9 +1,11 @@
 .root {
     width: 466px;
+    
     .logoWrapper {
         display: flex;
         justify-content: flex-start;
         align-items: center;
+
         .logo {
             width: 72px;
             height: 72px;
@@ -42,6 +44,7 @@
         align-items: center;
         margin-bottom: 8px;
         margin-left: 10px;
+
         .priceTitle{
             font-weight: 400;
             font-size: 18px;
@@ -53,19 +56,22 @@
             text-align: start;
             padding: 8px 0;
         }
+
         .priceInner {
             height: 100%;
             padding: 8px 20px;
             background: #F7F7F7;
             border-radius: 12px;
             display: flex;
-            gap: 16px;           
+            gap: 16px;    
+
             .priceNew {
                 font-weight: 600;
                 font-size: 18px;
                 line-height: 22px;
                 color: #2C29A5;
             }
+
             .priceOld {
                 font-weight: 500;
                 font-size: 18px;
@@ -74,5 +80,13 @@
                 text-decoration-line: line-through;
             }
         }
+    }
+
+    .wrapper {
+        display: flex;
+        gap: 12px;
+        justify-content: flex-start;
+        margin-top: 36px;
+        margin-bottom: 20px;
     }
 }

@@ -1,0 +1,20 @@
+
+.swiper-button-prev, .swiper-button-next {
+    width: 44px;
+    height: 44px;
+}
+
+.swiper-button-prev::after {
+    content: "";
+    width: 44px;
+    height: 44px;
+    background-image: url("../../../assets/icons/btn-arrow-prev.png");
+}
+
+.swiper-button-next::after {
+    content: "";
+    width: 44px;
+    height: 44px;
+    background-image: url("../../../assets/icons/btn-arrow-next.png");
+}
+
