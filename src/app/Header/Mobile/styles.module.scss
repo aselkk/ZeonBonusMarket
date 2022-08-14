@@ -116,7 +116,6 @@
                 @include font-default(15px, 500, 18.29px, #393939);
 
                 .telephone {
-
                     .label {
                         @include font-default(15px, 400, 18.29px, #393939);
                     }
@@ -135,6 +134,7 @@
     }
 
     // TODO: почистть
+
     .search {
         position: fixed;
         top: 65px;
@@ -197,5 +197,4 @@
             }
         }
     }
-
 }
