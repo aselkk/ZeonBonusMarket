@@ -1,4 +1,4 @@
-import React from "react";
+import {ReactElement} from "react";
 import {Link} from "react-router-dom";
 import cn from "classnames";
 
@@ -7,7 +7,7 @@ import css from "./styles.module.scss";
 
 
 interface Props {
-    component?: React.ReactNode
+    component?: ReactElement
     linkTo?: string,
     onClick?: () => void,
     disabled?: boolean,

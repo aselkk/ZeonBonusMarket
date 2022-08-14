@@ -1,16 +1,16 @@
-import React, {FC} from "react";
 import css from "./styles.module.scss";
-import { Data } from "./data";
+import {Data} from "./data";
 import cn from "classnames";
-import { ReactComponent as FaceBookIcon } from "@/assets/icons/facebook.svg";
-import { ReactComponent as IstagrammIcon } from "@/assets/icons/instagramm.svg";
-import { ReactComponent as VKontakte } from "@/assets/icons/vkontakte.svg";
-import { ReactComponent as Odnoklassniki } from "@/assets/icons/odnoklassniki.svg";
-import { ReactComponent as Mail } from "@/assets/icons/mail.svg";
-import { ReactComponent as Phone } from "@/assets/icons/phone.svg";
-import { ReactComponent as Map } from "@/assets/icons/map.svg";
+import {ReactComponent as FaceBookIcon} from "@/assets/icons/facebook.svg";
+import {ReactComponent as IstagrammIcon} from "@/assets/icons/instagramm.svg";
+import {ReactComponent as VKontakte} from "@/assets/icons/vkontakte.svg";
+import {ReactComponent as Odnoklassniki} from "@/assets/icons/odnoklassniki.svg";
+import {ReactComponent as Mail} from "@/assets/icons/mail.svg";
+import {ReactComponent as Phone} from "@/assets/icons/phone.svg";
+import {ReactComponent as Map} from "@/assets/icons/map.svg";
 
-export const Creator: FC = () => {
+
+export const Creator = () => {
     return (
         <div className={cn("container", css.root)}>
             <div className={css.mainInfo}>

@@ -1,3 +1,5 @@
+/* eslint-disable max-len */
+
 export const Data = {
     terms: {
         title: "Купон дает право скидки 50% на блюда кухни на выбор в четырех ресторанах.",
@@ -28,13 +30,8 @@ export const Data = {
             begin: "29.03.2021",
             end: "30.03.2021"
         },
-        saledCoupons: 714,
+        saledCoupons: 714
     }
-}
+};
 
-
-
-
-
-
-
+/* eslint-enable max-len */

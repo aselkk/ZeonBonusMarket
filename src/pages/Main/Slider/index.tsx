@@ -1,8 +1,8 @@
 import {useEffect, useState} from "react";
-import {Swiper, SwiperSlide} from "swiper/react"
+import {Swiper, SwiperSlide} from "swiper/react";
 import {Autoplay, Pagination} from "swiper";
 import "swiper/css";
-import "swiper/css/autoplay"
+import "swiper/css/autoplay";
 import "swiper/css/pagination";
 
 import {axiosInstance, DTO} from "@/shared/api";
@@ -32,13 +32,13 @@ export const Slider = () => {
                 modules={[Pagination, Autoplay]}
                 autoplay={{
                     delay: 1000,
-                    disableOnInteraction: false,
+                    disableOnInteraction: false
                 }}
                 pagination={{
                     clickable: true,
                     el: "." + css.bullets,
                     bulletClass: css.paginationBullet,
-                    bulletActiveClass: css.paginationBulletActive,
+                    bulletActiveClass: css.paginationBulletActive
                 }}
                 speed={1400}
                 preventInteractionOnTransition={true}

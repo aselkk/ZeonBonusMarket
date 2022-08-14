@@ -1,3 +1,4 @@
+/* stylelint-disable selector-class-pattern */
 
 .swiper-button-prev, .swiper-button-next {
     width: 44px;
@@ -8,13 +9,14 @@
     content: "";
     width: 44px;
     height: 44px;
-    background-image: url("../../../assets/icons/btn-arrow-prev.png");
+    background-image: url("@/assets/icons/btn-arrow-prev.png");
 }
 
 .swiper-button-next::after {
     content: "";
     width: 44px;
     height: 44px;
-    background-image: url("../../../assets/icons/btn-arrow-next.png");
+    background-image: url("@/assets/icons/btn-arrow-next.png");
 }
 
+/* stylelint-enable selector-class-pattern */

@@ -1,12 +1,13 @@
-import { FC } from "react";
-import css from "./styles.module.scss"
+import css from "./styles.module.scss";
 
 
-type PropType = {
+interface PropType {
     imgSrc: string
 }
-export const Slide: FC<PropType> = (props) => {
+
+
+export const Slide = (props: PropType) => {
     return (
-        <img className={css.root} src={props.imgSrc} alt="slide" />
+        <img className={css.root} src={props.imgSrc} alt="slide"/>
     );
 };

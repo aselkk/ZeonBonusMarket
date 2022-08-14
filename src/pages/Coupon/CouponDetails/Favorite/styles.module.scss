@@ -5,7 +5,7 @@
     height: 56px;
     border-radius: 12px;
     background: #EDF1FD;
-    @include center-element();
+    @include center-elements();
 
     .inner {
         width: 20px;

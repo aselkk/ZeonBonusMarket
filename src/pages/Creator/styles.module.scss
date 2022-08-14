@@ -1,4 +1,4 @@
-.root{
+.root {
     width: 100%;
     padding: 0 16px;
     display: flex;
@@ -8,102 +8,102 @@
         padding: 0 26px;
     }
 
-        .mainInfo {
-            display: flex;
-            flex-direction: row;
-            gap: 24px;
+    .mainInfo {
+        display: flex;
+        flex-direction: row;
+        gap: 24px;
 
-                .text {
-                    display: flex;
-                    flex-direction: column;
-                    gap: 16px;
-                    width: 744px;
-
-                        .creatorName {
-                            font-weight: 700;
-                            font-size: 24px;
-                        }
-
-                        .description {
-                            font-size: 14px;
-                            line-height: 150%;
-                        }
-                }
-
-                img {
-                    width: 200px;
-                    border-radius: 12px;
-                }
-        }
-
-        .contacts {
+        .text {
             display: flex;
             flex-direction: column;
-            gap: 34px;
+            gap: 16px;
+            width: 744px;
 
-                .contactsText {
-                    display: flex;
-                    flex-direction: column;
-                    gap: 12px;
+            .creatorName {
+                font-weight: 700;
+                font-size: 24px;
+            }
 
-                        h2 {
-                            font-weight: 700;
-                            font-size: 24px;
-                        }
+            .description {
+                font-size: 14px;
+                line-height: 150%;
+            }
+        }
+
+        img {
+            width: 200px;
+            border-radius: 12px;
+        }
+    }
+
+    .contacts {
+        display: flex;
+        flex-direction: column;
+        gap: 34px;
+
+        .contactsText {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+
+            h2 {
+                font-weight: 700;
+                font-size: 24px;
+            }
                         
-                        p {
-                            font-size: 14px;
-                        }
-                }
+            p {
+                font-size: 14px;
+            }
+        }
 
-                .contactsDetails {
+        .contactsDetails {
+            display: flex;
+            flex-direction: row;
+            gap: 48px;
+
+            ul {
+                display: flex;
+                flex-direction: column;
+                gap: 16px;
+
+                li {
                     display: flex;
                     flex-direction: row;
-                    gap: 48px;
+                    gap: 9px;
 
-                    ul {
-                        display: flex;
-                        flex-direction: column;
-                        gap: 16px;
-
-                            li {
-                                display: flex;
-                                flex-direction: row;
-                                gap: 9px;
-
-                                svg { 
-                                    color: #4F70E2;
-                                }
-                            }
-                    }
-
-                    .dividor {
-                        height: 178px;
-                        width: 1px;
-                        background: #EDF1FD;
-                    }
-
-                    .secondCol {
-                        display: flex;
-                        flex-direction: column;
-                        gap: 24px;
-
-                            div {
-                                display: flex;
-                                flex-direction: column;
-                                gap: 8px;
-
-                                    svg { 
-                                        color: #4F70E2;
-                                    }
-
-                                    p {
-                                        display: flex;
-                                        align-items: center;
-                                        gap: 8px;
-                                    }
-                            }
+                    svg { 
+                        color: #4F70E2;
                     }
                 }
+            }
+
+            .dividor {
+                height: 178px;
+                width: 1px;
+                background: #EDF1FD;
+            }
+
+            .secondCol {
+                display: flex;
+                flex-direction: column;
+                gap: 24px;
+
+                div {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 8px;
+
+                    svg { 
+                        color: #4F70E2;
+                    }
+
+                    p {
+                        display: flex;
+                        align-items: center;
+                        gap: 8px;
+                    }
+                }
+            }
         }
+    }
 }

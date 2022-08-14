@@ -1,10 +1,10 @@
-import React, {FC} from "react";
 import css from "./styles.module.scss";
-import { Data } from "../data";
-import { Favorite } from "./Favorite";
-import { ActiveButton } from "./ActiveButton";
+import {Data} from "../data";
+import {Favorite} from "./Favorite";
+import {ActiveButton} from "./ActiveButton";
 
-export const CouponDetails: FC = () => {
+
+export const CouponDetails = () => {
     return (
         <div className={css.root}>
             <div className={css.logoWrapper}>

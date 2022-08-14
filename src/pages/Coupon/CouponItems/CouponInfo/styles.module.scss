@@ -2,17 +2,17 @@
 
 .root {
     .top {
-
         .begin {
             @include font-default(600, 18px, 26px, #181818);
             margin-right: 24px;
         }
+
         .end {
             @include font-default(600, 18px, 26px, #181818);
         }
     }
+
     .middle {
-       
         .wrap {
             margin-top: 20px;
             display: flex;
@@ -21,10 +21,12 @@
             align-items: center;
         }
     }
+
     .bottom {
         margin-top: 36px;
     }
 }
+
 .span {
     @include font-default(400, 15px, 22px, #98949E)
 }

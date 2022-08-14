@@ -1,5 +1,5 @@
-import { FC } from "react";
-import css from "./styles.module.scss"
+import css from "./styles.module.scss";
+
 
 type PropType = {
     terms: {
@@ -8,7 +8,7 @@ type PropType = {
     }
 }
 
-    export const Terms: FC<PropType> = ({terms}) => {
+export const Terms = ({terms}: PropType) => {
     
     return (
         <div className={css.root}>

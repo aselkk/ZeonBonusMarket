@@ -1,14 +1,13 @@
-import {FC} from "react";
-import { Carousel } from "./Carousel";
-import { CouponDetails } from "./CouponDetails";
-import { CouponItems } from "./CouponItems";
-import { CouponInfo } from "./CouponItems/CouponInfo";
+import {Carousel} from "./Carousel";
+import {CouponDetails} from "./CouponDetails";
+import {CouponItems} from "./CouponItems";
+import {CouponInfo} from "./CouponItems/CouponInfo";
 import css from "./styles.module.scss";
-import {Data} from "./data"
-import cn from 'classnames'
+import {Data} from "./data";
+import cn from "classnames";
 
 
-export const Coupon: FC = () => {
+export const Coupon = () => {
     return (
         <div className={cn("container", css.root)}>
             <div className={css.slider}>

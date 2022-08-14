@@ -1,8 +1,7 @@
-import { FC } from "react";
 import css from "./styles.module.scss";
-import { ReactComponent as Ticket} from "@/assets/icons/ticket.svg";
-import { ReactComponent as Clock} from "@/assets/icons/clock.svg";  
-import { SocialMedia } from "./SocialMedia";
+import {ReactComponent as Ticket} from "@/assets/icons/ticket.svg";
+import {ReactComponent as Clock} from "@/assets/icons/clock.svg";  
+import {SocialMedia} from "./SocialMedia";
 
 
 
@@ -16,8 +15,8 @@ type PropType = {
     }
 }
 
-export const CouponInfo: FC<PropType> = (props) => {
-    const saled = props.info.saledCoupons
+export const CouponInfo = (props: PropType) => {
+    const saled = props.info.saledCoupons;
     return (
         <div className={css.root}>
             <div className={css.top}>

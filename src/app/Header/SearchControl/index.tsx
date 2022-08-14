@@ -1,4 +1,4 @@
-import React, {FC} from "react";
+import {useState, useRef} from "react";
 import PropTypes from "prop-types";
 import cn from "classnames";
 import {useNavigate} from "react-router-dom";
@@ -11,13 +11,13 @@ type PropTypes = {
     onRedirectToResult: () => void
 };
 
-export const SearchControl: FC<PropTypes> = ({className, onRedirectToResult}) => {
+export const SearchControl = ({className, onRedirectToResult}: PropTypes) => {
     const navigate = useNavigate();
 
-    const [searchResult, setSearchResult] = React.useState<any>([]);
-    const [isShowSearchResult, setIsShowSearchResult] = React.useState<boolean>(false);
+    const [searchResult, setSearchResult] = useState<any>([]);
+    const [isShowSearchResult, setIsShowSearchResult] = useState<boolean>(false);
 
-    const inputRef = React.useRef<HTMLInputElement>(null);
+    const inputRef = useRef<HTMLInputElement>(null);
 
     const searchInputHandle = (e: any) => {
         setIsShowSearchResult(true);

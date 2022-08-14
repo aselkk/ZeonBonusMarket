@@ -1,14 +1,16 @@
-import { FC } from "react";
-import css from "./styles.module.scss"
+import css from "./styles.module.scss";
 
-type PropType = {
+
+interface PropType {
     description: string[]
 }
-export const Description: FC<PropType> = ({description}) => {
+
+
+export const Description = ({description}: PropType) => {
    
     return (
         <div className={css.root}>
-              {description.map((item, index) => (
+            {description.map((item, index) => (
                 <p key={index} className={css.desc}>{item}</p>
             ))}
         </div>

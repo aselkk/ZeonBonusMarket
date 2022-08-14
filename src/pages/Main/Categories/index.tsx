@@ -27,11 +27,11 @@ export const Categories = () => {
         <ul className={css.groups}>
             {
                 categories.map((x: Category) => (
-                        <li key={x.id}>
-                            {x.Icon}
-                            <span className={css.label}>{x.title}</span>
-                        </li>
-                    )
+                    <li key={x.id}>
+                        {x.Icon}
+                        <span className={css.label}>{x.title}</span>
+                    </li>
+                )
                 )
             }
         </ul>

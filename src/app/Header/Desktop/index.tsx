@@ -1,16 +1,13 @@
-import React, {FC} from "react";
 import css from "./styles.module.scss";
 import cn from "classnames";
 import {SearchControl} from "../SearchControl";
 import {ReactComponent as Favorites} from "@/assets/icons/favorites.svg";
 import {ReactComponent as Login} from "@/assets/icons/log-in.svg";
 
-import {ReactComponent as SearchIcon} from "@/assets/icons/searchIcon.svg";
 import {ReactComponent as Ticket} from "@/assets/icons/ticket.svg";
 
 
-export const Desktop: FC = () => {
-    const [isSearchOpen, setIsSearchOpen] =  React.useState<any>({});
+export const Desktop = () => {
 
     return (
         <div className={css.header}>
@@ -30,7 +27,7 @@ export const Desktop: FC = () => {
                     <p className={css.logo}>
                         <a href="#"> Zeon bonus </a>
                     </p>
-                    <SearchControl className={css.inputWrap} onRedirectToResult={() => setIsSearchOpen(false)}/>
+                    <SearchControl className={css.inputWrap} onRedirectToResult={() => {}}/>
                     <div className={css.menu}>
                         <ul>
                             <li className={css.menuItem}>

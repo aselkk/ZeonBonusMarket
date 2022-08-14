@@ -7,7 +7,7 @@ import {ReactComponent as HotDiscountLogo} from "@/assets/icons/hot-discount.svg
 import {ReactComponent as DollarsLogo} from "@/assets/icons/dollars.svg";
 import {ReactComponent as HeartLogo} from "@/assets/icons/heart.svg";
 import emptyPreviewImage from "@/assets/images/empty-coupon-preview.jpg";
-import emptyCompanyLogo from "@/assets/images/empty-coupon-preview.jpg";
+import emptyCompanyLogo from "@/assets/images/empty-company-mini-logo.png";
 
 
 export interface CouponInfo {

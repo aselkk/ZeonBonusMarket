@@ -1,5 +1,5 @@
 import cn from "classnames";
-import css from "./styles.module.scss"
+import css from "./styles.module.scss";
 
 
 interface Props {

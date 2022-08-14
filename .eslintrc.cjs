@@ -66,6 +66,7 @@ module.exports = {
         // https://github.com/typescript-eslint/typescript-eslint/blob/main/packages/eslint-plugin/docs/rules/type-annotation-spacing.md
         "@typescript-eslint/restrict-plus-operands": "error",
 
+        // React.FC is deprecated
         "@typescript-eslint/ban-types": ["error",
             {
                 "types": {

@@ -12,6 +12,7 @@
             border-radius: 12px;
             border: 2px solid #EDF1FD;
         }
+
         .logoTitle {
             font-weight: 700;
             font-size: 20px;
@@ -20,6 +21,7 @@
             margin-left: 16px;
         }
     }
+
     .sale {
         margin-top: 38px;
         font-weight: 400;
@@ -28,7 +30,8 @@
         color: #98949E;
         text-align: left;
     }
-    .saleDesc{
+
+    .saleDesc {
         color: #181818;
         font-size: 16px;
         font-weight: 500;
@@ -36,7 +39,8 @@
         text-align: left;
         margin-bottom: 36px;
     }
-    .priceWrap{
+
+    .priceWrap {
         min-height: 38px;
         height: auto;
         width: 100%;
@@ -47,7 +51,7 @@
         margin-bottom: 8px;
         margin-left: 10px;
 
-        .priceTitle{
+        .priceTitle {
             font-weight: 400;
             font-size: 18px;
             line-height: 22px;
