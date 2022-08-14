@@ -3,3 +3,9 @@
     height: 383px;
     border-radius: 12px;
 }
+@media(max-width: 768px) {
+    .root {
+        width: calc(100vw - 32px);
+        height: 57.3vw;
+    }
+}

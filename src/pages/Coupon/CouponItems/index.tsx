@@ -5,7 +5,6 @@ import { Terms } from "./Terms";
 import { Data } from "./data";
 import { Addresses } from "./Addresses";
 import { Description } from "./Description";
-import { CouponInfo } from "./CouponInfo";
 import css from "./styles.module.scss"
 
 
@@ -17,7 +16,6 @@ export const CouponItems = () => {
 
     return (
         <div className={css.root}>
-            <div className={css.left}>
                 <div className={css.wrap}>
                     <RadioButtons 
                         titles={titles}
@@ -34,10 +32,6 @@ export const CouponItems = () => {
                 <div className={css.wrapDesc}>
                     <Description description={Data.description}/>
                 </div>
-            </div>
-            <div className={css.right}>
-                <CouponInfo info={Data.info}/>
-            </div>
         </div>
     );
 };

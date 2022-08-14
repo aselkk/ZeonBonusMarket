@@ -2,7 +2,8 @@
 
 
 .root {
-    height: 49px;
+    min-height: 49px;
+    height: auto;
     background: #EDF1FD;
     border-radius: 12px;
     padding: 8px;
