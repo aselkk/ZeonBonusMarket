@@ -2,7 +2,7 @@
 
 
 .button {
-    @include center-element();
+    @include center-elements();
     padding: 5px 15px;
     border-radius: 12px;
     color: white;

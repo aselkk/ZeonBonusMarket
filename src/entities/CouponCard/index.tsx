@@ -1,34 +1,34 @@
-import React, {FC, PropsWithChildren} from "react";
-import css from "./style.module.scss";
+import React from "react";
 import cn from "classnames";
 
-
-import png from "@/assets/images/mini-coupons/coupon_1.png";
-import logo from "@/assets/images/mini-logos/colbasoff.png";
-
+import css from "./style.module.scss";
 
 import {ReactComponent as HotDiscountLogo} from "@/assets/icons/hot-discount.svg";
 import {ReactComponent as DollarsLogo} from "@/assets/icons/dollars.svg";
 import {ReactComponent as HeartLogo} from "@/assets/icons/heart.svg";
+import emptyPreviewImage from "@/assets/images/empty-coupon-preview.jpg";
+import emptyCompanyLogo from "@/assets/images/empty-coupon-preview.jpg";
 
 
-
-interface CardInfo {
-    partnerTitle: string,
-    description: string
-    price: number,
-    discount: number,
-    productPrice: number,
+export interface CouponInfo {
+    id: number,
+    title: string,
+    previewImage: string,
+    companyName: string,
+    companyLogo: string,
     isFavorite: boolean,
+    couponPrice: number,
+    productPrice: number,
+    discount: number
 }
 
 interface Props {
-    info: CardInfo
+    info: CouponInfo
 }
 
 
-export const Card = ({info}: Props) => {
-    const productPriceWithoutDiscount = Math.round(info.price - (info.price * info.discount / 100));
+export const CouponCard = ({info}: Props) => {
+    const productPriceWithoutDiscount = Math.round(info.productPrice - (info.productPrice * info.discount / 100));
 
     const onBtnFavoriteClick = () => {
         console.log("Favorite");
@@ -46,16 +46,24 @@ export const Card = ({info}: Props) => {
                     })}
                 />
             </button>
-            <img src={png} alt="preview"/>
+            <img
+                className={css.previewImage}
+                src={info.previewImage || emptyPreviewImage}
+                alt="preview"
+            />
             <div className={css.info}>
-                <div className={css.partner}>
-                    <img className={css.logo} src={logo} alt="partner-logo"/>
-                    <p className={css.title}>
-                        {info.partnerTitle}
+                <div className={css.company}>
+                    <img
+                        className={css.logo}
+                        src={info.companyLogo || emptyCompanyLogo}
+                        alt="partner-logo"
+                    />
+                    <p className={css.companyTitle}>
+                        {info.companyName}
                     </p>
                 </div>
-                <p className={css.description}>
-                    {info.description}
+                <p className={css.title}>
+                    {info.title}
                 </p>
                 <div className={css.pricePane}>
                     <HotDiscountLogo className={css.icon}/>
@@ -64,8 +72,10 @@ export const Card = ({info}: Props) => {
                             Цена скидки с купоном:
                         </p>
                         <p className={css.pricePanePrice}>
-                            {productPriceWithoutDiscount} c
-                            <span className={css.pricePaneOldPrice}>{info.productPrice} с</span>
+                            {productPriceWithoutDiscount.toLocaleString("ru")} c
+                            <span className={css.pricePaneOldPrice}>
+                                {info.productPrice.toLocaleString("ru")} с
+                            </span>
                         </p>
                     </div>
                 </div>
@@ -76,7 +86,7 @@ export const Card = ({info}: Props) => {
                             Цена за купон:
                         </p>
                         <p className={css.pricePanePrice}>
-                            {info.price.toLocaleString("ru")} cом
+                            {info.couponPrice.toLocaleString("ru")} cом
                         </p>
                     </div>
                 </div>
@@ -84,8 +94,3 @@ export const Card = ({info}: Props) => {
         </main>
     );
 };
-
-
-
-
-

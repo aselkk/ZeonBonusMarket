@@ -3,7 +3,7 @@ import css from "./styles.module.scss";
 import cn from "classnames";
 import {SearchControl} from "../SearchControl";
 import {ReactComponent as Favorites} from "@/assets/icons/favorites.svg";
-import {ReactComponent as Login} from "@/assets/icons/log-in.svg";
+// import {ReactComponent as Login} from "@/assets/icons/log-in.svg";
 import {ReactComponent as SearchIcon} from "@/assets/icons/searchIcon.svg";
 import {ReactComponent as Ticket} from "@/assets/icons/ticket.svg";
 
@@ -65,7 +65,7 @@ export const Desktop: FC = () => {
               </li>
               <div className={css.dividor}></div>
               <li className={css.menuItem}> 
-                <a href="#"> <Login/> Войти </a>
+                {/*<a href="#"> <Login/> Войти </a>*/}
               </li>
             </ul>
           </div>

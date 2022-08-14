@@ -9,6 +9,7 @@ import css from "./App.module.scss";
 import "./styles/null.scss";
 import "./styles/global.scss";
 
+
 export const App: FC = () => {
     return (
         <BrowserRouter>
@@ -17,7 +18,7 @@ export const App: FC = () => {
                 <Route path="/" element={<Main/>}/>
                 <Route path="/coupon/:id" element={<Coupon/>}/>
             </Routes>
-            <div style={{backgroundColor: "red", height: 300, width: "100%"}}></div>
+            {/*<div style={{backgroundColor: "red", height: 300, width: "100%"}}></div>*/}
             <Footer/>
         </BrowserRouter>
     );

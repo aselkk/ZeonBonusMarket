@@ -1,0 +1,62 @@
+@import "@/shared/styles/mixins";
+@import "@/shared/styles/vars";
+
+
+
+.wrap {
+    @include flex-col(center, center);
+
+    .title {
+        @include font-default(700, 24px, 29px, #181818);
+        align-self: flex-start;
+    }
+
+    .cards {
+        margin-top: 24px;
+        @include flex-row(center);
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .button {
+        margin-top: 24px;
+        width: 152px;
+        height: 44px;
+        align-self: center;
+        @include font-default(400, 14px, 150%, white);
+    }
+}
+
+
+
+@media (max-width: $width-xl) {
+    .wrap {
+
+        .cards {
+            gap: 20px;
+        }
+    }
+}
+
+
+@media (max-width: $width-md) {
+    .wrap {
+        .cards {
+            gap: 15px;
+        }
+    }
+}
+
+
+@media (max-width: $width-sm) {
+    .wrap {
+        .title {
+            font-size: 19px;
+        }
+
+        .cards {
+            margin-top: 10px;
+            gap: 15px;
+        }
+    }
+}

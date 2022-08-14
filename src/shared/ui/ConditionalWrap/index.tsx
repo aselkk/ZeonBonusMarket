@@ -1,7 +1,10 @@
+import React, {ReactElement} from "react";
+
+
 interface Props {
     condition: boolean,
-    wrap: (c: JSX.Element ) => JSX.Element,
-    children: JSX.Element
+    wrap: (c: ReactElement ) => ReactElement,
+    children: ReactElement
 }
 
 
