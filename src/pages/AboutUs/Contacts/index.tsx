@@ -1,23 +1,22 @@
-import React, {FC} from "react";
+import React from "react";
 import css from "./styles.module.scss";
 import cn from "classnames";
 
 import {MenuAboutUs} from "../MenuMini";
 
-import map from "../../../assets/images/mapImage.png";
+import map from "@/assets/images/mapImage.png";
 
 import {ReactComponent as Phone} from "@/assets/icons/phone.svg";
 import {ReactComponent as Mail} from "@/assets/icons/mail.svg";
 import {ReactComponent as Location} from "@/assets/icons/location.svg";
 
-import {ReactComponent as FaceBookIcon} from "@/assets/icons/facebook.svg";
+import {ReactComponent as FaceBookIcon} from "@/assets/icons/faceBook1.svg";
 import {ReactComponent as IstagrammIcon} from "@/assets/icons/instagramm.svg";
 import {ReactComponent as VKontakte} from "@/assets/icons/vkontakte.svg";
 import {ReactComponent as Odnoklassniki} from "@/assets/icons/odnoklassniki.svg";
 import {axiosInstance} from "@/shared/api";
 
-
-export const Contacts: FC = () => {
+export const Contacts = () => {
     const [contacts, setContacts] = React.useState<any>({});
 
     // TODO: have to move other file
@@ -32,8 +31,7 @@ export const Contacts: FC = () => {
 
     React.useEffect(() => {
         getContactsfromServerAPI();
-    }, []);
-    console.log(contacts);
+    }, [setContacts]);
 
     return (
         <div className={css.aboutUs}>
@@ -49,32 +47,49 @@ export const Contacts: FC = () => {
                             <h4>Наши телефоны:</h4>
                             <ul>
                                 <li>
-                                    <div>
-                                        <Phone className={css.icons} />
-                                    </div>
-                                    <p>{contacts.phone1}</p>
+                                    <a rel="stylesheet" href={`tel:${contacts.phone1}`}>
+                                        <div>
+                                            <Phone className={css.icons} />
+                                        </div>
+                                        <p>{contacts.phone1}</p>
+
+                                    </a>
+                                   
                                 </li>
                                 <li>
-                                    <div>
-                                        <Phone className={css.icons} />
-                                    </div>
-                                    <p>{contacts.phone2}</p>
+                                    <a rel="stylesheet" href={`tel:${contacts.phone2}`}>
+                                     
+                                        <div>
+                                            <Phone className={css.icons} />
+                                        </div>
+                                        <p>{contacts.phone2}</p>
+
+                                    </a>
+                                   
                                 </li>
                                 <li>
-                                    <div>
-                                        <Phone className={css.icons} />
-                                    </div>
-                                    <p>{contacts.phone3}</p>
+                                    <a rel="stylesheet" href={`tel:${contacts.phone3}`}>
+                                        <div>
+                                            <Phone className={css.icons} />
+                                        </div>
+                                        <p>{contacts.phone3}</p>
+
+                                    </a>
+                                    
                                 </li>
                             </ul>
                             <div className={(css.innerBox, css.inMobile)}>
                                 <h4>Email:</h4>
                                 <ul>
                                     <li>
-                                        <div>
-                                            <Mail className={css.icons} />
-                                        </div>
-                                        <p>{contacts.email}</p>
+                                        <a rel="stylesheet" href={`mailto:${contacts.email}`}>
+                                            <div>
+                                                <Mail className={css.icons} />
+                                            </div>
+                                            <p>{contacts.email}</p>
+
+                                        </a>
+                                       
                                     </li>
                                 </ul>
                             </div>
@@ -88,10 +103,15 @@ export const Contacts: FC = () => {
                                     <h5>Email:</h5>
                                     <ul>
                                         <li>
-                                            <div>
-                                                <Mail className={css.icons} />
-                                            </div>
-                                            <p>{contacts.email}</p>
+                                            <a rel="stylesheet" href={`mailto:${contacts.email}`}>
+                                                <div>
+                                                    <Mail className={css.icons} />
+                                                </div>
+                                                <p>{contacts.email}</p>
+
+
+                                            </a>
+                                            
                                         </li>
                                     </ul>
                                 </div>
@@ -115,37 +135,36 @@ export const Contacts: FC = () => {
                             <h4>Мы в социальных сетях:</h4>
                             <ul>
                                 <li>
-                                    <div>
-                                        <a rel="stylesheet" href={contacts.facebook}>
+                                    <a rel="stylesheet" href={contacts.facebook} target="_blank">
+                                        <div>
                                             <FaceBookIcon className={css.icons} />
-                                        </a>
-                                    </div>
-
-                                    <p>Facebook</p>
+                                        </div>
+                                        <p>Facebook</p>
+                                    </a>
                                 </li>
                                 <li>
-                                    <div>
-                                        <a rel="stylesheet" href={contacts.vkontakte}>
+                                    <a rel="stylesheet" href={contacts.vkontakte} target="_blank">
+                                        <div>
                                             <VKontakte className={css.icons} />
-                                        </a>
-                                    </div>
-                                    <p>VKontakte</p>
+                                        </div>
+                                        <p>VKontakte</p>
+                                    </a>
                                 </li>
                                 <li>
-                                    <div>
-                                        <a rel="stylesheet" href={contacts.instagram}>
+                                    <a rel="stylesheet" href={contacts.instagram} target="_blank">
+                                        <div>
                                             <IstagrammIcon className={css.icons} />
-                                        </a>
-                                    </div>
-                                    <p>Instagram</p>
+                                        </div>
+                                        <p>Instagram</p>
+                                    </a>
                                 </li>
                                 <li>
-                                    <div>
-                                        <a rel="stylesheet" href={contacts.odnoklassniki}>
+                                    <a rel="stylesheet" href={contacts.odnoklassniki} target="_blank">
+                                        <div>
                                             <Odnoklassniki className={css.icons} />
-                                        </a>
-                                    </div>
-                                    <p>Odnoklassniki</p>
+                                        </div>
+                                        <p>Odnoklassniki</p>
+                                    </a>
                                 </li>
                             </ul>
                             <div className={(css.innerBox, css.inMobile)}>

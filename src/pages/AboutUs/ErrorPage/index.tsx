@@ -1,10 +1,10 @@
-import React, {FC} from "react";
+import React from "react";
 import css from "./styles.module.scss";
 import cn from "classnames";
 import {Link} from "react-router-dom";
 
 
-export const ErrorPage: FC = () => {
+export const ErrorPage = () => {
     return (
         <div className={css.errorPage}>
             <div className={cn("container", css.container)}>

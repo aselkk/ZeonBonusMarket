@@ -1,4 +1,4 @@
-import React, {FC} from "react";
+import React from "react";
 import {MenuAboutUs} from "../MenuMini";
 import cn from "classnames";
 import css from "./styles.module.scss";
@@ -6,8 +6,7 @@ import {Accordion} from "./Accordion";
 import {axiosInstance} from "@/shared/api";
 
 
-
-export const HelpPage: FC = () => {
+export const HelpPage = () => {
     const [questions, setQuestions] = React.useState([]);
     const getFAQfromServer = () => {
         return axiosInstance.get("/info/faq/");

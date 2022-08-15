@@ -1,4 +1,4 @@
-import React, {FC} from "react";
+import React from "react";
 import {Link} from "react-router-dom";
 import css from "./styles.module.scss";
 
@@ -6,7 +6,7 @@ import {ReactComponent as UserIcon} from "@/assets/icons/userIcon.svg";
 import {ReactComponent as Phone} from "@/assets/icons/phone.svg";
 
 
-export const MenuAboutUs: FC = () => {
+export const MenuAboutUs = () => {
     const pathName: string = window.location.pathname;
 
     return (

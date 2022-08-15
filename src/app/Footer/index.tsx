@@ -1,17 +1,34 @@
+import React from "react";
 import {Link} from "react-router-dom";
 import cn from "classnames";
 
 import css from "./styles.module.scss";
 
-import {ReactComponent as FaceBookIcon} from "@/assets/icons/facebook.svg";
+import {ReactComponent as FaceBookIcon} from "@/assets/icons/faceBook1.svg";
 import {ReactComponent as IstagrammIcon} from "@/assets/icons/instagramm.svg";
 import {ReactComponent as VKontakte} from "@/assets/icons/vkontakte.svg";
 import {ReactComponent as Odnoklassniki} from "@/assets/icons/odnoklassniki.svg";
 import {ReactComponent as Mail} from "@/assets/icons/mail.svg";
 import {ReactComponent as Phone} from "@/assets/icons/phone.svg";
+import {axiosInstance} from "@/shared/api";
 
 
 export const Footer = () => {
+    const [contacts, setContacts] = React.useState(Object);
+
+    // TODO: have to move other file
+    const getContactsfromServer = () => {
+        return axiosInstance.get("/info/networks/");
+    };
+
+    const getContactsfromServerAPI = async () => {
+        const response = await getContactsfromServer();
+        setContacts(response.data);
+    };
+
+    React.useEffect(() => {
+        getContactsfromServerAPI();
+    }, [setContacts]);
     return (
         <div className={css.footer}>
             <div className={cn("container", css.container)}>
@@ -71,40 +88,39 @@ export const Footer = () => {
                     </div>
                     <ul>
                         <li>
-                            <Link className={css.linkTo} to={"#"}>
-                                {/* TODO: ссылки на страницы */}
+                            <a className={css.linkTo} rel="stylesheet" href={contacts.vkontakte} target="_blank">
                                 <div>
                                     <VKontakte className={css.icons} />
                                 </div>
                                 <p>Вконтакте</p>
-                            </Link>
+                            </a>
                         </li>
                         <li>
-                            <Link className={css.linkTo} to={"#"}>
+                            <a className={css.linkTo} rel="stylesheet" href={contacts.facebook} target="_blank">
                                 {/* TODO: ссылки на страницы */}
                                 <div>
                                     <FaceBookIcon className={css.icons} />
                                 </div>
                                 <p>Facebook</p>
-                            </Link>
+                            </a>
                         </li>
                         <li>
-                            <Link className={css.linkTo} to={"#"}>
+                            <a className={css.linkTo} rel="stylesheet" href={contacts.odnoklassniki} target="_blank">
                                 {/* TODO: ссылки на страницы */}
                                 <div>
                                     <Odnoklassniki className={css.icons} />
                                 </div>
                                 <p>Одноклассники</p>
-                            </Link>
+                            </a>
                         </li>
                         <li>
-                            <Link className={css.linkTo} to={"#"}>
+                            <a className={css.linkTo} rel="stylesheet" href={contacts.instagram} target="_blank">
                                 {/* TODO: ссылки на страницы */}
                                 <div>
                                     <IstagrammIcon className={css.icons} />
                                 </div>
                                 <p>Instagram</p>
-                            </Link>
+                            </a>
                         </li>
                     </ul>
                 </div>
@@ -114,22 +130,20 @@ export const Footer = () => {
                     </div>
                     <ul>
                         <li>
-                            <Link className={css.linkTo} to={"#"}>
-                                {/* TODO: ссылки на страницы */}
+                            <a className={css.linkTo} rel="stylesheet" href={`mailto:${contacts.email}`}>
                                 <div>
                                     <Mail className={css.icons} />
                                 </div>
-                                <p>mail@mix.kg</p>
-                            </Link>
+                                <p>{contacts.email}</p>
+                            </a>
                         </li>
                         <li>
-                            <Link className={css.linkTo} to={"#"}>
-                                {/* TODO: ссылки на страницы */}
+                            <a className={css.linkTo} rel="stylesheet" href={`tel:${contacts.phone1}`}>
                                 <div>
                                     <Phone className={css.icons} />
                                 </div>
-                                <p>+996 555 55 55 55</p>
-                            </Link>
+                                <p>{contacts.phone1}</p>
+                            </a>
                         </li>
                     </ul>
                 </div>

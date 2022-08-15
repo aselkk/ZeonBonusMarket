@@ -1,11 +1,11 @@
-import React, {FC} from "react";
+import React from "react";
 import css from "./styles.module.scss";
 import cn from "classnames";
 import {MenuAboutUs} from "../MenuMini";
 import {axiosInstance} from "@/shared/api";
 
 
-export const AboutUs: FC = () => {
+export const AboutUs = () => {
     const [content, setContent] = React.useState("");
 
     // TODO: have to move other file
