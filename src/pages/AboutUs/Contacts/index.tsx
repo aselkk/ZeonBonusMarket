@@ -14,11 +14,11 @@ import {ReactComponent as FaceBookIcon} from "@/assets/icons/facebook.svg";
 import {ReactComponent as IstagrammIcon} from "@/assets/icons/instagramm.svg";
 import {ReactComponent as VKontakte} from "@/assets/icons/vkontakte.svg";
 import {ReactComponent as Odnoklassniki} from "@/assets/icons/odnoklassniki.svg";
-import {axiosInstance} from "@/API";
+import {axiosInstance} from "@/shared/api";
 
 
 export const Contacts: FC = () => {
-    const [contacts, setContacts] = React.useState({});
+    const [contacts, setContacts] = React.useState<any>({});
 
     // TODO: have to move other file
     const getContactsfromServer = () => {

@@ -2,7 +2,7 @@ import React, {FC} from "react";
 import css from "./styles.module.scss";
 import cn from "classnames";
 import {MenuAboutUs} from "../MenuMini";
-import {axiosInstance} from "@/API";
+import {axiosInstance} from "@/shared/api";
 
 
 export const AboutUs: FC = () => {

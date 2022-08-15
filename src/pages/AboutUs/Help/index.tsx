@@ -3,7 +3,8 @@ import {MenuAboutUs} from "../MenuMini";
 import cn from "classnames";
 import css from "./styles.module.scss";
 import {Accordion} from "./Accordion";
-import {axiosInstance} from "@/API";
+import {axiosInstance} from "@/shared/api";
+
 
 
 export const HelpPage: FC = () => {
