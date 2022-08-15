@@ -1,6 +1,8 @@
 import {Link} from "react-router-dom";
-import css from "./styles.module.scss";
 import cn from "classnames";
+
+import css from "./styles.module.scss";
+
 import {ReactComponent as FaceBookIcon} from "@/assets/icons/facebook.svg";
 import {ReactComponent as IstagrammIcon} from "@/assets/icons/instagramm.svg";
 import {ReactComponent as VKontakte} from "@/assets/icons/vkontakte.svg";
@@ -19,7 +21,7 @@ export const Footer = () => {
                     </div>
                     <ul>
                         <li>
-                            <Link className={css.linkTo} to={"#"}>
+                            <Link className={css.linkTo} to={"/errorPage"}>
                                 {/* TODO: ссылки на страницы */}
                                 <p>Как сделать заказ</p>
                             </Link>
@@ -31,13 +33,13 @@ export const Footer = () => {
                             </Link>
                         </li>
                         <li>
-                            <Link className={css.linkTo} to={"#"}>
+                            <Link className={css.linkTo} to={"/helpPage"}>
                                 {/* TODO: ссылки на страницы */}
                                 <p>Вопросы и ответы</p>
                             </Link>
                         </li>
                         <li>
-                            <Link className={css.linkTo} to={"#"}>
+                            <Link className={css.linkTo} to={"/privacyPolicy"}>
                                 {/* TODO: ссылки на страницы */}
                                 <p>Политика конфиденциальности</p>
                             </Link>
@@ -50,13 +52,13 @@ export const Footer = () => {
                     </div>
                     <ul>
                         <li>
-                            <Link className={css.linkTo} to={"#"}>
+                            <Link className={css.linkTo} to={"/aboutUs"}>
                                 {/* TODO: ссылки на страницы */}
                                 <p>О нас</p>
                             </Link>
                         </li>
                         <li>
-                            <Link className={css.linkTo} to={"#"}>
+                            <Link className={css.linkTo} to={"/contacts"}>
                                 {/* TODO: ссылки на страницы */}
                                 <p>Контакты</p>
                             </Link>

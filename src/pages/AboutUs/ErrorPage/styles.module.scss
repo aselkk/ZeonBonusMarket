@@ -1,0 +1,71 @@
+.errorPage {
+    width: 100%;
+    margin: 0;
+    background-color: #e5e5e5;
+
+    .container {
+        width: 100%;
+        min-height: 576px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        p {
+            font-family: "Inter";
+            font-style: normal;
+            font-weight: 700;
+            font-size: 24px;
+            line-height: 29px;
+            color: #4b5fa5;
+        }
+
+        h3 {
+            font-family: "Inter";
+            font-style: normal;
+            font-weight: 700;
+            font-size: 48px;
+            line-height: 48px;
+            color: #4b5fa5;
+            margin: 12px auto 19px;
+        }
+
+        span {
+            font-family: "Inter";
+            font-style: normal;
+            font-weight: 700;
+            font-size: 24px;
+            line-height: 29px;
+            color: #000000;
+        }
+
+        button {
+            background: #4b5fa5;
+            border-radius: 12px;
+            display: flex;
+            // flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            padding: 8px 24px;
+            margin-top: 43px;
+            width: 300px;
+            height: 56px;
+
+            font-family: "Inter";
+            font-style: normal;
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 125%;
+
+            text-align: center;
+
+            color: #ffffff;
+        }
+
+        button:hover {
+            background: #8c99ca;
+            transition: 0.5s;
+        }
+    }
+}

@@ -1,10 +1,9 @@
-import React, {useLayoutEffect, useState} from "react";
+import {useLayoutEffect, useState} from "react";
 import {Mobile} from "./Mobile";
 import {Desktop} from "./Desktop";
 
 
 export const Header = () => {
-
     function useWindowSize() {
         const [size, setSize] = useState([0, 0]);
         useLayoutEffect(() => {
