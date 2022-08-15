@@ -1,10 +1,10 @@
 import React, {FC} from "react";
 import css from "./styles.module.scss";
-import { Swiper, SwiperSlide } from "swiper/react"
+import {Swiper, SwiperSlide} from "swiper/react";
 import "swiper/css";
-import "swiper/css/navigation"
+import "swiper/css/navigation";
 
-import { Navigation } from 'swiper'
+import {Navigation} from "swiper";
 
 
 export const Carousel: FC = () => {

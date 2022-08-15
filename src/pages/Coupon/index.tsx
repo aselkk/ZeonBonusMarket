@@ -1,8 +1,8 @@
 import React, {FC} from "react";
-import { Carousel } from "./Carousel";
-import { CouponDetails } from "./CouponDetails";
+import {Carousel} from "./Carousel";
+import {CouponDetails} from "./CouponDetails";
 import css from "./styles.module.scss";
-import {Data} from "./data"
+import {Data} from "./data";
 
 
 

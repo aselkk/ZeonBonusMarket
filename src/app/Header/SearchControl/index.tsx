@@ -30,8 +30,8 @@ export const SearchControl: FC<PropTypes> = ({className, onRedirectToResult}) =>
 
     const searchSubmitByEnter = (e: any) => {
         // if (e.type === "keydown" && e.code === KeyCode.CODE_ENTER) {
-            // navigateToSearchResult();
-            // submitSearch();
+        // navigateToSearchResult();
+        // submitSearch();
         // }
     };
 

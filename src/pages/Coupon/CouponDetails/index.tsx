@@ -1,6 +1,7 @@
 import React, {FC} from "react";
 import css from "./styles.module.scss";
-import { Data } from "../data";
+import {Data} from "../data";
+
 
 export const CouponDetails: FC = () => {
     return (
