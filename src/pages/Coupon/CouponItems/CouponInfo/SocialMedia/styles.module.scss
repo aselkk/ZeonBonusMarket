@@ -1,0 +1,15 @@
+@import "@/shared/styles/mixins";
+
+.root {
+    .span {
+        @include font-default(400, 15px, 22px, #4F70E2);
+    }
+
+    .wrap {
+        display: flex;
+        gap: 16px;
+        justify-content: flex-start;
+        align-items: center;
+        margin-top: 10px
+    }
+}

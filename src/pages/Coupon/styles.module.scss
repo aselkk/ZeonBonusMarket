@@ -1,11 +1,51 @@
-// TODO: Удалить потом этот импорт
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
 .root {
-    font-family: 'Inter', sans-serif;
+    padding: 0 16px;
+    display: grid;
+    grid-template-columns: 668px 448px;
+    grid-template-rows: 479px 1fr;
+    column-gap: 32px;
 
-    .carouselBlock {
+    .slider {
+        width: 100%;
+    }
+
+    .details {
+        width: calc(100% - 32px);
+        grid-column: 2 / 3;
+        grid-row: 1 / 3;
+    }
+
+    .items {
+        width: 100%;
+    }
+}
+
+
+
+@media (max-width: 1200px) {
+    .root {
+        grid-template-columns: 59% 41%;
+    }
+}
+
+
+@media (max-width: 992px) {
+    .root {
         display: flex;
-        justify-content: space-between;
+        flex-direction: column;
+    }
+
+    .slider {
+        max-width: 668px;
+        margin: 0 auto;
+    }
+}
+
+
+@media (max-width: 768px) {
+    .slider {
+        width: calc(100vw - 32px);
+        height: calc(57.3vw + 96px);
     }
 }

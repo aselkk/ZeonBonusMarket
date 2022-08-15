@@ -1,0 +1,9 @@
+@import "@/shared/styles/mixins";
+
+.root {
+    width: 300px;
+    height: 56px;
+    background: #FD9B08;
+    border-radius: 12px;
+    @include font-default(500, 16px, 20px, #fff)
+}

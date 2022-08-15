@@ -1,6 +1,6 @@
 .root {
-    width: 466px;
-
+    width: calc(100% - 32px);
+    
     .logoWrapper {
         display: flex;
         justify-content: flex-start;
@@ -41,11 +41,13 @@
     }
 
     .priceWrap {
-        height: 38px;
+        min-height: 38px;
+        height: auto;
         width: 100%;
         display: flex;
         justify-content: flex-start;
         align-items: center;
+        flex-wrap: wrap;
         margin-bottom: 8px;
         margin-left: 10px;
 
@@ -67,7 +69,7 @@
             background: #F7F7F7;
             border-radius: 12px;
             display: flex;
-            gap: 16px;           
+            gap: 16px;    
 
             .priceNew {
                 font-weight: 600;
@@ -84,5 +86,13 @@
                 text-decoration-line: line-through;
             }
         }
+    }
+
+    .wrapper {
+        display: flex;
+        gap: 12px;
+        justify-content: flex-start;
+        margin-top: 36px;
+        margin-bottom: 20px;
     }
 }

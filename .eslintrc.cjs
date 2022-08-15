@@ -2,13 +2,14 @@ module.exports = {
     parser: "@typescript-eslint/parser",
     parserOptions: {
         sourceType: "module",
+        project: ["tsconfig.json"],
         allowImportExportEverywhere: true,
         ecmaVersion: 13,
         ecmaFeatures: {
             jsx: true
         }
     },
-    plugins: ["import", "react"],
+    plugins: ["import", "react", "@typescript-eslint"],
     ignorePatterns: [
         "node_modules/*",
         "src/assets/**",
@@ -59,6 +60,22 @@ module.exports = {
         /* other spacing */
         "keyword-spacing": ["warn"], // пробелы вокруг ключевых слова (if, while и т.д)
         "array-bracket-spacing": ["warn", "never"], // пробел между скобками массива
-        "comma-spacing": ["warn", {after: true}] // пробел после запятой
+        "comma-spacing": ["warn", {after: true}], // пробел после запятой
+
+        /* typescript */
+        // https://github.com/typescript-eslint/typescript-eslint/blob/main/packages/eslint-plugin/docs/rules/type-annotation-spacing.md
+        "@typescript-eslint/restrict-plus-operands": "error",
+
+        // React.FC is deprecated
+        "@typescript-eslint/ban-types": ["error",
+            {
+                "types": {
+                    "React.StatelessComponent": {"message": "https://github.com/facebook/create-react-app/pull/8177"},
+                    "React.FunctionalComponent": {"message": "https://github.com/facebook/create-react-app/pull/8177"},
+                    "React.FC": {"message": "https://github.com/facebook/create-react-app/pull/8177"},
+                    "FC": {"message": "https://github.com/facebook/create-react-app/pull/8177"},
+                }
+            }
+        ]
     }
 };

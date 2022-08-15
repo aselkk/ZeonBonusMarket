@@ -2,26 +2,27 @@
 
 .root {
     position: relative;
-
+    width: 541px;
+    height: 44px;
+    border-radius: 12px;
+    background-color: #FBFBFB;
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-
-    padding: 0 12px 0 15px;
-    border: 1px solid #E0E0E0;
-    background-color: #F8F8F8;
+    padding: 0 13px;
+    border: 1px solid #EDF1FD;
 
     input {
-        width: 100%;
-        height: 100%;
-        border: 0;
         background-color: transparent;
-
-        @include font-default(16px, 400, 19.5px, red);
+        padding-left: 7px;
+        width: 90%;
+        color: #313131;
+        height: 100%;
 
         &::placeholder {
-            @include font-default(16px, 400, 19.5px, #858F9B);
+            color: #98949E;
+            font-size: 15px;
         }
     }
 
@@ -39,31 +40,47 @@
         }
 
         &:hover {
-            background-color: gray;
+            background-color: rgba(226, 218, 218, 0.929);
             border-radius: 50%;
         }
     }
 
     .searchResult {
         position: absolute;
-        top: 44px;
+        top: 45px;
         left: 0;
         z-index: 2;
+        width: 100%;
+        background-color: #fff;
+        border-radius: 12px;
+        border: 1px solid #EDF1FD;
+        padding: 24px 20px;
+        height: 281px;
         overflow-y: scroll;
         width: 100%;
-        height: 250px;
-        background-color: white;
-        border: 1px solid #EEEEEE;
+		
+        &::-webkit-scrollbar {
+            width: 4px;
+            background: #EDF1FD;
+            border-radius: 4px;
+            height: 133px;
+        }
+			
+        &::-webkit-scrollbar-track {
+            border-radius: 10px;
+            height: 233px;
+        }
+			
+        &:-webkit-scrollbar-thumb {
+            background: #8b9ddf;
+            border-radius: 4px;
+        }
 
         .searchItem {
+            padding: 16px 5px;
             width: 100%;
-            height: 50px;
-            display: flex;
-            align-items: center;
-            padding: 16px 20px;
-
-            @include font-default(14px, 400, 21px, red);
-            border-bottom: 1px solid #EEEEEE;
+            border-bottom: 1px solid #EDF1FD;
+            font-size: 14px;
             cursor: pointer;
 
             &:hover {

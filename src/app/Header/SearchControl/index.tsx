@@ -1,68 +1,99 @@
-import React, {FC} from "react";
+import {useState, useRef} from "react";
 import PropTypes from "prop-types";
 import cn from "classnames";
-// import * as KeyCode from "keycode-js";
-// import {Utils} from "src/shared/utils";
-// import {Api} from "src/shared/utils/api";
+import {useNavigate} from "react-router-dom";
+import {ReactComponent as SearchIcon} from "@/assets/icons/searchIcon.svg";
 import css from "./styles.module.scss";
-// import searchIcon from "src/assets/icons/search.svg";
+
 
 type PropTypes = {
     className: string,
     onRedirectToResult: () => void
 };
 
-export const SearchControl: FC<PropTypes> = ({className, onRedirectToResult}) => {
-    const [searchResult, setSearchResult] = React.useState<any>({});
-    const [isShowSearchResult, setIsShowSearchResult] = React.useState(false);
 
-    const searchInputHandle = (e:any) => {
+export const SearchControl = ({className, onRedirectToResult}: PropTypes) => {
+    const navigate = useNavigate();
+
+    const [searchResult, setSearchResult] = useState<any>([]);
+    const [isShowSearchResult, setIsShowSearchResult] = useState<boolean>(false);
+
+    const inputRef = useRef<HTMLInputElement>(null);
+
+    const searchInputHandle = (e: any) => {
         setIsShowSearchResult(true);
-
         const text = e.target.value;
         if (!text) {
-            setSearchResult({});
+            setSearchResult([]);
             return;
+        }
+
+        (async () => {
+            try {
+                setSearchResult([
+                    "lol",
+                    "kek",
+                    "kek",
+                    "kek",
+                    "kek",
+                    "kek",
+                    "kek",
+                    "kek",
+                    "kek",
+                    "kek",
+                    "chebrek",
+                    "Bassein"
+                ]);
+            } catch (err) {
+                console.error("search", err);
+            }
+        })();
+    };
+
+    const searchSubmitByEnter = (e: any) => {
+        if (e.type === "keydown" && e.code === "Enter") {
+            submitSearch();
+            navigate("coupon/232"); // TODO: redirect to Search page
         }
     };
 
-    const inputRef = React.useRef(null);
-
-    const searchSubmitByEnter = (e: any) => {
-        // if (e.type === "keydown" && e.code === KeyCode.CODE_ENTER) {
-        // navigateToSearchResult();
-        // submitSearch();
-        // }
+    const submitSearch = () => {
+        if (inputRef.current)
+            inputRef.current.value = "";
+        setIsShowSearchResult(false);
+        onRedirectToResult?.();
     };
 
     return (
         <div className={cn(css.root, className)}>
-            <input ref={inputRef}
+            <input 
+                ref={inputRef}
                 type="text"
                 placeholder="Поиск"
                 onChange={searchInputHandle}
                 onKeyDown={searchSubmitByEnter}
             />
             <div className={css.searchIcon} >
-                <img src={"searchIcon"} alt={"s"}/>
+                <SearchIcon/>
             </div>
             {
-                (isShowSearchResult && searchResult.count)
+                (isShowSearchResult && searchResult.length)
                     ? (
-                        <div className={css.searchResult}>
+                        <ul className={css.searchResult}>
                             {
-                                searchResult.matches.map((x: any, i: any) => {
+                                searchResult.map((x: any, i: number) => {
                                     return (
-                                        <div key={i}
+                                        <div 
+                                            key={i}
                                             className={css.searchItem}
                                             // onClick={() => searchResultItemClicked(x.id)}
                                         >
-                                            {x.title}
+                                            {x}
                                         </div>
                                     );
                                 })
                             }
-                        </div>
+                        </ul>
                     )
                     : null
             }

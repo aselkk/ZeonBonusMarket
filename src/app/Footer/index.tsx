@@ -1,7 +1,7 @@
-import React, {FC} from "react";
 import {Link} from "react-router-dom";
-import css from "./styles.module.scss";
 import cn from "classnames";
+
+import css from "./styles.module.scss";
 
 import {ReactComponent as FaceBookIcon} from "@/assets/icons/facebook.svg";
 import {ReactComponent as IstagrammIcon} from "@/assets/icons/instagramm.svg";
@@ -11,7 +11,7 @@ import {ReactComponent as Mail} from "@/assets/icons/mail.svg";
 import {ReactComponent as Phone} from "@/assets/icons/phone.svg";
 
 
-export const Footer: FC = () => {
+export const Footer = () => {
     return (
         <div className={css.footer}>
             <div className={cn("container", css.container)}>

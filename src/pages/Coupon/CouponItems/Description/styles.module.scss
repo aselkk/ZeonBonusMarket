@@ -1,0 +1,7 @@
+@import "@/shared/styles/mixins";
+
+.root {
+    .desc { 
+        @include font-default(400, 15px, 22px, #171717);
+    }
+}

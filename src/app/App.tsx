@@ -1,4 +1,3 @@
-import React, {FC} from "react";
 import {Routes, Route, BrowserRouter} from "react-router-dom";
 
 import {Coupon} from "@/pages/Coupon";
@@ -6,6 +5,7 @@ import {Main} from "@/pages/Main";
 import {Header} from "./Header";
 import {Footer} from "./Footer";
 import {AboutUs} from "@/pages/AboutUs/AboutUs";
+import {Creator} from "@/pages/Creator";
 import "./styles/null.scss";
 import "./styles/global.scss";
 import {Contacts} from "@/pages/AboutUs/Contacts";
@@ -14,7 +14,8 @@ import {PrivacyPolicy} from "@/pages/AboutUs/PrivacyPolicy";
 import {ErrorPage} from "@/pages/AboutUs/ErrorPage";
 
 
-export const App: FC = () => {
+
+export const App = () => {
     return (
         <BrowserRouter>
             <Header />
@@ -27,8 +28,8 @@ export const App: FC = () => {
                 <Route path="/privacyPolicy" element={<PrivacyPolicy />} />
                 <Route path="/errorPage" element={<ErrorPage />} />
             </Routes>
-            {/* <div style={{ backgroundColor: "red", height: 300, width: "100%" }}></div> */}
             <Footer />
+
         </BrowserRouter>
     );
 };

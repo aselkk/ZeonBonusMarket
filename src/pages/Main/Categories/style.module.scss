@@ -3,8 +3,9 @@
 
 
 .groups {
-    padding: 20px 15px;
+    width: 100%;
     @include flex-row();
+    padding: 20px 0px;
     gap: 16px;
     overflow-x: scroll;
     background-color: white;

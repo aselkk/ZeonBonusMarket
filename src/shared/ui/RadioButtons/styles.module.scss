@@ -1,0 +1,25 @@
+@import "@/shared/styles/mixins";
+
+
+.root {
+    min-height: 49px;
+    height: auto;
+    background: #EDF1FD;
+    border-radius: 12px;
+    padding: 8px;
+    display: inline-block;
+    gap: 8px;
+
+    .button {
+        width: 136px;
+        height: 33px;
+        background-color: #EDF1FD;
+        border-radius: 12px;
+        text-align: center;
+        @include font-default(600, 14px, 21px,  #4B5FA5); 
+    }
+
+    .active {
+        background-color: #fff;
+    }
+}
