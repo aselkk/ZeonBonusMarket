@@ -23,6 +23,7 @@ export const Button = (props: FCProps<Props>) => {
             <button
                 className={cn(css.button, props.className)}
                 disabled={props.disabled}
+                onClick={props.onClick}
             >
                 {props.children}
             </button>

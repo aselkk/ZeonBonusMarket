@@ -3,11 +3,12 @@ import _ from "lodash";
 
 import {axiosInstance, DTO} from "@/shared/api";
 import {CouponCard, CouponInfo} from "@/entities/CouponCard";
+import {CardsContainer} from "@/features/CardsContainer";
 import {Button} from "@/shared/ui/Button";
 import css from "./styles.module.scss";
 
 
-export const NewCoupons = () => {
+export const Coupons = () => {
     const [coupons, setCoupons] = useState<CouponInfo[]>([]);
 
     useEffect(() => {
@@ -16,7 +17,7 @@ export const NewCoupons = () => {
                 // TODO: back: пагинация (по нормальному должна быть реализована через limit & offset)
                 //  * надо передавать номер страницы, а сколько итемов в странице неизвестно
                 //  * если вдруг результат пустой, то сервер возвращает 404 ошибку вместо пустого результата
-                const response = await axiosInstance.get("coupons?page=1");
+                const response = await axiosInstance.get("coupons/trends?page=1");
                 const result: DTO.Coupon[] = response.data.results;
                 const couponInfos = _.take(result, 8)
                     .map((x: DTO.Coupon): CouponInfo => ({
@@ -27,7 +28,7 @@ export const NewCoupons = () => {
                         companyLogo: x.company_logo,
                         isFavorite: x.is_favorite,
                         couponPrice: Number(x.price_for_coupon),
-                        productPrice: Number(x.old_price),
+                        productPrice: Number(x.price),
                         discount: x.discount_percent
                     }));
                 setCoupons(couponInfos);
@@ -43,13 +44,12 @@ export const NewCoupons = () => {
     return (
         <div className={css.wrap}>
             <h2 className={css.title}>Новые купоны</h2>
-            <div className={css.cards}>
-                {
-                    coupons.map(x => <CouponCard key={x.id} info={x}/>)
-                }
-            </div>
+            <CardsContainer
+                cards={coupons}
+                render={(x, i) => <CouponCard key={x.id} info={x}/>}
+            />
             {/* TODO: линк на страницу все товары*/}
-            <Button className={css.button} linkTo={"/"}>
+            <Button className={css.button} linkTo={"/trends"}>
                 Посмотреть все
             </Button>
         </div>

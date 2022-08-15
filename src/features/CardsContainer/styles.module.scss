@@ -1,0 +1,35 @@
+@import "@/shared/styles/mixins.scss";
+@import "@/shared/styles/vars.scss";
+
+
+.cards {
+    margin-top: 24px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+}
+
+
+@media (max-width: $width-xl) {
+    .cards {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+    }
+}
+
+@media (max-width: $width-lg) {
+    .cards {
+        grid-template-columns: repeat(2, 1fr);
+
+        gap: 15px;
+    }
+}
+
+@media (max-width: $width-sm) {
+    .cards {
+        grid-template-columns: repeat(1, 1fr);
+
+        margin-top: 10px;
+        gap: 15px;
+    }
+}

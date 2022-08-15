@@ -1,6 +1,6 @@
 import cn from "classnames";
 import {Categories} from "./Categories";
-import {NewCoupons} from "./NewCoupons";
+import {Coupons} from "./Coupons";
 import {Slider} from "./Slider";
 import {ImagesBlock} from "./ImagesBlock";
 
@@ -12,7 +12,7 @@ export const Main = () => {
         <main className={css.main}>
             <div className={cn("container", css.container)}>
                 <Categories/>
-                <NewCoupons/>
+                <Coupons/>
                 <Slider/>
                 <ImagesBlock/>
             </div>

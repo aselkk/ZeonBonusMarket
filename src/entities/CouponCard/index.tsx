@@ -1,4 +1,5 @@
 import React from "react";
+import {useNavigate} from "react-router-dom";
 import cn from "classnames";
 
 import css from "./style.module.scss";
@@ -28,14 +29,22 @@ interface Props {
 
 
 export const CouponCard = ({info}: Props) => {
-    const productPriceWithoutDiscount = Math.round(info.productPrice - (info.productPrice * info.discount / 100));
+    const navigate = useNavigate();
 
-    const onBtnFavoriteClick = () => {
-        console.log("Favorite");
+    const onBtnFavoriteClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+        e.stopPropagation();
+        console.log("Favorite", info.id);
     };
 
+    const onCardClick = () => {
+        navigate(`/coupon/${info.id}`);
+    };
+
+    const productPriceWithoutDiscount = Math.round(info.productPrice - (info.productPrice * info.discount / 100));
+
+
     return (
-        <main className={css.card}>
+        <div className={css.card} onClick={onCardClick}>
             <div className={css.discountBadge}>
                 {info.discount} %
             </div>
@@ -91,6 +100,6 @@ export const CouponCard = ({info}: Props) => {
                     </div>
                 </div>
             </div>
-        </main>
+        </div>
     );
 };
