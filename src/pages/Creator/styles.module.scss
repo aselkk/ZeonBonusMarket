@@ -1,4 +1,4 @@
-.root {
+.root{
     width: 100%;
     padding: 0 16px;
     display: flex;
@@ -8,102 +8,155 @@
         padding: 0 26px;
     }
 
-    .mainInfo {
-        display: flex;
-        flex-direction: row;
-        gap: 24px;
-
-        .text {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-            width: 744px;
-
-            .creatorName {
-                font-weight: 700;
-                font-size: 24px;
-            }
-
-            .description {
-                font-size: 14px;
-                line-height: 150%;
-            }
-        }
-
-        img {
-            width: 200px;
-            border-radius: 12px;
-        }
+    @media (max-width: 425px) {
+        gap: 30px;
     }
 
-    .contacts {
-        display: flex;
-        flex-direction: column;
-        gap: 34px;
-
-        .contactsText {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-
-            h2 {
-                font-weight: 700;
-                font-size: 24px;
-            }
-                        
-            p {
-                font-size: 14px;
-            }
-        }
-
-        .contactsDetails {
+        .mainInfo {
             display: flex;
             flex-direction: row;
-            gap: 48px;
+            gap: 24px;
 
-            ul {
-                display: flex;
-                flex-direction: column;
-                gap: 16px;
-
-                li {
-                    display: flex;
-                    flex-direction: row;
-                    gap: 9px;
-
-                    svg { 
-                        color: #4F70E2;
-                    }
-                }
+            @media (max-width: 768px) {
+                flex-direction: unset;
+                flex-wrap: wrap;
+                gap: 30px;
+                margin-top: 20px;
             }
 
-            .dividor {
-                height: 178px;
-                width: 1px;
-                background: #EDF1FD;
+            @media (max-width: 425px) {
+                justify-content:center;
+                gap: 18px;
             }
 
-            .secondCol {
-                display: flex;
-                flex-direction: column;
-                gap: 24px;
-
-                div {
+                .text {
                     display: flex;
                     flex-direction: column;
-                    gap: 8px;
+                    gap: 16px;
+                    width: 744px;
 
-                    svg { 
-                        color: #4F70E2;
+                        .creatorName {
+                            font-weight: 700;
+                            font-size: 24px;
+                        }
+
+                        .description {
+                            font-size: 14px;
+                            line-height: 150%;
+                        }
+
+                        @media (max-width: 425px) {
+                            text-align: justify;
+                        }
+                }
+
+                img {
+                    width: 200px;
+                    border-radius: 12px;
+                }
+        }
+
+        .contacts {
+            display: flex;
+            flex-direction: column;
+            gap: 34px;
+
+                .contactsText {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 12px;
+
+                        h2 {
+                            font-weight: 700;
+                            font-size: 24px;
+                        }
+                        
+                        p {
+                            font-size: 14px;
+                        }
+                }
+
+                .contactsDetails {
+                    display: flex;
+                    flex-direction: row;
+                    gap: 48px;
+
+                    @media (max-width: 911px) {
+                        flex-direction: unset;
+                        flex-wrap: wrap;
+                        gap: 30px;
+                            .dividor {
+                                display: none;
+                            }
+                    }
+                    
+                    ul {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 16px;
+
+                            li {
+                                display: flex;
+                                flex-direction: row;
+                                gap: 9px;
+
+                                svg { 
+                                    color: #4F70E2;
+                                }
+                            }
                     }
 
-                    p {
+                    .dividor {
+                        height: 178px;
+                        width: 1px;
+                        background: #EDF1FD;
+                    }
+
+                    .secondCol {
                         display: flex;
-                        align-items: center;
-                        gap: 8px;
+                        flex-direction: column;
+                        gap: 24px;
+
+                            div {
+                                display: flex;
+                                flex-direction: column;
+                                gap: 8px;
+
+                                    svg { 
+                                        color: #4F70E2;
+                                    }
+
+                                    p {
+                                        display: flex;
+                                        align-items: center;
+                                        gap: 8px;
+                                    }
+                            }
                     }
                 }
+
+                @media (max-width: 1164px) {
+                    .mapResponsive {
+                        overflow:hidden;
+                        padding-bottom:56.25%;
+                        position:relative;
+                        height:0;
+
+                            iframe {
+                                left:0;
+                                top:0;
+                                height:100%;
+                                width:100%;
+                                position:absolute;
+                            }
+                    }
+                }
+        }
+
+        @media (max-width: 768px) {
+            .radioWrapper {
+                display: flex;
+                justify-content: center;
             }
         }
-    }
 }

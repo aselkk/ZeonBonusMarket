@@ -11,6 +11,7 @@ type PropTypes = {
     onRedirectToResult: () => void
 };
 
+
 export const SearchControl = ({className, onRedirectToResult}: PropTypes) => {
     const navigate = useNavigate();
 

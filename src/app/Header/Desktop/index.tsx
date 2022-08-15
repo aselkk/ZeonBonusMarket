@@ -4,11 +4,11 @@ import {SearchControl} from "../SearchControl";
 import {ReactComponent as Favorites} from "@/assets/icons/favorites.svg";
 import {ReactComponent as Login} from "@/assets/icons/log-in.svg";
 
+
 import {ReactComponent as Ticket} from "@/assets/icons/ticket.svg";
 
 
 export const Desktop = () => {
-
     return (
         <div className={css.header}>
             <div className={cn("container", css.container)}>
