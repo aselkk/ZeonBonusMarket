@@ -1,5 +1,4 @@
 import {useState} from "react";
-
 import {Swiper, SwiperSlide} from "swiper/react";
 import SwiperCore, {FreeMode, Navigation, Thumbs} from "swiper";
 
@@ -15,14 +14,15 @@ import {Slide} from "./Slide";
 
 
 interface PropType {
-    images: string[]
+    images?: [
+        { id: number, image: string }
+    ] 
 }
 
-
-export const Carousel = (props: PropType) => {
+export const Carousel = ({images}: PropType) => {
     const [thumbsSwiper, setThumbsSwiper] = useState<SwiperCore>();
     const [activeIndex, setActiveIndex] = useState<number>(0);
-    
+
     return (
         <div className={css.root}>
             <Swiper
@@ -33,9 +33,9 @@ export const Carousel = (props: PropType) => {
                 onSlideChange={e =>  setActiveIndex(e.activeIndex)}               
             >
                 {  
-                    props.images.map((image: string, i: any) => {
+                    images?.map((item) => {
                         return (
-                            <SwiperSlide key={i}><Slide imgSrc={image} /></SwiperSlide>
+                            <SwiperSlide key={item.id}><Slide imgSrc={item.image} /></SwiperSlide>
                         );
                     })
                 }
@@ -70,10 +70,10 @@ export const Carousel = (props: PropType) => {
                 }}
             >
                 {  
-                    props.images.map((item: string, index: number) => {
+                    images?.map((item, index) => {
                         return (
-                            <SwiperSlide key={index}>
-                                <img className={activeIndex===index ? cn(css.sketch, css.active): css.sketch} src={item} alt="image" />
+                            <SwiperSlide key={item.id}>
+                                <img className={activeIndex===index ? cn(css.sketch, css.active): css.sketch} src={item.image} alt="image" />
                             </SwiperSlide>
                         );
                     })

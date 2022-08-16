@@ -22,9 +22,31 @@ export interface SlideImage {
     image: string
 }
 
-
 export interface Tag {
     id: number,
     title: string
 }
 
+export interface CouponDetailsType {
+    id: number,
+    title: string,
+    description: string,
+    conditions: string,
+    preview_image: string,
+    discount_percent: number,
+    price_for_coupon: string,
+    price: string,
+    old_price: string,
+    company_id: number,
+    company_name: string,
+    company_logo: string,
+    start_active_date: string,
+    end_active_date: string,
+    bought_quantity: number,
+    images: [
+         { id: number, image: string }
+    ],
+    similar_products: string[],
+    qr_coupon: null,
+    map_locations: string[]
+}

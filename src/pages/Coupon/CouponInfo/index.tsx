@@ -5,29 +5,27 @@ import {SocialMedia} from "./SocialMedia";
 
 
 
-type PropType = {
-    info: {
-        validity: {
-            begin: string,
-            end: string
-        },
-        saledCoupons: number
-    }
+interface PropType {
+    begin?: string,
+    end?: string,
+    saled?: number
 }
 
 export const CouponInfo = (props: PropType) => {
-    const saled = props.info.saledCoupons;
+
+    const addDotsForData = (data: string = "") => data.split("-").join(".") 
+
     return (
         <div className={css.root}>
             <div className={css.top}>
                 <span className={css.span}>{"Период действия акции:"}</span><br/>
-                <span className={css.begin}>{`с ${props.info.validity.begin}`}</span>
-                <span className={css.end}>{`по ${props.info.validity.end}`}</span>
+                <span className={css.begin}>{`с ${addDotsForData(props.begin)}`}</span>
+                <span className={css.end}>{`по ${addDotsForData(props.end)}`}</span>
             </div>
             <div className={css.middle}>
                 <div className={css.wrap}>
                     <Ticket/> 
-                    <span className={css.span}>{`${saled} купонов купили`}</span>
+                    <span className={css.span}>{`${props.saled} купонов купили`}</span>
                 </div>
                 <div className={css.wrap}>
                     <Clock/> 

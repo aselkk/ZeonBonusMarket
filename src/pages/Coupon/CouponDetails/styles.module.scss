@@ -1,5 +1,7 @@
+@import "@/shared/styles/mixins";
+
 .root {
-    width: calc(100% - 32px);
+    width: 100%;
     
     .logoWrapper {
         display: flex;
@@ -94,5 +96,39 @@
         justify-content: flex-start;
         margin-top: 36px;
         margin-bottom: 20px;
+
+        .btn {
+            width: 300px;
+            height: 56px;
+            @include font-default(500, 16px, 20px, #fff)
+        }
+
+        .btnBuy {
+            background: #4B5FA5;
+        }
+
+        .btnActive {
+            background: #FD9B08;
+        }
+
+        .btnFavorit {
+            width: 56px;
+            height: 56px;
+            background: #EDF1FD;
+
+            &:hover {
+                .icon {
+                    fill: rgb(155, 171, 218); 
+                }
+            }
+
+            .icon {
+                fill: gray;
+            }
+
+            .iconIsFavorite {
+                fill: #4B5FA5;
+            }
+        }
     }
 }
