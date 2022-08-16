@@ -27,6 +27,51 @@ export interface Tag {
     title: string
 }
 
+export interface NetworksInfo {
+    "vkontakte": string,
+    "instagram": string,
+    "odnoklassniki": string,
+    "facebook": string,
+    "whatsapp": string,
+    "email": string,
+    "phone": string,
+    "address": string,
+    "phone1": string,
+    "phone2": string,
+    "phone3": string,
+    "description": string
+}
+
+export interface SocialNetworkInfo {
+    instagram: string,
+    facebook: string,
+    whatsapp: string,
+    telegram: string,
+    vkontakte: string,
+    odnoklassniki: string
+}
+
+interface Address {
+    address: string,
+    phone: string,
+    geolocation: string
+}
+
+export interface Partner {
+    id: number,
+    company_name: string,
+    logo: string,
+    address: string,
+    email: string,
+    phone1: string,
+    phone2: string,
+    phone3: string,
+    description: string,
+    network: SocialNetworkInfo,
+    coupons: Coupon,
+    coordinates: Address[]
+}
+
 export interface CouponDetailsType {
     id: number,
     title: string,
@@ -43,6 +88,7 @@ export interface CouponDetailsType {
     start_active_date: string,
     end_active_date: string,
     bought_quantity: number,
+    // TODO: исправить тип
     images: [
          { id: number, image: string }
     ],

@@ -1,162 +1,198 @@
-.root{
+@import "@/shared/styles/mixins";
+@import "@/shared/styles/vars";
+
+.root {
     width: 100%;
-    padding: 0 16px;
-    display: flex;
-    flex-direction: column;
-    gap: 48px;
-    @media (max-width: 1760px) {
-        padding: 0 26px;
+    padding: 0 26px 101px 26px;
+    @include flex-col();
+    gap: 24px;
+
+    .mainInfo {
+        @include flex-row();
+        gap: 24px;
+
+        .text {
+            @include flex-col();
+            gap: 16px;
+            width: 744px;
+
+            .creatorName {
+                font-weight: 700;
+                font-size: 24px;
+            }
+
+            .description {
+                font-size: 14px;
+                line-height: 150%;
+            }
+        }
+
+        img {
+            width: 200px;
+            border-radius: 12px;
+        }
     }
 
-    @media (max-width: 425px) {
-        gap: 30px;
+    .contacts {
+        @include flex-col();
+        gap: 24px;
+
+        .contactsText {
+            @include flex-col();
+            gap: 12px;
+
+            h2 {
+                font-weight: 700;
+                font-size: 24px;
+            }
+                        
+            p {
+                font-size: 14px;
+                width: 852px;
+            }
+        }
+
+        .contactsDetails {
+            @include flex-row();
+            gap: 48px;
+                    
+            ul {
+                @include flex-col();
+                gap: 16px;
+
+                li {
+                    @include flex-row();
+                    gap: 9px;
+                    font-size: 15px;
+                    align-items: center;
+                    cursor: pointer;
+
+                    &:hover {
+                        color: #4B5FA5;
+                    }
+
+                    svg { 
+                        color: #4F70E2;
+                        width: 20px;
+                    }
+                }
+            }
+
+            .dividor {
+                height: 178px;
+                width: 1px;
+                background: #EDF1FD;
+            }
+
+            .secondCol {
+                @include flex-col();
+                gap: 24px;
+                font-size: 15px;
+
+                div {
+                    @include flex-col();
+                    gap: 8px;
+
+                    svg { 
+                        color: #4F70E2;
+                    }
+
+                    p {
+                        display: flex;
+                        align-items: center;
+                        gap: 8px;
+                        cursor: pointer;
+
+                        &:hover {
+                            color: #4B5FA5;
+                        }
+                    }
+                }
+            }
+        }
     }
 
-        .mainInfo {
-            display: flex;
-            flex-direction: row;
-            gap: 24px;
+    .cardsWrapper {
+        @include flex-col();
 
-            @media (max-width: 768px) {
-                flex-direction: unset;
+        h2 {
+            font-weight: 700;
+            font-size: 24px;
+            margin-bottom: 12px;
+        }
+    }
+
+    .cards {
+        @include flex-row();
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    @media (max-width: $width-xl) {
+        .contacts {
+            .contactsText {
+                p {
+                    width: 100%;
+                }
+            }
+
+            .mapResponsive {
+                overflow: hidden;
+                padding-bottom: 56.25%;
+                position: relative;
+                height: 0;
+                margin-top: 24px;
+        
+                iframe {
+                    left: 0;
+                    top: 0;
+                    height: 100%;
+                    width: 100%;
+                    position: absolute;
+                }
+            }
+        }
+    }
+    
+    @media (max-width: $width-lg) {
+        .contacts {
+            .contactsDetails { 
+                flex-direction: row;
                 flex-wrap: wrap;
                 gap: 30px;
-                margin-top: 20px;
-            }
 
-            @media (max-width: 425px) {
-                justify-content:center;
-                gap: 18px;
-            }
-
-                .text {
-                    display: flex;
-                    flex-direction: column;
-                    gap: 16px;
-                    width: 744px;
-
-                        .creatorName {
-                            font-weight: 700;
-                            font-size: 24px;
-                        }
-
-                        .description {
-                            font-size: 14px;
-                            line-height: 150%;
-                        }
-
-                        @media (max-width: 425px) {
-                            text-align: justify;
-                        }
+                .dividor {
+                    display: none;
                 }
+            }
+        }
+    }
 
-                img {
-                    width: 200px;
-                    border-radius: 12px;
-                }
+    @media (max-width: $width-md) {
+        .mainInfo { 
+            flex-direction: row;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 20px;
         }
 
-        .contacts {
+        .radioWrapper {
             display: flex;
-            flex-direction: column;
-            gap: 34px;
-
-                .contactsText {
-                    display: flex;
-                    flex-direction: column;
-                    gap: 12px;
-
-                        h2 {
-                            font-weight: 700;
-                            font-size: 24px;
-                        }
-                        
-                        p {
-                            font-size: 14px;
-                        }
-                }
-
-                .contactsDetails {
-                    display: flex;
-                    flex-direction: row;
-                    gap: 48px;
-
-                    @media (max-width: 911px) {
-                        flex-direction: unset;
-                        flex-wrap: wrap;
-                        gap: 30px;
-                            .dividor {
-                                display: none;
-                            }
-                    }
-                    
-                    ul {
-                        display: flex;
-                        flex-direction: column;
-                        gap: 16px;
-
-                            li {
-                                display: flex;
-                                flex-direction: row;
-                                gap: 9px;
-
-                                svg { 
-                                    color: #4F70E2;
-                                }
-                            }
-                    }
-
-                    .dividor {
-                        height: 178px;
-                        width: 1px;
-                        background: #EDF1FD;
-                    }
-
-                    .secondCol {
-                        display: flex;
-                        flex-direction: column;
-                        gap: 24px;
-
-                            div {
-                                display: flex;
-                                flex-direction: column;
-                                gap: 8px;
-
-                                    svg { 
-                                        color: #4F70E2;
-                                    }
-
-                                    p {
-                                        display: flex;
-                                        align-items: center;
-                                        gap: 8px;
-                                    }
-                            }
-                    }
-                }
-
-                @media (max-width: 1164px) {
-                    .mapResponsive {
-                        overflow:hidden;
-                        padding-bottom:56.25%;
-                        position:relative;
-                        height:0;
-
-                            iframe {
-                                left:0;
-                                top:0;
-                                height:100%;
-                                width:100%;
-                                position:absolute;
-                            }
-                    }
-                }
+            justify-content: center;
         }
+    }
 
-        @media (max-width: 768px) {
-            .radioWrapper {
-                display: flex;
-                justify-content: center;
+    @media (max-width: $width-sm) {
+        padding: 0 15px;
+        gap: 30px;
+
+        .mainInfo { 
+            justify-content: center;
+            gap: 18px;
+
+            .text {
+                text-align: justify;
             }
         }
+    }
 }

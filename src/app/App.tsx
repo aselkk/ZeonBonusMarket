@@ -2,6 +2,7 @@ import {Routes, Route, BrowserRouter} from "react-router-dom";
 
 import {Coupon} from "@/pages/Coupon";
 import {Main} from "@/pages/Main";
+import {FloatingButton} from "./FloatingButton";
 import {Header} from "./Header";
 import {Footer} from "./Footer";
 import {AboutUs} from "@/pages/AboutUs/AboutUs";
@@ -19,10 +20,12 @@ export const App = () => {
     return (
         <BrowserRouter>
             <Header/>
+            <FloatingButton/>
             <Routes>
                 <Route path="/" element={<Main/>}/>
                 <Route path="/trends" element={<TrendCoupons/>}/>
                 <Route path="/coupon/:id" element={<Coupon/>}/>
+                <Route path="/partner/:partnerId" element={<Creator/>}/>
                 <Route path="/contacts" element={<Contacts/>}/>
                 <Route path="/aboutUs" element={<AboutUs/>}/>
                 <Route path="/helpPage" element={<HelpPage/>}/>
