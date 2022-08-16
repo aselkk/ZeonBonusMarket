@@ -1,0 +1,31 @@
+@import "@/shared/styles/mixins";
+
+
+.button {
+    height: 44px;
+    width: 44px;
+    @include flex-col(center, center);
+    gap: 3px;
+    border: 2px solid #F7F1FE;
+    border-radius: 10px;
+
+    span {
+        width: 18px;
+        height: 2px;
+        background-color: #4B5FA5;
+        border-radius: 10px;
+    }
+
+    &:hover {
+        background-color: rgba(248, 242, 242, 0.86);
+    }
+
+    &:enabled:active {
+        transform: scale(0.98);
+    }
+
+    &:disabled {
+        cursor: default;
+        background-color: gray;
+    }
+}

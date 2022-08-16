@@ -1,53 +1,63 @@
-import React from "react";
-import {SearchControl} from "../SearchControl";
+import React, {useState, useEffect, useRef} from "react";
+import {Link, useLocation} from "react-router-dom";
+import cn from "classnames";
+
+import {SearchControl} from "@/features/SearchControl";
+import {BurgerButton} from "@/shared/ui/BurgerButton";
 import css from "./styles.module.scss";
-import "animate.css";
-import {ReactComponent as CloseIcon} from "@/assets/icons/exit.svg";
+
 import {ReactComponent as SearchIcon} from "@/assets/icons/searchIcon.svg";
+import {ReactComponent as CloseIcon} from "@/assets/icons/exit.svg";
 
 
 export const Mobile = () => {
-    const [isMenuOpen, setIsMenuOpen] = React.useState(false);
-    const [isSearchOpen, setIsSearchOpen] = React.useState(false);
-    React.useEffect(() => void setIsMenuOpen(false), [location]);
-    const menuRef = React.useRef(null);
-    
-    React.useEffect((): any => {
+    const location = useLocation();
+
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [isSearchOpen, setIsSearchOpen] = useState(false);
+
+    const menuRef = useRef(null);
+
+    useEffect(() => {
         document.body.style.overflow = isSearchOpen || isMenuOpen
             ? "hidden"
-            : "scroll";
-        return () => document.body.style.overflow = "scroll";
+            : "auto";
+
+        return () => void (document.body.style.overflow = "auto");
     }, [isSearchOpen, isMenuOpen]);
+
+    useEffect(() => void setIsMenuOpen(false), [location]);
+
 
     return (
         <div className={css.root}>
             <div className={css.header}>
-                <button 
-                    className={css.openBurger}
-                    onClick={() => setIsMenuOpen(true)}
-                >
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
+                <BurgerButton onClick={() => setIsMenuOpen(true)}/>
                 <p className={css.logo}>
-                    <a href="#"> Zeon bonus </a>
+                    <Link to="/">Zeon bonus</Link>
                 </p>
-                <div className={css.icon24} onClick={() => setIsSearchOpen(prev => !prev)}>
+                <button className={css.btnToggleSearch}
+                        onClick={() => setIsSearchOpen(prev => !prev)}
+                >
                     {
                         isSearchOpen
-                            ? <CloseIcon/>
-                            : <SearchIcon/>
+                            ? <CloseIcon width={18} height={18}/>
+                            : <SearchIcon width={18} height={18}/>
                     }
-                </div>
+                </button>
             </div>
+            <div className={css.hLine}></div>
             {
                 (isMenuOpen)
                     ? (<div className={css.menuDrawer}>
-                        <div ref={menuRef} className={css.menuContainer}>
+                        <div ref={menuRef}
+                             className={cn(css.menuContainer, "animate__animated", "animate__slideInLeft")}
+                        >
                             <div className={css.menuHeader}>
                                 <div className={css.title}> Меню </div>
-                                <div className={css.icon24} onClick={() => setIsMenuOpen(false)}>
+                                <div className={css.iconBtn} onClick={() => {
+                                    setIsMenuOpen(false)
+                                }}>
                                     <CloseIcon/>
                                 </div>
                             </div>
@@ -59,13 +69,13 @@ export const Mobile = () => {
                                 </ul>
                                 <ul>
                                     <li className={css.menuItem}>
-                                        <a href="#"> Избранное </a>
+                                        <Link to="/favorites">Избранное</Link>
                                     </li>
                                     <li className={css.menuItem}>
-                                        <a href="#"> Мои купоны </a>
+                                        <Link to="/coupons/my">Мои купоны</Link>
                                     </li>
                                     <li className={css.menuItem}>
-                                        <a href="#"> Войти </a>
+                                        <Link to="/login">Войти</Link>
                                     </li>
                                 </ul>
                             </div>

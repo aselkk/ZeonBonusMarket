@@ -3,7 +3,8 @@
 
 
 .tags {
-    padding: 32px 0 0px 0;
+    width: 100%;
+    padding: 32px 0 0 0;
     @include flex-row(flex-start);
     flex-wrap: wrap;
     gap: 8px;

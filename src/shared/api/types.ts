@@ -21,3 +21,10 @@ export interface Coupon {
 export interface SlideImage {
     image: string
 }
+
+
+export interface Tag {
+    id: number,
+    title: string
+}
+

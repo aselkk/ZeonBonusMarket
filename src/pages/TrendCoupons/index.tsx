@@ -1,5 +1,4 @@
 import {useState, useEffect} from "react";
-import _ from "lodash";
 import cn from "classnames";
 
 import {axiosInstance, DTO} from "@/shared/api";
@@ -13,13 +12,17 @@ import css from "./style.module.scss";
 export const TrendCoupons = () => {
     const [page, setPage] = useState(1);
     const [coupons, setCoupons] = useState<CouponInfo[]>([]);
+    const [tags, setTags] = useState<DTO.Tag[]>([]);
+    const [selectedTag, setSelectedTag] = useState<DTO.Tag>();
 
     useEffect(() => {
+        if (!selectedTag)
+            return;
         (async () => {
             try {
-                const response = await axiosInstance.get("coupons/trends?page=1");
+                const response = await axiosInstance.get(`coupons/trends?page=1&tags=${selectedTag.id}`);
                 const result: DTO.Coupon[] = response.data.results;
-                const couponInfos = _.take(result, 8)
+                const couponInfos = result//_.take(result, 8)
                     .map((x: DTO.Coupon): CouponInfo => ({
                         id: x.id,
                         title: x.title,
@@ -32,6 +35,19 @@ export const TrendCoupons = () => {
                         discount: x.discount_percent
                     }));
                 setCoupons(couponInfos);
+            } catch (err) {
+                console.error(err);
+            }
+        })();
+    }, [selectedTag]);
+
+    useEffect(() => {
+        (async () => {
+            try {
+                const response = await axiosInstance.get("tags");
+                const result: DTO.Tag[] = response.data;
+                setTags(result);
+                setSelectedTag(result[0]);
             } catch (err) {
                 console.error(err);
             }
@@ -49,7 +65,11 @@ export const TrendCoupons = () => {
         <main className={css.main}>
             <div className={cn("container", css.container)}>
                 <h2 className={css.title}>Новые купоны</h2>
-                <Tags/>
+                <Tags
+                    tags={tags}
+                    selectedItem={selectedTag}
+                    onSelectedItem={(tag) => setSelectedTag(tag)}
+                />
                 <CardsContainer
                     cards={coupons}
                     render={(x, i) => <CouponCard key={x.id} info={x}/>}
