@@ -1,6 +1,7 @@
 /// <reference types="vite/client" />
 
 /* eslint-disable no-unused-vars */
+
 declare type PropsWithClassName<T> = T & {
     className?: string;
 };
@@ -13,5 +14,9 @@ declare type Callback = () => void;
 declare type Nullable<T> = T | null;
 
 declare type Component<P = any> = (props?: P) => JSX.Element;
+
+
+type Comparator<T> = (x: T, y: T) => number;
+
 
 /* eslint-enable no-unused-vars */

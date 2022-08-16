@@ -1,4 +1,4 @@
-@import "@/shared/styles/mixins.scss";
+@import "@/shared/styles/mixins";
 
 .root {
     position: relative;
@@ -13,35 +13,20 @@
     padding: 0 13px;
     border: 1px solid #EDF1FD;
 
+    @include font-default(400, 14px, 21px, #2D2727);
+
+
     input {
         background-color: transparent;
         padding-left: 7px;
         width: 90%;
         color: #313131;
         height: 100%;
+        font-size: 15px;
+
 
         &::placeholder {
             color: #98949E;
-            font-size: 15px;
-        }
-    }
-
-    .searchIcon {
-        height: 35px;
-        width: 35px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border-radius: 50%;
-
-        img {
-            width: 18px;
-            height: 18px;
-        }
-
-        &:hover {
-            background-color: rgba(226, 218, 218, 0.929);
-            border-radius: 50%;
         }
     }
 
@@ -51,27 +36,26 @@
         left: 0;
         z-index: 2;
         width: 100%;
+        max-height: 70vh;
         background-color: #fff;
         border-radius: 12px;
         border: 1px solid #EDF1FD;
         padding: 24px 20px;
-        height: 281px;
         overflow-y: scroll;
-        width: 100%;
-		
+
         &::-webkit-scrollbar {
             width: 4px;
             background: #EDF1FD;
             border-radius: 4px;
             height: 133px;
         }
-			
+
         &::-webkit-scrollbar-track {
             border-radius: 10px;
             height: 233px;
         }
-			
-        &:-webkit-scrollbar-thumb {
+
+        &::-webkit-scrollbar-thumb {
             background: #8b9ddf;
             border-radius: 4px;
         }

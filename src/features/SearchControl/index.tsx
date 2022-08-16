@@ -1,59 +1,54 @@
-import {useState, useRef} from "react";
-import PropTypes from "prop-types";
-import cn from "classnames";
+import {KeyboardEvent, useState, useRef} from "react";
 import {useNavigate} from "react-router-dom";
-import {ReactComponent as SearchIcon} from "@/assets/icons/searchIcon.svg";
+import cn from "classnames";
+
+import {Api, DTO} from "@/shared/api";
+import {useOutsideAlerter} from "@/shared/hooks";
 import css from "./styles.module.scss";
 
+import {ReactComponent as SearchIcon} from "@/assets/icons/searchIcon.svg";
 
-type PropTypes = {
-    className: string,
+
+interface Props {
+    className?: string,
     onRedirectToResult: () => void
-};
+}
 
 
-export const SearchControl = ({className, onRedirectToResult}: PropTypes) => {
+export const SearchControl = ({className, onRedirectToResult}: Props) => {
     const navigate = useNavigate();
 
-    const [searchResult, setSearchResult] = useState<any>([]);
+    const [searchResult, setSearchResult] = useState<Nullable<DTO.SearchResult>>();
     const [isShowSearchResult, setIsShowSearchResult] = useState<boolean>(false);
 
     const inputRef = useRef<HTMLInputElement>(null);
+
+
+    const searchResultRef = useRef<HTMLUListElement>(null);
+    useOutsideAlerter(searchResultRef, () => setIsShowSearchResult(false))
+
 
     const searchInputHandle = (e: any) => {
         setIsShowSearchResult(true);
         const text = e.target.value;
         if (!text) {
-            setSearchResult([]);
+            setSearchResult(null);
             return;
         }
 
-        (async () => {
-            try {
-                setSearchResult([
-                    "lol",
-                    "kek",
-                    "kek",
-                    "kek",
-                    "kek",
-                    "kek",
-                    "kek",
-                    "kek",
-                    "kek",
-                    "kek",
-                    "chebrek",
-                    "Bassein"
-                ]);
-            } catch (err) {
-                console.error("search", err);
-            }
-        })();
+        Api.Coupons.getCouponsByText(text)
+            .then(data => setSearchResult(data));
     };
 
-    const searchSubmitByEnter = (e: any) => {
-        if (e.type === "keydown" && e.code === "Enter") {
+    const searchSubmitByEnter = (e: KeyboardEvent<HTMLInputElement>) => {
+        if (e.type === "keydown" && (e.code === "Enter" || e.code === "NumpadEnter")) {
             submitSearch();
-            navigate("coupon/232"); // TODO: redirect to Search page
+            navigate("/search", {
+                state: {
+                    query: inputRef?.current?.value,
+                    result: searchResult?.results
+                }
+            });
         }
     };
 
@@ -73,22 +68,23 @@ export const SearchControl = ({className, onRedirectToResult}: PropTypes) => {
                 onChange={searchInputHandle}
                 onKeyDown={searchSubmitByEnter}
             />
-            <div className={css.searchIcon} >
+            <div className="grayed-icon-button" >
                 <SearchIcon/>
             </div>
             {
-                (isShowSearchResult && searchResult.length)
+                (isShowSearchResult && searchResult?.results.length)
                     ? (
-                        <ul className={css.searchResult}>
+                        <ul ref={searchResultRef}  className={css.searchResult}>
                             {
-                                searchResult.map((x: any, i: number) => {
+                                searchResult.results.map((x: DTO.Coupon, i: number) => {
+                                    // debugger
                                     return (
                                         <div 
-                                            key={i}
+                                            key={x.id}
                                             className={css.searchItem}
                                             // onClick={() => searchResultItemClicked(x.id)}
                                         >
-                                            {x}
+                                            {x.title}
                                         </div>
                                     );
                                 })

@@ -6,8 +6,8 @@ interface PropType {
 }
 
 
-export const Slide = (props: PropType) => {
+export const Slide = ({imgSrc}: PropType) => {
     return (
-        <img className={css.root} src={props.imgSrc} alt="slide"/>
+        <img className={css.root} src={imgSrc} alt="slide"/>
     );
 };

@@ -6,7 +6,7 @@ import {CouponCard, CouponInfo} from "@/entities/CouponCard";
 import {CardsContainer} from "@/features/CardsContainer";
 import {Button} from "@/shared/ui/Button";
 import {Tags} from "./Tags";
-import css from "./style.module.scss";
+import css from "./styles.module.scss";
 
 
 export const TrendCoupons = () => {
@@ -22,6 +22,7 @@ export const TrendCoupons = () => {
             try {
                 const response = await axiosInstance.get(`coupons/trends?page=1&tags=${selectedTag.id}`);
                 const result: DTO.Coupon[] = response.data.results;
+                // TODO: rename and fix
                 const couponInfos = result//_.take(result, 8)
                     .map((x: DTO.Coupon): CouponInfo => ({
                         id: x.id,

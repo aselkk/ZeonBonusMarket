@@ -9,7 +9,12 @@ import {ReactComponent as TicketIcon} from "@/assets/icons/ticket.svg";
 import {ReactComponent as LoginIcon} from "@/assets/icons/log-in.svg";
 
 
-export const Desktop = () => {
+interface Props {
+    phone?: string
+}
+
+
+export const Desktop = ({phone}: Props) => {
     return (
         <div className={css.header}>
             <div className={cn("container", css.container)}>
@@ -26,8 +31,8 @@ export const Desktop = () => {
                         </li>
                     </ul>
                     <p className={css.tel}>
-                        Тел. для справок:
-                        <a href="tel:+996777382750">+996 000 00 00 00</a>
+                        Тел. для справок:&nbsp;
+                        <a href={`tel:${phone}`}>{phone}</a>
                     </p>
                 </nav>
 

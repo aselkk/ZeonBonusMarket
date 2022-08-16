@@ -12,7 +12,7 @@ export const FloatingButton = () => {
         (async () => {
             try {
                 const response = await axiosInstance.get("/info/networks/");
-                const result: DTO.NetworksInfo = response.data;
+                const result: DTO.PartnerNetworkInfo = response.data;
                 const link: any = result.whatsapp;
                 setNumber(link);
                 console.log(link);

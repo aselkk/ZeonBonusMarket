@@ -1,3 +1,20 @@
+export interface ContactInfo {
+    vkontakte: string,
+    instagram: string,
+    odnoklassniki: string,
+    facebook: string,
+    whatsapp: string,
+    email: string,
+    phone: string,
+    address: string,
+    phone1: string,
+    phone2: string,
+    phone3: string,
+    description: string
+}
+
+
+
 export interface Coupon {
     id: number,
     title: string,
@@ -17,6 +34,13 @@ export interface Coupon {
     price_for_coupon: string // TODO: back: почему строка
 }
 
+export interface SearchResult {
+    count: number,
+    next?: null,
+    previous?: null,
+    results: Coupon[]
+}
+
 
 export interface SlideImage {
     image: string
@@ -29,22 +53,8 @@ export interface Tag {
 }
 
 
-export interface NetworksInfo {
-    "vkontakte": string,
-    "instagram": string,
-    "odnoklassniki": string,
-    "facebook": string,
-    "whatsapp": string,
-    "email": string,
-    "phone": string,
-    "address": string,
-    "phone1": string,
-    "phone2": string,
-    "phone3": string,
-    "description": string
-}
 
-export interface SocialNetworkInfo {
+export interface PartnerNetworkInfo {
     instagram: string,
     facebook: string,
     whatsapp: string,
@@ -69,7 +79,7 @@ export interface Partner {
     phone2: string,
     phone3: string,
     description: string,
-    network: SocialNetworkInfo,
+    network: PartnerNetworkInfo,
     coupons: Coupon,
     coordinates: Address[]
 }

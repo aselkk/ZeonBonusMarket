@@ -1,0 +1,32 @@
+@import "@/shared/styles/mixins";
+@import "@/shared/styles/vars";
+
+
+.main {
+    background-color: white;
+
+    .container {
+        @include flex-col(center, center);
+        padding: 24px 15px 50px 15px;
+
+        .header {
+            width: 100%;
+            @include flex-row(space-between);
+
+
+            .title {
+                @include font-default(700, 24px, 29px, #181818);
+                align-self: flex-start;
+            }
+        }
+    }
+}
+
+
+@media (max-width: $width-sm) {
+    .main {
+        .title {
+            font-size: 19px;
+        }
+    }
+}
