@@ -22,10 +22,12 @@ export interface SlideImage {
     image: string
 }
 
+
 export interface Tag {
     id: number,
     title: string
 }
+
 
 export interface NetworksInfo {
     "vkontakte": string,
