@@ -53,6 +53,11 @@ export interface Tag {
 }
 
 
+export interface FaqItem {
+    question: string,
+    answer: string
+}
+
 
 export interface PartnerNetworkInfo {
     instagram: string,

@@ -8,6 +8,6 @@ import "animate.css";
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
     // TODO: хз для чего не понял
     // <React.StrictMode>
-        <App/>
+    <App/>
     // </React.StrictMode>
 );

@@ -2,7 +2,7 @@ import React from "react";
 import css from "./styles.module.scss";
 import cn from "classnames";
 
-import {MenuAboutUs} from "../MenuMini";
+import {MenuAboutUs} from "../../../features/MenuMini";
 
 import map from "@/assets/images/mapImage.png";
 
@@ -15,6 +15,7 @@ import {ReactComponent as IstagrammIcon} from "@/assets/icons/instagramm.svg";
 import {ReactComponent as VKontakte} from "@/assets/icons/vkontakte.svg";
 import {ReactComponent as Odnoklassniki} from "@/assets/icons/odnoklassniki.svg";
 import {axiosInstance} from "@/shared/api";
+
 
 export const Contacts = () => {
     const [contacts, setContacts] = React.useState<any>({});

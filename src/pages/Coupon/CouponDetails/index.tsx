@@ -1,4 +1,4 @@
-import { useState } from "react";
+import {useState} from "react";
 import {Button} from "@/shared/ui/Button";
 import {ReactComponent as Favorit} from "@/assets/icons/favorite-f.svg";
 import css from "./styles.module.scss";
@@ -21,12 +21,12 @@ interface Props {
 
 export const CouponDetails = ({info}: Props) => {
 
-    const [ btnIsBuy, setBtnIsBuy ] = useState(true);
-    const [ isLiked, setIsLiked ] = useState(true)
+    const [btnIsBuy, setBtnIsBuy] = useState(true);
+    const [isLiked, setIsLiked] = useState(true);
 
     const getNewPrice = (price: number = 0, discount: number = 0): number => {
-        return Math.round(price / 100 * (100 - discount))
-    }
+        return Math.round(price / 100 * (100 - discount));
+    };
     
     return (
         <div className={css.root}>
@@ -52,7 +52,7 @@ export const CouponDetails = ({info}: Props) => {
                 </span>
             </div>
             <div className={css.wrapper}>
-                <Button className={btnIsBuy ? cn(css.btn, css.btnBuy) : cn(css.btn,css.btnActive)}>
+                <Button className={btnIsBuy ? cn(css.btn, css.btnBuy) : cn(css.btn, css.btnActive)}>
                     {btnIsBuy ? "Купить купон" : "Активировать купон"}
                 </Button>
                 <Button className={cn(css.btnFavorit)} >

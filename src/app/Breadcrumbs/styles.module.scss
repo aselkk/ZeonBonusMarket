@@ -1,0 +1,12 @@
+@import "@/shared/styles/mixins";
+@import "@/shared/styles/vars";
+
+
+
+.link {
+    @include font-default(400, 15px, 22.5px, #4F70E2);
+
+    &:hover {
+        color: #4B5FA5;
+    }
+}

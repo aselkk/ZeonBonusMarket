@@ -11,23 +11,23 @@ export const SocialMedia = () => {
     return (
         <div className={css.root}>
             <span className={css.span}>Поделиться</span>
-                <ul className={css.wrap}>
-                    <a href="#" target="_blank" >
-                        <li className={css.inner}><Vk/></li>
-                    </a>
-                    <a href="#" target="_blank" >
-                        <li className={css.inner}><Facebook/></li>
-                    </a>
-                    <a href="#" target="_blank" >
-                        <li className={css.inner}><Od/></li>
-                    </a>
-                    <a href="#" target="_blank" >
-                        <li className={css.inner}><Telegram/></li>
-                    </a>
-                    <a href="#" target="_blank" >
-                        <li className={css.inner}><Whatsup/></li>
-                    </a>
-                </ul>
+            <ul className={css.wrap}>
+                <a href="#" target="_blank" >
+                    <li className={css.inner}><Vk/></li>
+                </a>
+                <a href="#" target="_blank" >
+                    <li className={css.inner}><Facebook/></li>
+                </a>
+                <a href="#" target="_blank" >
+                    <li className={css.inner}><Od/></li>
+                </a>
+                <a href="#" target="_blank" >
+                    <li className={css.inner}><Telegram/></li>
+                </a>
+                <a href="#" target="_blank" >
+                    <li className={css.inner}><Whatsup/></li>
+                </a>
+            </ul>
         </div>
     );
 };

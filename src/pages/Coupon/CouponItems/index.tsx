@@ -3,6 +3,7 @@ import {useState} from "react";
 import {RadioButtons} from "@/shared/ui/RadioButtons";
 import css from "./styles.module.scss";
 
+
 interface PropType {
     description: string,
     condition: string
@@ -15,20 +16,20 @@ export const CouponItems = ({description, condition}: PropType) => {
     const [selectedTab, setSelectedTab] = useState<number>(0);
     
     const getContent = (): string => {
-        switch(selectedTab) {
+        switch (selectedTab) {
             case 0:
                 return condition;
-            break;
+                break;
             case 1:
                 return description;
-            break;
+                break;
             case 2:
                 return condition.concat(description);
-            break;
+                break;
             default:
-                return ""
+                return "";
         } 
-    }
+    };
 
     return (
         <div className={css.root}>

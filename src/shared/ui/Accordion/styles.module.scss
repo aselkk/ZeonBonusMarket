@@ -1,0 +1,18 @@
+@import "@/shared/styles/mixins";
+
+
+.accordion {
+    width: 100%;
+    padding: 24px 16px 8px;
+    background-color: white;
+    border-radius: 16px;
+
+    @media (max-width: 1200.98px) {
+        width: 100%;
+    }
+
+    .title {
+        margin-bottom: 16px;
+        @include font-default(700, 20px, 24px, #181818);
+    }
+}

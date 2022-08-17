@@ -13,7 +13,7 @@ interface PropType {
 
 export const CouponInfo = (props: PropType) => {
 
-    const addDotsForData = (data: string = "") => data.split("-").join(".") 
+    const addDotsForData = (data: string = "") => data.split("-").join("."); 
 
     return (
         <div className={css.root}>

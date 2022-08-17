@@ -14,7 +14,7 @@ export const MenuAboutUs = () => {
             <ul>
                 <li>
                     <Link
-                        to={"/aboutUs"}
+                        to={"/about-us"}
                         className={`${css.linkTo} ${
                             pathName === "/aboutUs" ? css.activePathName : ""
                         }`}
@@ -48,7 +48,7 @@ export const MenuAboutUs = () => {
                 </li>
                 <li>
                     <Link
-                        to={"/helpPage"}
+                        to={"/help"}
                         className={`${css.linkTo} ${
                             pathName === "/helpPage" ? css.activePathName : ""
                         }`}

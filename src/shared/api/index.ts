@@ -1,6 +1,6 @@
 import {axiosInstance} from "./axiosInstance";
 import * as DTO from "./types";
-import {AxiosResponse} from "axios";
+
 
 export {axiosInstance} from "./axiosInstance";
 export {DTO};
@@ -11,7 +11,16 @@ const getNetworkAndContacts = async (): Promise<DTO.ContactInfo> => {
     return response.data;
 };
 
+const getDescriptionAboutUs = async (): Promise<string> => {
+    const response = await axiosInstance.get("info/about-us")
+    return response.data.description;
 
+}
+
+const getFaq = async (): Promise<DTO.FaqItem[]> => {
+    const response = await axiosInstance.get("info/faq/");
+    return response.data;
+};
 
 
 const getCouponsByText = async (text: string): Promise<DTO.SearchResult> => {
@@ -22,7 +31,9 @@ const getCouponsByText = async (text: string): Promise<DTO.SearchResult> => {
 
 export const Api = {
     Info: {
-        getNetworkAndContacts
+        getNetworkAndContacts,
+        getDescriptionAboutUs,
+        getFaq
     },
     Coupons: {
         getCouponsByText

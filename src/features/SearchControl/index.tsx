@@ -25,7 +25,7 @@ export const SearchControl = ({className, onRedirectToResult}: Props) => {
 
 
     const searchResultRef = useRef<HTMLUListElement>(null);
-    useOutsideAlerter(searchResultRef, () => setIsShowSearchResult(false))
+    useOutsideAlerter(searchResultRef, () => setIsShowSearchResult(false));
 
 
     const searchInputHandle = (e: any) => {
@@ -45,7 +45,7 @@ export const SearchControl = ({className, onRedirectToResult}: Props) => {
             submitSearch();
             navigate("/search", {
                 state: {
-                    query: inputRef?.current?.value,
+                    query: inputRef.current?.value,
                     result: searchResult?.results
                 }
             });
@@ -74,15 +74,14 @@ export const SearchControl = ({className, onRedirectToResult}: Props) => {
             {
                 (isShowSearchResult && searchResult?.results.length)
                     ? (
-                        <ul ref={searchResultRef}  className={css.searchResult}>
+                        <ul ref={searchResultRef} className={css.searchResult}>
                             {
                                 searchResult.results.map((x: DTO.Coupon, i: number) => {
-                                    // debugger
                                     return (
                                         <div 
                                             key={x.id}
                                             className={css.searchItem}
-                                            // onClick={() => searchResultItemClicked(x.id)}
+                                            // onClick={() => searchResultItemClicked(x.id)} // TODO: dsad
                                         >
                                             {x.title}
                                         </div>

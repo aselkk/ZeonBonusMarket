@@ -1,31 +1,26 @@
 import React from "react";
-import css from "./styles.module.scss";
 import cn from "classnames";
-import {MenuAboutUs} from "../MenuMini";
-import {axiosInstance} from "@/shared/api";
+
+import {Api} from "@/shared/api";
+import {MenuAboutUs} from "@/features/MenuMini";
+import css from "./styles.module.scss";
 
 
 export const AboutUs = () => {
     const [content, setContent] = React.useState("");
 
-    // TODO: have to move other file
-    const getAboutUsfromServer = () => {
-        return axiosInstance.get("/info/about-us/");
-    };
-
-    const getAboutUsfromServerAPI = async () => {
-        const response = await getAboutUsfromServer();
-        setContent(response.data.description);
-    };
-
     React.useEffect(() => {
-        getAboutUsfromServerAPI();
+        (async () => {
+            const description = await Api.Info.getDescriptionAboutUs();
+            setContent(description);
+        })();
     }, [content]);
+
 
     return (
         <div className={css.aboutUs}>
             <div className={cn("container", css.container)}>
-                <MenuAboutUs />
+                <MenuAboutUs/>
                 <div className={css.content}>
                     <h3>О нас</h3>
                     <div className={css.text}>

@@ -1,25 +1,21 @@
+@import "@/shared/styles/mixins";
+
+
 .accordionItem {
-    border: 1px solid #d4e3ff;
+    border: 1px solid #D4E3FF;
     border-radius: 16px;
     margin-bottom: 16px;
 }
 
 .accordionItemBtn {
-    display: flex;
-    align-items: center;
     width: 100%;
-    background-color: #fff;
+    @include flex-row(unset, center);
     padding: 20px 16px;
-
+    background-color: white;
     cursor: pointer;
     border-bottom: none;
     border-radius: 16px;
-
-    font-family: "Inter";
-    font-style: normal;
-    font-weight: 700;
-    font-size: 15px;
-    line-height: 150%;
+    @include font-default(700, 15px, 150%, black);
 }
 
 .accordionItemBtn::after {
@@ -44,14 +40,8 @@
 }
 
 .accordionItemContent {
-    background-color: #fff;
     padding: 16px;
+    background-color: white;
     border-radius: 16px;
-
-    font-family: "Inter";
-    font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 150%;
-    color: #181818;
+    @include font-default(400, 14px, 150%, #181818);
 }

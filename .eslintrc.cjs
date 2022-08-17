@@ -28,7 +28,7 @@ module.exports = {
         "no-var": "error", // запрет на использование keyword `var`
         "prefer-const": "warn", // если можно, то использовать const
         "no-const-assign": "error", // ошибка при изменении const
-        "no-unused-vars": ["warn", {vars: "local", args: "none"}], // неиспользуемые переменные
+        // "no-unused-vars": ["warn", {vars: "local", args: "none"}], // неиспользуемые переменные
         "react/jsx-uses-vars": "error", // "no-unused-vars" распознает переменные, использующиеся только в JSX как no used
 
         /* literals */
@@ -65,6 +65,9 @@ module.exports = {
         /* typescript */
         // https://github.com/typescript-eslint/typescript-eslint/blob/main/packages/eslint-plugin/docs/rules/type-annotation-spacing.md
         "@typescript-eslint/restrict-plus-operands": "error",
+
+        "no-unused-vars": "off",
+        "@typescript-eslint/no-unused-vars": ["warn", {vars: "local", args: "none"}],
 
         // React.FC is deprecated
         "@typescript-eslint/ban-types": ["error",
