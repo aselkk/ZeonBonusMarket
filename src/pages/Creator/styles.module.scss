@@ -2,9 +2,10 @@
 @import "@/shared/styles/vars";
 
 .root {
-    width: 100%;
-    padding: 0 26px 101px 26px;
     @include flex-col();
+    @include font-default(400, 14px, 21px, #171717);
+    width: 100%;
+    padding: 24px 26px 101px 26px;
     gap: 24px;
 
     .mainInfo {
@@ -142,7 +143,7 @@
                 position: relative;
                 height: 0;
                 margin-top: 24px;
-        
+
                 iframe {
                     left: 0;
                     top: 0;

@@ -1,11 +1,13 @@
-import {useState, useEffect} from "react";
+import React, {useState, useEffect} from "react";
 import {useParams} from "react-router-dom";
+
 
 import cn from "classnames";
 
 import {axiosInstance, DTO} from "@/shared/api";
 import {RadioButtons} from "@/shared/ui/RadioButtons";
 import {CouponCard, CouponInfo} from "@/entities/CouponCard";
+import {SimpleMap} from "@/shared/ui/GoogleMap";
 import css from "./styles.module.scss";
 
 import {ReactComponent as FBIcon} from "@/assets/icons/fbIcon.svg";
@@ -24,7 +26,6 @@ export const Creator = () => {
     const [selectedItem, setSelectedItem] = useState(0);
     const [coupons, setCoupons] = useState<CouponInfo[]>([]);
     const {partnerId} = useParams();
-
     const onSelectedItemChanged = () => {
         selectedItem === 0 ? setSelectedItem(1) : setSelectedItem(0);
     };
@@ -82,9 +83,9 @@ export const Creator = () => {
                     <div className={css.contactsDetails}>
                         <ul className={css.firstCol}>
                             Наши телефоны: 
-                            <li> <Phone/> <a href={`tel:${info?.phone1}`}> {info?.phone1} </a>  </li>
-                            <li> <Phone/> <a href={`tel:${info?.phone2}`}> {info?.phone2} </a> </li>
-                            <li> <Phone/> <a href={`tel:${info?.phone3}`}> {info?.phone3} </a> </li>
+                            {info?.phone1 ? <li> <Phone/> <a href={`tel:${info?.phone1}`}> {info?.phone1} </a> </li> : ""}
+                            {info?.phone2 ? <li> <Phone/> <a href={`tel:${info?.phone2}`}> {info?.phone2} </a> </li> : ""}
+                            {info?.phone3 ? <li> <Phone/> <a href={`tel:${info?.phone3}`}> {info?.phone3} </a> </li> : ""}
                         </ul>
                         <div className={css.dividor}></div>
                         <div className={css.secondCol}>
@@ -100,10 +101,10 @@ export const Creator = () => {
                         <div className={css.dividor}></div>
                         <ul className={css.thirdCol}>
                             Мы в социальных сетях:
-                            <li> <FBIcon/> <a target="_blank" href={info?.network.facebook}> Facebook </a></li>
-                            <li> <IGIcon/> <a target="_blank" href={info?.network.instagram}> Instagram </a></li>
-                            <li> <VKIcon/> <a target="_blank" href={info?.network.vkontakte}> VKontakte </a></li>
-                            <li> <OKIcon/> <a target="_blank" href={info?.network.odnoklassniki}> Odnoklassniki </a></li>
+                            <li> <FBIcon/> <a target="_blank" href={info?.network?.facebook}> Facebook </a></li>
+                            <li> <IGIcon/> <a target="_blank" href={info?.network?.instagram}> Instagram </a></li>
+                            <li> <VKIcon/> <a target="_blank" href={info?.network?.vkontakte}> VKontakte </a></li>
+                            <li> <OKIcon/> <a target="_blank" href={info?.network?.odnoklassniki}> Odnoklassniki </a></li>
                         </ul>
                     </div>
                     <div className={css.mapResponsive}>
@@ -115,6 +116,9 @@ export const Creator = () => {
                             loading="lazy">
                         </iframe>
                     </div>
+                    <SimpleMap
+                        info = {info}
+                    />
                 </div>
             ) : 
                 <div className={css.cardsWrapper}>

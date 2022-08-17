@@ -1,0 +1,13 @@
+@import "@/shared/styles/vars";
+
+.mapWrapper {
+    height: 420px;
+    width: 100%;
+}
+
+@media (max-width: $width-sm) {
+    .mapWrapper {
+        height: 300px;
+    }
+}
+
