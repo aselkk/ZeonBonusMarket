@@ -21,11 +21,13 @@ import {PrivacyPolicy} from "@/pages/PrivacyPolicy";
 import {ErrorPage} from "@/pages/ErrorPage";
 import {Breadcrumbs} from "./Breadcrumbs";
 import {Signup} from "@/pages/register/Main";
-
+import { Signup } from "@/pages/Signup";
+import { ConfirmNumber } from "@/pages/ConfirmNumber"
 
 
 export const App = () => {
     return (
+
         <Provider store={store}>
             <BrowserRouter>
                 <Header/>
