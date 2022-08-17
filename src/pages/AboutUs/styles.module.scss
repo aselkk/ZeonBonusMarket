@@ -1,0 +1,47 @@
+@import "@/shared/styles/mixins";
+@import "@/shared/styles/vars";
+
+
+.aboutUs {
+    background-color: #E5E5E5;
+
+    .container {
+        width: 100%;
+        padding: 24px 15px 81px;
+        @include flex-row(space-between);
+
+        .content {
+            width: 100%;
+            min-height: 564px;
+            padding: 24px;
+            @include flex-col();
+            gap: 7px;
+            background-color: white;
+            border-radius: 12px;
+
+            .title {
+                @include font-default(700, 24px, 29px, #181818);
+            }
+
+            .text {
+                @include flex-col();
+                gap: 21px;
+
+                p {
+                    @include font-default(400, 14px, 21px, #181818);
+                }
+            }
+        }
+    }
+}
+
+
+
+@media (max-width: $width-xl) {
+    .aboutUs {
+        .container {
+            flex-direction: column;
+            gap: 24px;
+        }
+    }
+}

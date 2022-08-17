@@ -1,6 +1,7 @@
 import React from "react";
 import {NavLink} from "react-router-dom";
 import useBreadcrumbs from "use-react-router-breadcrumbs";
+import cn from "classnames";
 
 import css from "./styles.module.scss";
 
@@ -28,32 +29,38 @@ const routes = [
     // {path: '/example', breadcrumb: 'Custom Example'},
 ];
 
+
+
 export const Breadcrumbs = () => {
     const breadcrumbs = useBreadcrumbs(routes);
 
     return (
-        <div className="container">
-            {
-                (breadcrumbs.length > 1)
-                    ? breadcrumbs.map(({match, breadcrumb}, i) => {
-                        return (
-                            <span className={css.link} key={match.pathname}>
+        <div className={css.breadcrumbs}>
+            <div className={cn("container", css.container)}>
+                {
+                    (breadcrumbs.length > 1)
+                        ? breadcrumbs.map(({match, breadcrumb}, i) => {
+                            return (
+                                <span className={css.link} key={match.pathname}>
+
                                 <NavLink
                                     className={css.link}
                                     to={match.pathname}
                                 >
                                     {breadcrumb}
                                 </NavLink>
-                                {
-                                    (breadcrumbs.length - 1 !== i)
-                                        ? <span>&nbsp;/&nbsp;</span>
-                                        : null
-                                }
-                            </span>
-                        );
-                    })
-                    : null
-            }
+                                    {
+                                        (breadcrumbs.length - 1 !== i)
+                                            ? <span>&nbsp;/&nbsp;</span>
+                                            : null
+                                    }
+                                </span>
+                            );
+                        })
+                        : null
+                }
+            </div>
+
         </div>
     );
 };

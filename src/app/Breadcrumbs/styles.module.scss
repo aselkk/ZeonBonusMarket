@@ -2,11 +2,18 @@
 @import "@/shared/styles/vars";
 
 
+.breadcrumbs {
+    background-color: white;
 
-.link {
-    @include font-default(400, 15px, 22.5px, #4F70E2);
+    .container {
+        padding: 10px 30px;
 
-    &:hover {
-        color: #4B5FA5;
+        .link {
+            @include font-default(400, 15px, 22.5px, #4F70E2);
+
+            &:hover {
+                color: #4B5FA5;
+            }
+        }
     }
 }

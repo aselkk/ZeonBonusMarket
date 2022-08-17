@@ -11,6 +11,7 @@ interface Props {
     linkTo?: string,
     onClick?: () => void,
     disabled?: boolean,
+    type?: string
 }
 
 
@@ -24,6 +25,7 @@ export const Button = (props: FCProps<Props>) => {
                 className={cn(css.button, props.className)}
                 disabled={props.disabled}
                 onClick={props.onClick}
+                type={props.type}
             >
                 {props.children}
             </button>

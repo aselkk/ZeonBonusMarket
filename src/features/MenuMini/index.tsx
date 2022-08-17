@@ -1,9 +1,10 @@
 import React from "react";
-import {Link} from "react-router-dom";
+import {Link, NavLink} from "react-router-dom";
 import css from "./styles.module.scss";
 
 import {ReactComponent as UserIcon} from "@/assets/icons/userIcon.svg";
 import {ReactComponent as Phone} from "@/assets/icons/phone.svg";
+import cn from "classnames";
 
 
 export const MenuAboutUs = () => {
@@ -13,21 +14,18 @@ export const MenuAboutUs = () => {
         <div className={css.menu}>
             <ul>
                 <li>
-                    <Link
-                        to={"/about-us"}
-                        className={`${css.linkTo} ${
-                            pathName === "/aboutUs" ? css.activePathName : ""
-                        }`}
+                    <NavLink
+                        to="/about-us"
+                        className={({isActive}) => cn(css.linkTo, {[css.activePathName]: isActive})}
+
                     >
                         <div>
                             <UserIcon
-                                className={`${css.icons} ${
-                                    pathName === "/aboutUs" ? css.activePathName : ""
-                                }`}
+                                className={css.icons}
                             />
                         </div>
                         <p>О нас</p>
-                    </Link>
+                    </NavLink>
                 </li>
                 <li>
                     <Link

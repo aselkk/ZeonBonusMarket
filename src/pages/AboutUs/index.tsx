@@ -1,4 +1,4 @@
-import React from "react";
+import {useState, useEffect} from "react";
 import cn from "classnames";
 
 import {Api} from "@/shared/api";
@@ -7,14 +7,12 @@ import css from "./styles.module.scss";
 
 
 export const AboutUs = () => {
-    const [content, setContent] = React.useState("");
+    const [description, setDescription] = useState("");
 
-    React.useEffect(() => {
-        (async () => {
-            const description = await Api.Info.getDescriptionAboutUs();
-            setContent(description);
-        })();
-    }, [content]);
+    useEffect(() => {
+        Api.Info.getDescriptionAboutUs()
+            .then(data => setDescription(data));
+    }, []);
 
 
     return (
@@ -22,9 +20,9 @@ export const AboutUs = () => {
             <div className={cn("container", css.container)}>
                 <MenuAboutUs/>
                 <div className={css.content}>
-                    <h3>О нас</h3>
+                    <h3 className={css.title}>О нас</h3>
                     <div className={css.text}>
-                        <p>{content}</p>
+                        <p>{description}</p>
                     </div>
                 </div>
             </div>

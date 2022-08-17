@@ -5,7 +5,7 @@ import cn from "classnames";
 import css from "./styles.module.scss";
 
 import {ReactComponent as FaceBookIcon} from "@/assets/icons/faceBook1.svg";
-import {ReactComponent as IstagrammIcon} from "@/assets/icons/instagramm.svg";
+import {ReactComponent as IstagrammIcon} from "@/assets/icons/instagram.svg"; // TODO: чекнуть
 import {ReactComponent as VKontakte} from "@/assets/icons/vkontakte.svg";
 import {ReactComponent as Odnoklassniki} from "@/assets/icons/odnoklassniki.svg";
 import {ReactComponent as Mail} from "@/assets/icons/mail.svg";

@@ -3,16 +3,18 @@
 
 
 .help {
-    width: 100%;
     background-color: #E5E5E5;
 
     .container {
-        width: 100%;
-        margin: 0 auto;
         padding: 24px 15px 81px;
         @include flex-row(space-between);
+    }
+}
 
-        @media (max-width: $width-xl) {
+
+@media (max-width: $width-xl) {
+    .help {
+        .container {
             flex-direction: column;
             gap: 24px;
         }

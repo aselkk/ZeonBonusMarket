@@ -1,20 +1,20 @@
 import React from "react";
-import css from "./styles.module.scss";
 import cn from "classnames";
 
-import {MenuAboutUs} from "../../../features/MenuMini";
 
-import map from "@/assets/images/mapImage.png";
-
-import {ReactComponent as Phone} from "@/assets/icons/phone.svg";
-import {ReactComponent as Mail} from "@/assets/icons/mail.svg";
-import {ReactComponent as Location} from "@/assets/icons/location.svg";
-
-import {ReactComponent as FaceBookIcon} from "@/assets/icons/faceBook1.svg";
-import {ReactComponent as IstagrammIcon} from "@/assets/icons/instagramm.svg";
-import {ReactComponent as VKontakte} from "@/assets/icons/vkontakte.svg";
-import {ReactComponent as Odnoklassniki} from "@/assets/icons/odnoklassniki.svg";
 import {axiosInstance} from "@/shared/api";
+import {MenuAboutUs} from "@/features/MenuMini";
+import css from "./styles.module.scss";
+
+import {ReactComponent as PhoneIcon} from "@/assets/icons/phone.svg";
+import {ReactComponent as MailIcon} from "@/assets/icons/mail.svg";
+import {ReactComponent as LocationIcon} from "@/assets/icons/location.svg";
+import {ReactComponent as FaceBookIcon} from "@/assets/icons/facebook.svg";
+import {ReactComponent as InstagramIcon} from "@/assets/icons/instagram.svg";
+import {ReactComponent as VKontakteIcon} from "@/assets/icons/vkontakte.svg";
+import {ReactComponent as OdnoklassnikiIcon} from "@/assets/icons/odnoklassniki.svg";
+import map from "@/assets/images/mapImage.png"; // TODO: Асель добавит карту
+
 
 
 export const Contacts = () => {
@@ -34,12 +34,13 @@ export const Contacts = () => {
         getContactsfromServerAPI();
     }, [setContacts]);
 
+
     return (
-        <div className={css.aboutUs}>
+        <div className={css.contacts}>
             <div className={cn("container", css.container)}>
                 <MenuAboutUs />
                 <div className={css.content}>
-                    <h3>Контакты</h3>
+                    <h3 className={css.title}>Контакты</h3>
                     <div className={css.text}>
                         <p>{contacts.description}</p>
                     </div>
@@ -50,7 +51,7 @@ export const Contacts = () => {
                                 <li>
                                     <a rel="stylesheet" href={`tel:${contacts.phone1}`}>
                                         <div>
-                                            <Phone className={css.icons} />
+                                            <PhoneIcon className={css.icons} />
                                         </div>
                                         <p>{contacts.phone1}</p>
 
@@ -61,7 +62,7 @@ export const Contacts = () => {
                                     <a rel="stylesheet" href={`tel:${contacts.phone2}`}>
                                      
                                         <div>
-                                            <Phone className={css.icons} />
+                                            <PhoneIcon className={css.icons} />
                                         </div>
                                         <p>{contacts.phone2}</p>
 
@@ -71,7 +72,7 @@ export const Contacts = () => {
                                 <li>
                                     <a rel="stylesheet" href={`tel:${contacts.phone3}`}>
                                         <div>
-                                            <Phone className={css.icons} />
+                                            <PhoneIcon className={css.icons} />
                                         </div>
                                         <p>{contacts.phone3}</p>
 
@@ -85,7 +86,7 @@ export const Contacts = () => {
                                     <li>
                                         <a rel="stylesheet" href={`mailto:${contacts.email}`}>
                                             <div>
-                                                <Mail className={css.icons} />
+                                                <MailIcon className={css.icons} />
                                             </div>
                                             <p>{contacts.email}</p>
 
@@ -106,7 +107,7 @@ export const Contacts = () => {
                                         <li>
                                             <a rel="stylesheet" href={`mailto:${contacts.email}`}>
                                                 <div>
-                                                    <Mail className={css.icons} />
+                                                    <MailIcon className={css.icons} />
                                                 </div>
                                                 <p>{contacts.email}</p>
 
@@ -121,7 +122,7 @@ export const Contacts = () => {
                                     <ul>
                                         <li>
                                             <div>
-                                                <Location className={css.icons} />
+                                                <LocationIcon className={css.icons} />
                                             </div>
                                             <p>{contacts.address}</p>
                                         </li>
@@ -146,7 +147,7 @@ export const Contacts = () => {
                                 <li>
                                     <a rel="stylesheet" href={contacts.vkontakte} target="_blank">
                                         <div>
-                                            <VKontakte className={css.icons} />
+                                            <VKontakteIcon className={css.icons} />
                                         </div>
                                         <p>VKontakte</p>
                                     </a>
@@ -154,7 +155,7 @@ export const Contacts = () => {
                                 <li>
                                     <a rel="stylesheet" href={contacts.instagram} target="_blank">
                                         <div>
-                                            <IstagrammIcon className={css.icons} />
+                                            <InstagramIcon className={css.icons} />
                                         </div>
                                         <p>Instagram</p>
                                     </a>
@@ -162,7 +163,7 @@ export const Contacts = () => {
                                 <li>
                                     <a rel="stylesheet" href={contacts.odnoklassniki} target="_blank">
                                         <div>
-                                            <Odnoklassniki className={css.icons} />
+                                            <OdnoklassnikiIcon className={css.icons} />
                                         </div>
                                         <p>Odnoklassniki</p>
                                     </a>
@@ -173,7 +174,7 @@ export const Contacts = () => {
                                 <ul>
                                     <li>
                                         <div>
-                                            <Location className={css.icons} />
+                                            <LocationIcon className={css.icons} />
                                         </div>
                                         <p>{contacts.address}</p>
                                     </li>

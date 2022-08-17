@@ -9,7 +9,7 @@ import {CouponCard, CouponInfo} from "@/entities/CouponCard";
 import css from "./styles.module.scss";
 
 import {ReactComponent as FBIcon} from "@/assets/icons/fbIcon.svg";
-import {ReactComponent as IGIcon} from "@/assets/icons/instagramm.svg";
+import {ReactComponent as IGIcon} from "@/assets/icons/instagram.svg"; // TODO: чекнуть
 import {ReactComponent as VKIcon} from "@/assets/icons/vkontakte.svg";
 import {ReactComponent as OKIcon} from "@/assets/icons/odnoklassniki.svg";
 import {ReactComponent as Mail} from "@/assets/icons/mail.svg";

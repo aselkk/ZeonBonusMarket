@@ -15,8 +15,7 @@ export const FloatingButton = () => {
                 const result: DTO.PartnerNetworkInfo = response.data;
                 const link: any = result.whatsapp;
                 setNumber(link);
-                console.log(link);
-                
+
             } catch (err) {
                 console.error(err);
             }

@@ -82,12 +82,12 @@
 
             &:hover {
                 p {
-                    color: #4b5fa5;
+                    color: #919CCC;
                     transition: 0.5s;
                 }
 
                 .icons {
-                    color: #4b5fa5;
+                    color: #919CCC;
                     transition: 0.5s;
                 }
             }
@@ -108,8 +108,12 @@
             }
         }
 
-        .activePathName {
-            color: #4b5fa5 !important;
+        .linkTo.activePathName {
+            color: #4B5FA5;
+
+            svg *  {
+                fill: #4B5FA5;
+            }
         }
     }
 
