@@ -78,13 +78,16 @@ export const SearchControl = ({className, onRedirectToResult}: Props) => {
                             {
                                 searchResult.results.map((x: DTO.Coupon, i: number) => {
                                     return (
-                                        <div 
+                                        <li
                                             key={x.id}
                                             className={css.searchItem}
-                                            // onClick={() => searchResultItemClicked(x.id)} // TODO: dsad
+                                            onClick={() => {
+                                                submitSearch();
+                                                navigate(`/coupon/${x.id}`)
+                                            }}
                                         >
                                             {x.title}
-                                        </div>
+                                        </li>
                                     );
                                 })
                             }
