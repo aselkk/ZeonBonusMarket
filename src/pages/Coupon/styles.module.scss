@@ -1,3 +1,6 @@
+@import "@/shared/styles/mixins";
+@import "@/shared/styles/vars";
+
 
 .root {
     padding: 0 16px;
@@ -5,6 +8,7 @@
     grid-template-columns: 668px 448px;
     grid-template-rows: 479px 1fr;
     column-gap: 32px;
+    @include font-default(400, 14px, 21px, #171717);
 
     .slider {
         width: 100%;
@@ -21,16 +25,78 @@
     }
 }
 
+.mapWrapper {
+    padding: 0 16px;
+    @include flex-row();
+
+    .mapContainer { 
+        width: 65%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 16px;
+        border-radius: 8px;
+    }
+        
+    .listWrapper {
+        padding: 24px 15px 24px 0;
+
+        .list {
+            @include flex-col(unset, flex-start);
+            gap: 24px;
+            height: 496px;
+            overflow-y: scroll;
+            overflow-x: hidden;
+            padding: 0 59px 0 0;
+            cursor: pointer;
+
+            .listItems {
+                @include flex-col(unset, flex-start);
+                font-family: 'Inter';
+                font-style: normal;
+                font-weight: 400;
+                font-size: 14px;
+                gap: 8px;
+                width: 285px;
+                padding: 8px 16px;
+                border-bottom: 1px solid #EDF1FD;
+
+                &:hover {
+                    background: #FBFBFB;
+                    border-radius: 12px;
+                }
+            }
+                        
+            &::-webkit-scrollbar {
+                width: 4px;
+                background: #EDF1FD;
+                border-radius: 4px;
+                height: 133px;
+            }
+                
+            &::-webkit-scrollbar-track {
+                border-radius: 10px;
+                height: 233px;
+            }
+                
+            &::-webkit-scrollbar-thumb {
+                background: #8b9ddf;
+                border-radius: 4px;
+            }
+        }
+    }
+}
 
 
-@media (max-width: 1200px) {
+
+@media (max-width: $width-xl) {
     .root {
         grid-template-columns: 59% 41%;
     }
 }
 
 
-@media (max-width: 992px) {
+@media (max-width: $width-lg) {
     .root {
         display: flex;
         flex-direction: column;
@@ -44,12 +110,38 @@
         max-width: 668px;
         margin: 0 auto;
     }
+
+    .mapWrapper {
+        @include flex-col();
+
+        .mapContainer { 
+            width: 100%;
+            height: 400px;
+            display: flex;
+        }
+
+        .listWrapper {
+            .list {
+                height: 360px;
+            }
+        }
+    }
 }
 
 
-@media (max-width: 768px) {
+@media (max-width: $width-md) {
     .slider {
         width: calc(100vw - 32px);
         height: calc(57.3vw + 96px);
+    }
+}
+
+
+@media (max-width: $width-sm) {
+    .mapWrapper {
+        .mapContainer {
+            padding: 0;
+            height: 316px;
+        }
     }
 }

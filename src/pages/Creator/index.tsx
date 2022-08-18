@@ -107,7 +107,7 @@ export const Creator = () => {
                             <li> <OKIcon/> <a target="_blank" href={info?.network?.odnoklassniki}> Odnoklassniki </a></li>
                         </ul>
                     </div>
-                    <div className={css.mapResponsive}>
+                    {/* <div className={css.mapResponsive}>
                         <iframe 
                             src={`https://maps.google.com/maps?q=${info?.coordinates[0].geolocation}&hl=en-US&z=14&ie=UTF8&iwloc=B&output=embed`}
                             width="1163" 
@@ -115,10 +115,12 @@ export const Creator = () => {
                             style={{borderRadius: "8px"}} 
                             loading="lazy">
                         </iframe>
+                    </div> */}
+                    <div className={css.mapWrapper}>
+                        <SimpleMap
+                            info = {info}
+                        />
                     </div>
-                    <SimpleMap
-                        info = {info}
-                    />
                 </div>
             ) : 
                 <div className={css.cardsWrapper}>

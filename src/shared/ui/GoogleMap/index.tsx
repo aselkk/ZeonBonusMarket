@@ -35,12 +35,12 @@ export const SimpleMap = ({info}: Props) => {
             lat: 42.8889619,
             lng: 74.6048946
         },
-        zoom: 15,
+        zoom: 13,
         borderRadius: "8px"
     };
 
     return (
-        <div className={css.mapWrapper}>
+        <div className={css.map}>
             <GoogleMapReact
                 bootstrapURLKeys={{key: ""}}
                 defaultCenter={defaultProps.center}
@@ -57,5 +57,6 @@ export const SimpleMap = ({info}: Props) => {
                 }
             </GoogleMapReact>
         </div>
+        
     );
 };

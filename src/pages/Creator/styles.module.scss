@@ -38,6 +38,11 @@
         @include flex-col();
         gap: 24px;
 
+        .mapWrapper {
+            height: 420px;
+            width: 100%;
+        }
+
         .contactsText {
             @include flex-col();
             gap: 12px;

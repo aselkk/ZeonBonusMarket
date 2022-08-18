@@ -16,7 +16,8 @@ export interface Details {
     couponPrice: number,
     discountPercent: number,
     productPrice: number,
-    isFavorite: boolean
+    isFavorite: boolean,
+    mapLocations: string[]
 }
 
 interface Props {

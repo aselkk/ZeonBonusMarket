@@ -4,13 +4,15 @@ import cn from "classnames";
 import { MenuAboutUs } from "@/features/MenuMini";
 import css from "./styles.module.scss";
 
-import { ReactComponent as PhoneIcon } from "@/assets/icons/phone.svg";
-import { ReactComponent as MailIcon } from "@/assets/icons/mail.svg";
-import { ReactComponent as LocationIcon } from "@/assets/icons/location.svg";
-import { ReactComponent as FaceBookIcon } from "@/assets/icons/facebook.svg";
-import { ReactComponent as InstagramIcon } from "@/assets/icons/instagram.svg";
-import { ReactComponent as VKontakteIcon } from "@/assets/icons/vkontakte.svg";
-import { ReactComponent as OdnoklassnikiIcon } from "@/assets/icons/odnoklassniki.svg";
+import {ReactComponent as PhoneIcon} from "@/assets/icons/phone.svg";
+import {ReactComponent as MailIcon} from "@/assets/icons/mail.svg";
+import {ReactComponent as LocationIcon} from "@/assets/icons/location.svg";
+import {ReactComponent as FaceBookIcon} from "@/assets/icons/facebook.svg";
+import {ReactComponent as InstagramIcon} from "@/assets/icons/instagram.svg";
+import {ReactComponent as VKontakteIcon} from "@/assets/icons/vkontakte.svg";
+import {ReactComponent as OdnoklassnikiIcon} from "@/assets/icons/odnoklassniki.svg";
+import {SimpleMap} from "@/shared/ui/GoogleMap";
+
 import map from "@/assets/images/mapImage.png"; // TODO: Асель добавит карту
 import { useSelector } from "react-redux";
 
@@ -115,6 +117,8 @@ export const Contacts = () => {
                     <div>
                       <FaceBookIcon className={css.icons} />
                     </div>
+                    <div className={css.mapContainer}>
+                        <SimpleMap info = {contacts}/>
                     <p>Facebook</p>
                   </a>
                 </li>
