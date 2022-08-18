@@ -1,4 +1,4 @@
-import { useDispatch} from "react-redux";
+import {useDispatch, Provider} from "react-redux";
 import {Routes, Route, BrowserRouter} from "react-router-dom";
 
 import {Coupon} from "@/pages/Coupon";
@@ -18,39 +18,22 @@ import {PrivacyPolicy} from "@/pages/PrivacyPolicy";
 import {ErrorPage} from "@/pages/ErrorPage";
 import {Breadcrumbs} from "./Breadcrumbs";
 // import {Signup} from "@/pages/register/Main";
+import {store} from "./store";
 import React from "react";
-import { getNetworkInfoFromServer } from "./store/networkInfoRequest/networkInfoAction";
-import { Signup } from "@/pages/Signup";
-import { ConfirmNumber } from "@/pages/ConfirmNumber"
+import {getNetworkInfoFromServer} from "./store/networkInfoRequest/networkInfoAction";
+import {Signup} from "@/pages/Signup";
+import {ConfirmNumber} from "@/pages/ConfirmNumber"
+import {CategoryCoupons} from "@/pages/CategoryCoupons";
 
 
 export const App = () => {
-    return (
-
-        <Provider store={store}>
-            <BrowserRouter>
-                <Header/>
-                <Breadcrumbs/>
-                <FloatingButton/>
-                <Routes>
-                    <Route path="/" element={<Main/>}/>
-                    <Route path="/trends" element={<TrendCoupons/>}/>
-                    <Route path="/coupon/:id" element={<Coupon/>}/>
-                    <Route path="/search" element={<SearchResult/>}/>
-                    <Route path="/partner/:partnerId" element={<Creator/>}/>
-                    <Route path="/contacts" element={<Contacts/>}/>
-                    <Route path="/about-us" element={<AboutUs/>}/>
-                    <Route path="/help" element={<Help/>}/>
-                    <Route path="/register" element={<Signup/>}/>
-                    <Route path="/privacyPolicy" element={<PrivacyPolicy/>}/> {/* TODO: change*/}
-                    <Route path="*" element={<ErrorPage/>}/> {/* TODO: change*/}
-
-    const dispatch= useDispatch();
+    const dispatch = useDispatch();
 
     React.useEffect(() => {
         dispatch(getNetworkInfoFromServer());
+    }, [dispatch]);
 
-      }, [dispatch]);
+
     return (
         <BrowserRouter>
             <Header/>
@@ -59,6 +42,7 @@ export const App = () => {
             <Routes>
                 <Route path="/" element={<Main/>}/>
                 <Route path="/trends" element={<TrendCoupons/>}/>
+                <Route path="/category/:id" element={<CategoryCoupons/>}/>
                 <Route path="/coupon/:id" element={<Coupon/>}/>
                 <Route path="/search" element={<SearchResult/>}/>
                 <Route path="/partner/:partnerId" element={<Creator/>}/>
@@ -70,7 +54,6 @@ export const App = () => {
                 <Route path="*" element={<ErrorPage/>}/> {/* TODO: change*/}
             </Routes>
             <Footer/>
-
         </BrowserRouter>
     );
 };

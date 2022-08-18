@@ -26,6 +26,7 @@ export const Coupon = () => {
                 const dsd: Details = {
                     companyLogo: response.data.company_logo,
                     companyName: response.data.company_name,
+                    companyId: response.data.company_id,
                     title: response.data.title,
                     couponPrice: Number(response.data.price_for_coupon),
                     discountPercent: response.data.discount_percent,

@@ -31,7 +31,7 @@ export const Slider = () => {
                 className={css.swiper}
                 modules={[Pagination, Autoplay]}
                 autoplay={{
-                    delay: 1000,
+                    delay: 4000,
                     disableOnInteraction: false
                 }}
                 pagination={{

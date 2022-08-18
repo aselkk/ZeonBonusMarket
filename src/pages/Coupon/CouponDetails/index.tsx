@@ -1,4 +1,5 @@
 import {useState} from "react";
+import {Link} from "react-router-dom"
 import {Button} from "@/shared/ui/Button";
 import {ReactComponent as Favorit} from "@/assets/icons/favorite-f.svg";
 import css from "./styles.module.scss";
@@ -8,6 +9,7 @@ import cn from "classnames";
 export interface Details {
     companyLogo: string,
     companyName: string,
+    companyId: number,
     title: string,
     couponPrice: number,
     discountPercent: number,
@@ -30,10 +32,10 @@ export const CouponDetails = ({info}: Props) => {
     
     return (
         <div className={css.root}>
-            <div className={css.logoWrapper}>
+            <Link className={css.logoWrapper} to={`/partner/${info?.companyId}`}>
                 <img className={css.logo} src={info?.companyLogo} alt="logo" />
                 <h3 className={css.logoTitle}>{info?.companyName}</h3>
-            </div>
+            </Link>
             <p className={css.sale}>Купон на скидку {info?.discountPercent}%</p>
             <p className={css.saleDesc}>{info?.title}</p>
             <div className={css.priceWrap}>
@@ -52,7 +54,7 @@ export const CouponDetails = ({info}: Props) => {
                 </span>
             </div>
             <div className={css.wrapper}>
-                <Button className={btnIsBuy ? cn(css.btn, css.btnBuy) : cn(css.btn, css.btnActive)}>
+                <Button className={cn(css.btn, {[css.btnActive]: !btnIsBuy})}>
                     {btnIsBuy ? "Купить купон" : "Активировать купон"}
                 </Button>
                 <Button className={cn(css.btnFavorit)} >

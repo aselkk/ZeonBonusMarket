@@ -24,7 +24,7 @@
         border-radius: 10px;
     }
 
-    li {
+    li a {
         @include flex-col(center, center);
         gap: 6px;
         text-align: center;

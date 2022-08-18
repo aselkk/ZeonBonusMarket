@@ -1,4 +1,5 @@
 import {ReactElement} from "react";
+import {Link} from "react-router-dom";
 import cn from "classnames";
 import css from "./style.module.scss";
 
@@ -27,11 +28,13 @@ export const Categories = () => {
         <ul className={css.groups}>
             {
                 categories.map((x: Category) => (
-                    <li key={x.id}>
-                        {x.Icon}
-                        <span className={css.label}>{x.title}</span>
-                    </li>
-                )
+                        <li key={x.id}>
+                            <Link to={`/category/${x.id}`} state={{name: x.title}}>
+                                {x.Icon}
+                                <span className={css.label}>{x.title}</span>
+                            </Link>
+                        </li>
+                    )
                 )
             }
         </ul>
@@ -43,7 +46,7 @@ const categories: Array<Category> = [
     {
         id: 1,
         title: "Все",
-        Icon: <AllGroupsIcon  className={cn(css.icon, css.iconAllGroups)}/>
+        Icon: <AllGroupsIcon className={cn(css.icon, css.iconAllGroups)}/>
     },
     {
         id: 2,
