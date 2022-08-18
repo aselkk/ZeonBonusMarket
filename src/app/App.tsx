@@ -1,4 +1,4 @@
-import {useDispatch, Provider} from "react-redux";
+import { useDispatch} from "react-redux";
 import {Routes, Route, BrowserRouter} from "react-router-dom";
 
 import {Coupon} from "@/pages/Coupon";
@@ -18,7 +18,6 @@ import {PrivacyPolicy} from "@/pages/PrivacyPolicy";
 import {ErrorPage} from "@/pages/ErrorPage";
 import {Breadcrumbs} from "./Breadcrumbs";
 // import {Signup} from "@/pages/register/Main";
-import {store} from "./store";
 import React from "react";
 import {getNetworkInfoFromServer} from "./store/networkInfoRequest/networkInfoAction";
 import {Signup} from "@/pages/Signup";
