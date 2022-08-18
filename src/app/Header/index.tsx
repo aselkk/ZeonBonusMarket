@@ -1,17 +1,19 @@
-import {Api} from "@/shared/api";
 import {useWindowSize} from "@/shared/hooks";
 import {Mobile} from "./Mobile";
 import {Desktop} from "./Desktop";
 import {useEffect, useState} from "react";
+import { useSelector } from "react-redux";
 
 
 export const Header = () => {
 
     const [phone, setPhone] = useState("");
+
+    const networkInfo = useSelector((state: any) => state.networkInfo.items);
+
     useEffect(() => {
-        Api.Info.getNetworkAndContacts()
-            .then(data => setPhone(data.phone));
-    }, []);
+        setPhone(networkInfo.phone);
+    }, [networkInfo]);
 
     const {width} = useWindowSize();
 

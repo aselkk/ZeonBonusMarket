@@ -48,7 +48,7 @@ export const MenuAboutUs = () => {
                     <Link
                         to={"/help"}
                         className={`${css.linkTo} ${
-                            pathName === "/helpPage" ? css.activePathName : ""
+                            pathName === "/help" ? css.activePathName : ""
                         }`}
                     >
                         <div>
