@@ -25,6 +25,26 @@ import { ConfirmNumber } from "@/pages/ConfirmNumber"
 
 
 export const App = () => {
+    return (
+
+        <Provider store={store}>
+            <BrowserRouter>
+                <Header/>
+                <Breadcrumbs/>
+                <FloatingButton/>
+                <Routes>
+                    <Route path="/" element={<Main/>}/>
+                    <Route path="/trends" element={<TrendCoupons/>}/>
+                    <Route path="/coupon/:id" element={<Coupon/>}/>
+                    <Route path="/search" element={<SearchResult/>}/>
+                    <Route path="/partner/:partnerId" element={<Creator/>}/>
+                    <Route path="/contacts" element={<Contacts/>}/>
+                    <Route path="/about-us" element={<AboutUs/>}/>
+                    <Route path="/help" element={<Help/>}/>
+                    <Route path="/register" element={<Signup/>}/>
+                    <Route path="/privacyPolicy" element={<PrivacyPolicy/>}/> {/* TODO: change*/}
+                    <Route path="*" element={<ErrorPage/>}/> {/* TODO: change*/}
+
     const dispatch= useDispatch();
 
     React.useEffect(() => {
