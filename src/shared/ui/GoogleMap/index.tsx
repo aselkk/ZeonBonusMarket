@@ -14,13 +14,12 @@ interface Props {
 export const SimpleMap = ({info}: Props) => {
     const [geolocation, setGeolocation]:any = useState();
     const coordinates:any = [];
-    console.log(info, 'info');
     
     useEffect(() => {
         if (info) {
             setGeolocation(info?.coordinates);
         }
-    }, []);
+    }, [info]);
 
     const getCoordinates = () => { 
         geolocation?.map((x: any) => { 
@@ -28,8 +27,10 @@ export const SimpleMap = ({info}: Props) => {
         }); 
     };
 
-
-    getCoordinates();
+    if (!!geolocation) {
+        getCoordinates();
+    }
+    console.log(coordinates, "coordinates");
 
     const defaultProps = {
         center: {

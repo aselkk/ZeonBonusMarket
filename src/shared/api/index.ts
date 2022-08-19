@@ -16,6 +16,11 @@ const getDescriptionAboutUs = async (): Promise<string> => {
     return response.data.description;
 
 }
+const getMapCordinate = async () => {
+    const response = await axiosInstance.get("/info/our-map-coordinates/")
+    return response;
+
+}
 
 const getFaq = async (): Promise<DTO.FaqItem[]> => {
     const response = await axiosInstance.get("info/faq/");
@@ -33,7 +38,8 @@ export const Api = {
     Info: {
         getNetworkAndContacts,
         getDescriptionAboutUs,
-        getFaq
+        getFaq,
+        getMapCordinate
     },
     Coupons: {
         getCouponsByText

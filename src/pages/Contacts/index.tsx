@@ -13,9 +13,30 @@ import { ReactComponent as VKontakteIcon } from "@/assets/icons/vkontakte.svg";
 import { ReactComponent as OdnoklassnikiIcon } from "@/assets/icons/odnoklassniki.svg";
 import { useSelector } from "react-redux";
 import {SimpleMap} from "@/shared/ui/GoogleMap";
+import { Api } from "@/shared/api";
 
 export const Contacts = () => {
   const networkInfo = useSelector((state: any) => state.networkInfo.items);
+
+  const [coordinates, setCoordinates] = React.useState();
+
+  const getPrivacyPolicyfromServerAPI = async () => {
+    try {
+      const response = await Api.Info.getMapCordinate();
+
+      let info: any = {};
+      response.data[0].geolocation = response.data[0].coordinates;
+      info.coordinates = response.data;
+
+      setCoordinates(info);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  React.useEffect(() => {
+    getPrivacyPolicyfromServerAPI();
+  }, [Api]);
 
   return (
     <div className={css.contacts}>
@@ -169,7 +190,7 @@ export const Contacts = () => {
             </div>
           </div>
           <div className={css.mapContainer}>
-            <SimpleMap info = {contacts}/>
+            <SimpleMap info={coordinates} />
           </div>
         </div>
       </div>
