@@ -24,7 +24,6 @@
             border: 1px solid #F7F1FE;
             border-radius: 12px;
             padding: 0 16px;
-            margin-bottom: 12px;
             @include font-default(400,14px,21px,#171717);
 
             &::placeholder {
@@ -62,6 +61,21 @@
             @include font-default(400,14px,21px,#4F70E2);
             text-align: center;
             margin: 24px 0 2px 0;
+        }
+        
+        .span {
+            margin-right: 5px;
+        }
+
+        .formGroup {
+            .invalidFeedback {
+                margin-top: 2px;
+                min-height: 15px;
+                height: auto;
+                padding: 0px 10px;
+                @include flex-row(flex-start, center);
+                @include font-default(400, 13px, 15.6px, #E31B4B);
+            }
         }
     }
 }

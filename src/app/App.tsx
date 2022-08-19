@@ -17,11 +17,9 @@ import {Help} from "@/pages/Help";
 import {PrivacyPolicy} from "@/pages/PrivacyPolicy";
 import {ErrorPage} from "@/pages/ErrorPage";
 import {Breadcrumbs} from "./Breadcrumbs";
-// import {Signup} from "@/pages/register/Main";
 import React from "react";
 import {getNetworkInfoFromServer} from "./store/networkInfoRequest/networkInfoAction";
 import {Signup} from "@/pages/Signup";
-import {ConfirmNumber} from "@/pages/ConfirmNumber"
 import {CategoryCoupons} from "@/pages/CategoryCoupons";
 
 
@@ -51,6 +49,7 @@ export const App = () => {
                 <Route path="/register" element={<Signup/>}/>
                 <Route path="/privacyPolicy" element={<PrivacyPolicy/>}/> {/* TODO: change*/}
                 <Route path="*" element={<ErrorPage/>}/> {/* TODO: change*/}
+                <Route path="/signup" element={<Signup/>}/>
             </Routes>
             <Footer/>
         </BrowserRouter>
