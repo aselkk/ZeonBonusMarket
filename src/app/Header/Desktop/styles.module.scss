@@ -5,6 +5,9 @@
 .header {
     background-color: white;
     @include font-default(400, 15px, 18.15px, #171717);
+    z-index: 500;
+    position: sticky;
+    top: 0;
 
     .hLine {
         position: absolute;

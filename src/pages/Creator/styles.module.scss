@@ -158,6 +158,10 @@
                 }
             }
         }
+
+        .cards {
+            justify-content: center;
+        }
     }
     
     @media (max-width: $width-lg) {

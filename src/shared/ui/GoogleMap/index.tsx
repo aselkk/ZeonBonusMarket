@@ -14,6 +14,7 @@ interface Props {
 export const SimpleMap = ({info}: Props) => {
     const [geolocation, setGeolocation]:any = useState();
     const coordinates:any = [];
+    console.log(info, 'info');
     
     useEffect(() => {
         if (info) {
@@ -27,8 +28,8 @@ export const SimpleMap = ({info}: Props) => {
         }); 
     };
 
+
     getCoordinates();
-    console.log(coordinates, "coordinates");
 
     const defaultProps = {
         center: {
@@ -39,10 +40,13 @@ export const SimpleMap = ({info}: Props) => {
         borderRadius: "8px"
     };
 
+    
+    
+
     return (
         <div className={css.map}>
             <GoogleMapReact
-                bootstrapURLKeys={{key: ""}}
+                bootstrapURLKeys={{key: "AIzaSyDKCcqNAC3qk_TC4Samg7pgQaZ_iTcuBHM"}}
                 defaultCenter={defaultProps.center}
                 defaultZoom={defaultProps.zoom}
             >
