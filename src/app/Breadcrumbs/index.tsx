@@ -19,6 +19,7 @@ const CustomPropsBreadcrumb = ({someProp}: any) => (
 // breadcumbs can be components or strings.
 const routes = [
     {path: "/", breadcrumb: "Главная"},
+    {path: "/login", breadcrumb: null},
     {path: "/trends", breadcrumb: CustomPropsBreadcrumb, props: {someProp: "Новые купоны"}},
     {path: "/coupon", breadcrumb: CustomPropsBreadcrumb, props: {someProp: "Профиль"}},
     {path: "/coupon/:id", breadcrumb: CustomPropsBreadcrumb, props: {someProp: ""}},
@@ -30,18 +31,19 @@ const routes = [
 ];
 
 
-
 export const Breadcrumbs = () => {
     const breadcrumbs = useBreadcrumbs(routes);
 
+
     return (
-        <div className={css.breadcrumbs}>
-            <div className={cn("container", css.container)}>
-                {
-                    (breadcrumbs.length > 1)
-                        ? breadcrumbs.map(({match, breadcrumb}, i) => {
-                            return (
-                                <span className={css.link} key={match.pathname}>
+        (breadcrumbs.length > 1)
+            ? (<div className={css.breadcrumbs}>
+                    <div className={cn("container", css.container)}>
+                        {
+                            breadcrumbs
+                                .map(({match, breadcrumb}, i) => {
+                                    return (
+                                        <span className={css.link} key={match.pathname}>
 
                                 <NavLink
                                     className={css.link}
@@ -49,18 +51,19 @@ export const Breadcrumbs = () => {
                                 >
                                     {breadcrumb}
                                 </NavLink>
-                                    {
-                                        (breadcrumbs.length - 1 !== i)
-                                            ? <span>&nbsp;/&nbsp;</span>
-                                            : null
-                                    }
+                                            {
+                                                (breadcrumbs.length - 1 !== i)
+                                                    ? <span>&nbsp;/&nbsp;</span>
+                                                    : null
+                                            }
                                 </span>
-                            );
-                        })
-                        : null
-                }
-            </div>
+                                    );
+                                })
+                        }
+                    </div>
 
-        </div>
+                </div>
+            )
+            : null
     );
 };
