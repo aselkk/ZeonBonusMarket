@@ -21,6 +21,7 @@ import React from "react";
 import {getNetworkInfoFromServer} from "./store/networkInfoRequest/networkInfoAction";
 import {Signup} from "@/pages/Signup";
 import {CategoryCoupons} from "@/pages/CategoryCoupons";
+import { Login } from "@/pages/Login";
 
 
 export const App = () => {
@@ -50,6 +51,7 @@ export const App = () => {
                 <Route path="/privacyPolicy" element={<PrivacyPolicy/>}/> {/* TODO: change*/}
                 <Route path="*" element={<ErrorPage/>}/> {/* TODO: change*/}
                 <Route path="/signup" element={<Signup/>}/>
+                <Route path="/login" element={<Login/>}/>
             </Routes>
             <Footer/>
         </BrowserRouter>
