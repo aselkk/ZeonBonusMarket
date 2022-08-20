@@ -1,12 +1,12 @@
-import { useState } from "react";
+import {useState} from "react";
 import {yupResolver} from "@hookform/resolvers/yup";
 import {useForm} from "react-hook-form";
 import * as Yup from "yup";
 
-import { Button } from "@/shared/ui/Button";
+import {Button} from "@/shared/ui/Button";
 import css from "./styles.module.scss";
 import cn  from "classnames";
-import { ReactComponent as UnvisibleIcon } from "@/assets/icons/unvisible.svg";
+import {ReactComponent as UnvisibleIcon} from "@/assets/icons/unvisible.svg";
 
 
 interface Prop {
@@ -20,9 +20,9 @@ type PasswordSubmitForm = {
 
 const validationSchema = Yup.object().shape({
     password: Yup.string()
-        .required('Это поле обязательно к заполнению')
-        .min(6, 'Длина пароля не должна быть менее 6 букв')
-        .max(40, 'Длина пароля не должна быть более 40 букв'),
+        .required("Это поле обязательно к заполнению")
+        .min(6, "Длина пароля не должна быть менее 6 букв")
+        .max(40, "Длина пароля не должна быть более 40 букв")
 });
 
 export const LoginByPassword = ({setActiveBlock, phone}: Prop) => {
@@ -32,22 +32,22 @@ export const LoginByPassword = ({setActiveBlock, phone}: Prop) => {
         register,
         handleSubmit,
         reset,
-        formState : {errors}
+        formState: {errors}
     } = useForm<PasswordSubmitForm>({
         resolver: yupResolver(validationSchema)
     });
 
     const onSubmit = (data: PasswordSubmitForm) => {
-        let obj = {
+        const obj = {
             ...data,
             phone
-        }
+        };
         console.log(obj);   
     };
 
     return (
         <div className={css.root}>
-             <form className={css.form} onSubmit={handleSubmit(onSubmit)}>
+            <form className={css.form} onSubmit={handleSubmit(onSubmit)}>
                 <h5 className={css.title}>Войдите, чтобы продолжить</h5>
                 <p className={css.number}>{phone}</p>
                 <div className={css.formGroup}>
@@ -74,5 +74,5 @@ export const LoginByPassword = ({setActiveBlock, phone}: Prop) => {
                 </p>
             </form>
         </div>
-    )
-}
+    );
+};

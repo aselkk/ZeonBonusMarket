@@ -1,11 +1,10 @@
 import {useState} from "react";
-import {Link} from "react-router-dom"
+import {Link} from "react-router-dom";
 import {Button} from "@/shared/ui/Button";
 import {ReactComponent as Favorit} from "@/assets/icons/favorite-f.svg";
 import css from "./styles.module.scss";
 import cn from "classnames";
 import {QrCodeModal} from "@/entities/modalTypes/QrCodeModal";
-import {ActivatedModal} from "@/entities/modalTypes/ActivatedModal";
 
 
 export interface Details {
@@ -26,7 +25,7 @@ interface Props {
 
 export const CouponDetails = ({info}: Props) => {
 
-    const [isShowQRModal, setIsShowQRModal] = useState(false)
+    const [isShowQRModal, setIsShowQRModal] = useState(false);
     // const [isShowQRModal, setIsShowQRModal] = useState(false)
 
 
@@ -62,7 +61,7 @@ export const CouponDetails = ({info}: Props) => {
             </div>
             <div className={css.wrapper}>
                 <Button className={cn(css.btn, {[css.btnActive]: !btnIsBuy})}
-                        onClick={() => setIsShowQRModal(true)}
+                    onClick={() => setIsShowQRModal(true)}
                 >
                     {btnIsBuy ? "Купить купон" : "Активировать купон"}
                 </Button>

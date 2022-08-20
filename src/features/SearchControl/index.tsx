@@ -83,7 +83,7 @@ export const SearchControl = ({className, onRedirectToResult}: Props) => {
                                             className={css.searchItem}
                                             onClick={() => {
                                                 submitSearch();
-                                                navigate(`/coupon/${x.id}`)
+                                                navigate(`/coupon/${x.id}`);
                                             }}
                                         >
                                             {x.title}

@@ -1,12 +1,13 @@
 import {yupResolver} from "@hookform/resolvers/yup";
 import {useForm} from "react-hook-form";
 import * as Yup from "yup";
-import { useState } from "react";
+import {useState} from "react";
 
-import { ReactComponent as UnvisibleIcon } from "@/assets/icons/unvisible.svg";
-import { Button } from "@/shared/ui/Button";
+import {ReactComponent as UnvisibleIcon} from "@/assets/icons/unvisible.svg";
+import {Button} from "@/shared/ui/Button";
 import cn  from "classnames";
 import css from "./styles.module.scss";
+
 
 type RecoveryData = {
     phone: string,
@@ -25,12 +26,12 @@ interface Props {
 
 const validationSchema = Yup.object().shape({
     password: Yup.string()
-        .required('Это поле обязательно к заполнению')
-        .min(6, 'Длина пароля не должна быть менее 6 букв')
-        .max(40, 'Длина пароля не должна быть более 40 букв'),
+        .required("Это поле обязательно к заполнению")
+        .min(6, "Длина пароля не должна быть менее 6 букв")
+        .max(40, "Длина пароля не должна быть более 40 букв"),
     confirmPassword: Yup.string()
-        .required('Пароли ')
-        .oneOf([Yup.ref('password'), null], 'Пароли не совпадают')
+        .required("Пароли ")
+        .oneOf([Yup.ref("password"), null], "Пароли не совпадают")
 });
 
 
@@ -42,7 +43,7 @@ export const ChangePassword = ({recoveryData, setActiveBlock}: Props) => {
         register,
         handleSubmit,
         reset,
-        formState : {errors}
+        formState: {errors}
     } = useForm<ConfirmSubmitForm>({
         resolver: yupResolver(validationSchema)
     });
@@ -53,10 +54,10 @@ export const ChangePassword = ({recoveryData, setActiveBlock}: Props) => {
             confirmation_code: recoveryData.confirmCode,
             new_password: data.password,
             new_password_repeat: data.confirmPassword
-        }
+        };
         console.log(sendObject);
         //TODO  запрос на бэк
-        setActiveBlock(4)     
+        setActiveBlock(4);     
     };
 
     return (
@@ -100,5 +101,5 @@ export const ChangePassword = ({recoveryData, setActiveBlock}: Props) => {
                 </Button>
             </form>    
         </div>
-    )
-}
+    );
+};

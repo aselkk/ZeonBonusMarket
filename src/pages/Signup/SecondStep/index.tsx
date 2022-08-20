@@ -1,10 +1,10 @@
-import React, { useState } from "react";
-import { Timer } from "./Timer";
+import React, {useState} from "react";
+import {Timer} from "./Timer";
 import {yupResolver} from "@hookform/resolvers/yup";
 import {useForm} from "react-hook-form";
 import * as Yup from "yup";
 
-import { Button } from "@/shared/ui/Button";
+import {Button} from "@/shared/ui/Button";
 import css from "./styles.module.scss";
 import cn from "classnames";
 
@@ -28,31 +28,31 @@ interface Prop {
 
 const validationSchema = Yup.object().shape({
     confirmCode: Yup.string()
-        .required('Введите код подтверждения')
-        .min(3, 'Минимальное количество символов 3')
-        .max(10, 'Максильное количество символов 10'),
+        .required("Введите код подтверждения")
+        .min(3, "Минимальное количество символов 3")
+        .max(10, "Максильное количество символов 10")
 });
 
 export const SecondStep = ({userData, setActiveBlock}: Prop) => {
-    const [isTimeOut, setIsTimeOut] = useState(false)
+    const [isTimeOut, setIsTimeOut] = useState(false);
 
     const {
         register,
         handleSubmit,
         reset,
-        formState : {errors}
+        formState: {errors}
     } = useForm<ConfirmSubmitForm>({
         resolver: yupResolver(validationSchema)
     });
 
     const onSubmit = (data: ConfirmSubmitForm) => {
-        setActiveBlock(2)
+        setActiveBlock(2);
     };
 
     const handleSendBtn = (e:React.MouseEvent<HTMLButtonElement>) => {
-        e.preventDefault()
-        isTimeOut ? setIsTimeOut(false) : null
-    }
+        e.preventDefault();
+        isTimeOut ? setIsTimeOut(false) : null;
+    };
 
     return (
         <div className={css.root}>
@@ -79,17 +79,17 @@ export const SecondStep = ({userData, setActiveBlock}: Prop) => {
                     onClick={handleSendBtn}
                 >
                     {isTimeOut ? 
-                    (
-                    <span className={css.span}>Отправить</span> 
-                    ) : (
-                        <>
-                            <span className={css.span}>Отправить снова через</span> 
-                            <Timer setIsTimeOut ={setIsTimeOut} isTimeOut={isTimeOut}/> 
-                        </>   
-                    )}
+                        (
+                            <span className={css.span}>Отправить</span> 
+                        ) : (
+                            <>
+                                <span className={css.span}>Отправить снова через</span> 
+                                <Timer setIsTimeOut ={setIsTimeOut} isTimeOut={isTimeOut}/> 
+                            </>   
+                        )}
                  
                 </Button>
             </form>
         </div>
-    )
-}
+    );
+};

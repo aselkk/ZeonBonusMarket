@@ -1,4 +1,4 @@
-import {createSlice, createAsyncThunk} from '@reduxjs/toolkit'
+import {createSlice, createAsyncThunk} from "@reduxjs/toolkit";
 import {Api} from "@/shared/api";
 
 
@@ -6,11 +6,11 @@ const initialState = {};
 
 
 const fetchInfo = createAsyncThunk(
-    'users/fetchByIdStatus',
+    "users/fetchByIdStatus",
     async (userId, thunkAPI) => {
         const data = await Api.Info.getNetworkAndContacts();
     }
-)
+);
 
 
 // const commonInfoSlice = createSlice({

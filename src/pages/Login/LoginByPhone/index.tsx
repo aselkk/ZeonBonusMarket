@@ -1,12 +1,13 @@
-import { useState } from "react";
+import {useState} from "react";
 import FlagsSelect from "react-flags-select";
-import { Button } from "@/shared/ui/Button";
+import {Button} from "@/shared/ui/Button";
 import {yupResolver} from "@hookform/resolvers/yup";
 import {useForm} from "react-hook-form";
 import * as Yup from "yup";
 import css from "./styles.module.scss";
 import cn  from "classnames";
-import { Link } from "react-router-dom";
+import {Link} from "react-router-dom";
+
 
 const countryCodes: any = {
     KG: "+996",
@@ -28,28 +29,28 @@ type Prop = {
 
 const validationSchema = Yup.object().shape({   
     phone: Yup.number()
-        .required('Введите номер телефона')
-        .positive('Введите положительное число')
-        .integer('Введите целые числа')
-        .min(10000, 'Длина номера телефона не менее 5 цифр'),
+        .required("Введите номер телефона")
+        .positive("Введите положительное число")
+        .integer("Введите целые числа")
+        .min(10000, "Длина номера телефона не менее 5 цифр")
 });
 
-export const LoginByPhone = ({ setActiveBlock, setPhone}: Prop) => {
-    const [ selectedCountryCode, setSelectedCountryCode] = useState("KG")
+export const LoginByPhone = ({setActiveBlock, setPhone}: Prop) => {
+    const [selectedCountryCode, setSelectedCountryCode] = useState("KG");
 
     const {
         register,
         handleSubmit,
         reset,
-        formState : {errors}
+        formState: {errors}
     } = useForm<PhoneSubmitForm>({
         resolver: yupResolver(validationSchema)
     });
 
     const onSubmit = (data: PhoneSubmitForm) => {
-       setPhone( countryCodes[selectedCountryCode] + data.phone)
-       setActiveBlock(1)
-    }
+        setPhone( countryCodes[selectedCountryCode] + data.phone);
+        setActiveBlock(1);
+    };
 
     return (
         <div className={css.root}>
@@ -77,10 +78,10 @@ export const LoginByPhone = ({ setActiveBlock, setPhone}: Prop) => {
                 <Button className={css.button}>
                     Войти
                 </Button>
-                <Link to={'/signup'} className={css.link}>
+                <Link to={"/signup"} className={css.link}>
                     Зарегистрироваться
                 </Link>
             </form>
         </div>
-    )
-}
+    );
+};

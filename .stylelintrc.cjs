@@ -5,7 +5,8 @@ module.exports = {
     ignoreFiles: [
         "node_modules/*",
         "src/assets/**",
-        "build/**"
+        "build/**",
+        "dist/**"
     ],
     customSyntax: "postcss-scss",
     rules: {

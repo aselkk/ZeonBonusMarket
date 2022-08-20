@@ -1,7 +1,7 @@
-import { useState } from "react";
+import {useState} from "react";
 import FlagsSelect from "react-flags-select";
-import { Button } from "@/shared/ui/Button";
-import { ReactComponent as UnvisibleIcon } from "@/assets/icons/unvisible.svg";
+import {Button} from "@/shared/ui/Button";
+import {ReactComponent as UnvisibleIcon} from "@/assets/icons/unvisible.svg";
 import {yupResolver} from "@hookform/resolvers/yup";
 import {useForm} from "react-hook-form";
 import * as Yup from "yup";
@@ -36,25 +36,25 @@ export interface Data {
 
 const validationSchema = Yup.object().shape({
     firstName: Yup.string()
-        .required('Это поле обязательно к заполнению')
-        .min(3, 'Имя должно быть минимум из 3 букв')
-        .max(20, 'Имя должно быть максимум из 20 букв'),
+        .required("Это поле обязательно к заполнению")
+        .min(3, "Имя должно быть минимум из 3 букв")
+        .max(20, "Имя должно быть максимум из 20 букв"),
     lastName: Yup.string()
-        .required('Это поле обязательно к заполнению')
-        .min(3, 'Имя должно быть минимум из 3 букв')
-        .max(20, 'Имя должно быть максимум из 20 букв'),
+        .required("Это поле обязательно к заполнению")
+        .min(3, "Имя должно быть минимум из 3 букв")
+        .max(20, "Имя должно быть максимум из 20 букв"),
     phone: Yup.number()
-        .required('Введите номер телефона')
-        .positive('Введите положительное число')
-        .integer('Введите целые числа')
-        .min(10000, 'Длина номера телефона не менее 5 цифр'),
+        .required("Введите номер телефона")
+        .positive("Введите положительное число")
+        .integer("Введите целые числа")
+        .min(10000, "Длина номера телефона не менее 5 цифр"),
     password: Yup.string()
-        .required('Это поле обязательно к заполнению')
-        .min(6, 'Длина пароля не должна быть менее 6 букв')
-        .max(40, 'Длина пароля не должна быть более 40 букв'),
+        .required("Это поле обязательно к заполнению")
+        .min(6, "Длина пароля не должна быть менее 6 букв")
+        .max(40, "Длина пароля не должна быть более 40 букв"),
     confirmPassword: Yup.string()
-        .required('Пароли ')
-        .oneOf([Yup.ref('password'), null], 'Пароли не совпадают')
+        .required("Пароли ")
+        .oneOf([Yup.ref("password"), null], "Пароли не совпадают")
 });
 
 interface Prop {
@@ -64,7 +64,7 @@ interface Prop {
 
 export const FirstStep = ({setSubmitResult, setActiveBlock}: Prop) => {
     
-    const [ selectedCountryCode, setSelectedCountryCode] = useState("KG")
+    const [selectedCountryCode, setSelectedCountryCode] = useState("KG");
     const [isShowPassword1, setIsShowPassword1] = useState(false);
     const [isShowPassword2, setIsShowPassword2] = useState(false);
     
@@ -72,7 +72,7 @@ export const FirstStep = ({setSubmitResult, setActiveBlock}: Prop) => {
         register,
         handleSubmit,
         reset,
-        formState : {errors}
+        formState: {errors}
     } = useForm<UserSubmitForm>({
         resolver: yupResolver(validationSchema)
     });
@@ -84,8 +84,8 @@ export const FirstStep = ({setSubmitResult, setActiveBlock}: Prop) => {
             first_name: data.firstName,
             last_name: data.lastName,
             password2: data.confirmPassword
-        })
-        setActiveBlock(1)
+        });
+        setActiveBlock(1);
     };
     
     return (
@@ -99,7 +99,7 @@ export const FirstStep = ({setSubmitResult, setActiveBlock}: Prop) => {
                         placeholder="Имя"
                         {...register("firstName")}
                     />
-                     <div className={css.invalidFeedback}>{errors.firstName?.message}</div>
+                    <div className={css.invalidFeedback}>{errors.firstName?.message}</div>
                 </div>
                 <div className={css.formGroup}>
                     <input 

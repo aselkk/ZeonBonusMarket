@@ -38,31 +38,31 @@ export const Breadcrumbs = () => {
     return (
         (breadcrumbs.length > 1)
             ? (<div className={css.breadcrumbs}>
-                    <div className={cn("container", css.container)}>
-                        {
-                            breadcrumbs
-                                .map(({match, breadcrumb}, i) => {
-                                    return (
-                                        <span className={css.link} key={match.pathname}>
+                <div className={cn("container", css.container)}>
+                    {
+                        breadcrumbs
+                            .map(({match, breadcrumb}, i) => {
+                                return (
+                                    <span className={css.link} key={match.pathname}>
 
-                                <NavLink
-                                    className={css.link}
-                                    to={match.pathname}
-                                >
-                                    {breadcrumb}
-                                </NavLink>
-                                            {
-                                                (breadcrumbs.length - 1 !== i)
-                                                    ? <span>&nbsp;/&nbsp;</span>
-                                                    : null
-                                            }
-                                </span>
-                                    );
-                                })
-                        }
-                    </div>
-
+                                        <NavLink
+                                            className={css.link}
+                                            to={match.pathname}
+                                        >
+                                            {breadcrumb}
+                                        </NavLink>
+                                        {
+                                            (breadcrumbs.length - 1 !== i)
+                                                ? <span>&nbsp;/&nbsp;</span>
+                                                : null
+                                        }
+                                    </span>
+                                );
+                            })
+                    }
                 </div>
+
+            </div>
             )
             : null
     );

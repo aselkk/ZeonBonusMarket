@@ -1,11 +1,12 @@
 import css from "./styles.module.scss";
-import { Button } from "@/shared/ui/Button";
-import { ReactComponent as Success } from "@/assets/icons/successPurchase.svg";
-import { useNavigate } from "react-router-dom";
+import {Button} from "@/shared/ui/Button";
+import {ReactComponent as Success} from "@/assets/icons/successPurchase.svg";
+import {useNavigate} from "react-router-dom";
+
 
 export const ThirdStep = () => {
 
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
     return (
         <div className={css.root}>
@@ -20,5 +21,5 @@ export const ThirdStep = () => {
                 </Button>
             </div>
         </div>
-    )
-}
+    );
+};

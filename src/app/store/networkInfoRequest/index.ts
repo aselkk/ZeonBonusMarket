@@ -1,27 +1,28 @@
-import {createSlice, PayloadAction} from '@reduxjs/toolkit';
-import {getNetworkInfoFromServer} from './networkInfoAction';
+import {createSlice, PayloadAction} from "@reduxjs/toolkit";
+import {getNetworkInfoFromServer} from "./networkInfoAction";
+
 
 const initialState = {
     items: {},
-    status: '',
+    status: ""
 };
 
 export const networkInfoSlice = createSlice({
-    name: 'networkInfo',
+    name: "networkInfo",
     initialState,
     reducers: {},
 
     extraReducers: {
         [getNetworkInfoFromServer.pending]: (state: any) => {
-            state.status = 'panding';
+            state.status = "panding";
         },
         [getNetworkInfoFromServer.fulfilled]: (state: any, action: PayloadAction<any>) => {
-            state.status = 'fulfilled';
+            state.status = "fulfilled";
             state.items = action.payload;
         },
         [getNetworkInfoFromServer.rejected]: (state: any) => {
-            state.status = 'rejected';
-        },
-    },
+            state.status = "rejected";
+        }
+    }
 });
 

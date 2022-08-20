@@ -12,15 +12,15 @@ const getNetworkAndContacts = async (): Promise<DTO.ContactInfo> => {
 };
 
 const getDescriptionAboutUs = async (): Promise<string> => {
-    const response = await axiosInstance.get("info/about-us")
+    const response = await axiosInstance.get("info/about-us");
     return response.data.description;
 
-}
+};
 const getMapCordinate = async () => {
-    const response = await axiosInstance.get("/info/our-map-coordinates/")
+    const response = await axiosInstance.get("/info/our-map-coordinates/");
     return response;
 
-}
+};
 
 const getFaq = async (): Promise<DTO.FaqItem[]> => {
     const response = await axiosInstance.get("info/faq/");

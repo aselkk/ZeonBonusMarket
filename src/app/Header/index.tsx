@@ -2,7 +2,7 @@ import {useWindowSize} from "@/shared/hooks";
 import {Mobile} from "./Mobile";
 import {Desktop} from "./Desktop";
 import {useEffect, useState} from "react";
-import { useSelector } from "react-redux";
+import {useSelector} from "react-redux";
 
 
 export const Header = () => {

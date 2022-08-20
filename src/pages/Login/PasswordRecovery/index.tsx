@@ -1,13 +1,14 @@
-import React, { useState } from "react";
-import { Timer } from "./Timer";
+import React, {useState} from "react";
+import {Timer} from "./Timer";
 import {yupResolver} from "@hookform/resolvers/yup";
 import {useForm} from "react-hook-form";
 import * as Yup from "yup";
 import FlagsSelect from "react-flags-select";
 
-import { Button } from "@/shared/ui/Button";
+import {Button} from "@/shared/ui/Button";
 import css from "./styles.module.scss";
 import cn from "classnames";
+
 
 const countryCodes: any = {
     KG: "+996",
@@ -37,29 +38,29 @@ interface Prop {
 
 const validPhoneSchema = Yup.object().shape({
     phone: Yup.number()
-    .required('Введите номер телефона')
-    .positive('Введите положительное число')
-    .integer('Введите целые числа')
-    .min(10000, 'Длина номера телефона не менее 5 цифр'),
+        .required("Введите номер телефона")
+        .positive("Введите положительное число")
+        .integer("Введите целые числа")
+        .min(10000, "Длина номера телефона не менее 5 цифр")
 });
 
 const validConfirmSchema = Yup.object().shape({
     confirmCode: Yup.string()
-        .required('Введите код подтверждения')
-        .min(3, 'Минимальное количество символов 3')
-        .max(10, 'Максильное количество символов 10'),
+        .required("Введите код подтверждения")
+        .min(3, "Минимальное количество символов 3")
+        .max(10, "Максильное количество символов 10")
 });
 
 export const PasswordRecovery = ({setActiveBlock, setRecoveryData}: Prop) => {
-    const [isTimeOut, setIsTimeOut] = useState(false)
-    const [selectedCountryCode, setSelectedCountryCode] = useState("KG")
-    const [isRecovery, setIsRecovery] = useState(false)
+    const [isTimeOut, setIsTimeOut] = useState(false);
+    const [selectedCountryCode, setSelectedCountryCode] = useState("KG");
+    const [isRecovery, setIsRecovery] = useState(false);
 
     const {
         register,
         handleSubmit,
         reset,
-        formState : {errors}
+        formState: {errors}
     } = useForm<RecoverySubmitForm>({
         resolver: yupResolver(isRecovery ? validConfirmSchema : validPhoneSchema)
     });
@@ -67,15 +68,15 @@ export const PasswordRecovery = ({setActiveBlock, setRecoveryData}: Prop) => {
     const onSubmit = (data: RecoverySubmitForm) => {
         console.log(data); 
 
-        isRecovery && setRecoveryData(data) 
-        isRecovery && setActiveBlock(3)
-        setIsRecovery(true)  
+        isRecovery && setRecoveryData(data); 
+        isRecovery && setActiveBlock(3);
+        setIsRecovery(true);  
     };
 
     const handleSendBtn = (e:React.MouseEvent<HTMLButtonElement>) => {
-        e.preventDefault()
-        isTimeOut ? setIsTimeOut(false) : null
-    }
+        e.preventDefault();
+        isTimeOut ? setIsTimeOut(false) : null;
+    };
 
     return (
         <div className={css.root}>
@@ -124,19 +125,19 @@ export const PasswordRecovery = ({setActiveBlock, setRecoveryData}: Prop) => {
                             onClick={handleSendBtn}
                         >
                             {isTimeOut ? 
-                            (
-                            <span className={css.span}>Отправить снова</span> 
-                            ) : (
-                                <>
-                                    <span className={css.span}>Отправить снова через</span> 
-                                    <Timer setIsTimeOut ={setIsTimeOut} isTimeOut={isTimeOut}/> 
-                                </>   
-                            )}               
+                                (
+                                    <span className={css.span}>Отправить снова</span> 
+                                ) : (
+                                    <>
+                                        <span className={css.span}>Отправить снова через</span> 
+                                        <Timer setIsTimeOut ={setIsTimeOut} isTimeOut={isTimeOut}/> 
+                                    </>   
+                                )}               
                         </Button>
                     </>
                 )}
               
             </form>
         </div>
-    )
-}
+    );
+};

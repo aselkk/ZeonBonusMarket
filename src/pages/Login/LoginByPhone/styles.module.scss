@@ -41,8 +41,6 @@
                 @include flex-row(flex-start, center);
                 @include font-default(400, 13px, 15.6px, #E31B4B);
             }
-
-            
         }
 
         .button {
@@ -55,8 +53,9 @@
             margin-top: 20px;
             text-align: center;
             @include font-default(400,14px,21px,#4B5FA5);
+
             &:hover {
-                color:#1038c8;
+                color: #1038c8;
             }
         }
 
@@ -79,7 +78,8 @@
 
             .phone {
                 border-radius: 0 12px 12px 0;
-                &::-webkit-outer-spin-button, &::-webkit-inner-spin-button{
+
+                &::-webkit-outer-spin-button, &::-webkit-inner-spin-button {
                     -webkit-appearance: none;
                     margin: 0;
                 }

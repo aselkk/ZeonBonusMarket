@@ -51,7 +51,8 @@
 
             .phone {
                 border-radius: 0 12px 12px 0;
-                &::-webkit-outer-spin-button, &::-webkit-inner-spin-button{
+
+                &::-webkit-outer-spin-button, &::-webkit-inner-spin-button {
                     -webkit-appearance: none;
                     margin: 0;
                 }
@@ -97,7 +98,6 @@
                 padding: 0px 10px;
                 @include flex-row(flex-start, center);
                 @include font-default(400, 13px, 15.6px, #E31B4B);
-        
             }
         }
     }

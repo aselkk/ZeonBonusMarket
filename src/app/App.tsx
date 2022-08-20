@@ -1,4 +1,4 @@
-import { useDispatch} from "react-redux";
+import {useDispatch} from "react-redux";
 import {Routes, Route, BrowserRouter} from "react-router-dom";
 
 import {Coupon} from "@/pages/Coupon";
@@ -21,7 +21,7 @@ import React from "react";
 import {getNetworkInfoFromServer} from "./store/networkInfoRequest/networkInfoAction";
 import {Signup} from "@/pages/Signup";
 import {CategoryCoupons} from "@/pages/CategoryCoupons";
-import { Login } from "@/pages/Login";
+import {Login} from "@/pages/Login";
 
 
 export const App = () => {
