@@ -1,5 +1,7 @@
 import React from "react";
 import {Link, NavLink} from "react-router-dom";
+
+import {userModel} from "@/entities/user";
 import css from "./styles.module.scss";
 
 import {ReactComponent as UserIcon} from "@/assets/icons/userIcon.svg";
@@ -9,6 +11,8 @@ import cn from "classnames";
 
 export const MenuAboutUs = () => {
     const pathName: string = window.location.pathname;
+
+    const {signOut}  = userModel.useAuth();
 
     return (
         <div className={css.menu}>
@@ -62,8 +66,8 @@ export const MenuAboutUs = () => {
                     </Link>
                 </li>
             </ul>
-            <p className={css.quit}>
-        Выйти <span className={css.quitText}>из аккаунта</span>{" "}
+            <p className={css.quit} onClick={() => signOut()}>
+                Выйти <span className={css.quitText}>из аккаунта</span>{" "}
             </p>
         </div>
     );

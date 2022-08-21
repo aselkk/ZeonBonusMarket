@@ -1,3 +1,24 @@
+export interface UserInfo {
+    access: string,
+    phone: string,
+    first_name: string,
+    last_name: string
+}
+
+
+export interface PhoneAuthData {
+    phone: string;
+    password: string;
+    first_name: string;
+    last_name: string;
+    password2: string;
+}
+
+export type PhoneAuthConfirmData = PhoneAuthData & {
+    confirmation_code: string;
+}
+
+
 export interface ContactInfo {
     vkontakte: string,
     instagram: string,
@@ -12,7 +33,6 @@ export interface ContactInfo {
     phone3: string,
     description: string
 }
-
 
 
 export interface Coupon {
@@ -107,7 +127,7 @@ export interface CouponDetailsType {
     bought_quantity: number,
     // TODO: исправить тип
     images: [
-         { id: number, image: string }
+        { id: number, image: string }
     ],
     similar_products: string[],
     qr_coupon: null,

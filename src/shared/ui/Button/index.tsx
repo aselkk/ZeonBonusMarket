@@ -19,13 +19,13 @@ export const Button = (props: FCProps<Props>) => {
     return (
         <ConditionalWrap
             condition={!!props.linkTo}
-            wrap={child => <Link to={props.linkTo}>{child}</Link>}
+            wrap={child => <Link className={css.link} to={props.linkTo}>{child}</Link>}
         >
             <button
                 className={cn(css.button, props.className)}
                 disabled={props.disabled}
                 onClick={props.onClick}
-                type={props.type}
+                type={props.type || "button"}
             >
                 {props.children}
             </button>

@@ -9,7 +9,7 @@
     background-color: #4B5FA5;
 
     &:hover {
-        background-color: #5f79da;
+        background-color: #5F79DA;
         transition: 0.2s;
     }
 
@@ -21,4 +21,10 @@
         cursor: default;
         background-color: gray;
     }
+}
+
+
+.link {
+    width: 100%;
+    @include center-elements();
 }

@@ -1,0 +1,106 @@
+@import "@/shared/styles/mixins.scss";
+
+.root {
+    width: 100%;
+    height: 576px;
+    background: #E5E5E5; 
+
+    .form {
+        width: 316px;
+        margin: 0 auto;
+        padding: 110px 0;
+        display: flex;
+        flex-direction: column;
+
+        .title {
+            @include font-default(700,20px,24px,#181818);
+            margin-bottom: 16px;
+        }
+
+        .input {
+            width: 100%;
+            height: 44px;
+            background: #FFFFFF;
+            border: 1px solid #F7F1FE;
+            border-radius: 12px;
+            padding: 0 16px;
+            @include font-default(400,14px,21px,#171717);
+
+            &::placeholder {
+                @include font-default(400,14px,21px,#98949E);
+            }
+        }
+
+        .button {
+            width: 100%;
+            height: 44px;
+            @include font-default(400,14px,21px,#fff)
+        }
+
+        .sendAgain {
+            width: 100%;
+            height: 44px;
+            background-color: #E5E5E5;
+            border: 1px solid #4B5FA5;
+            @include font-default(400,14px,21px, #4B5FA5);
+        }
+
+        .number {
+            @include font-default(600,18px,22px,#171717);
+            margin-bottom: 2px;
+        }
+
+        .text {
+            @include font-default(400,14px,21px,#98949E);
+            margin-bottom: 24px;
+        }
+
+        .message {
+            @include font-default(400,14px,21px,#4F70E2);
+            text-align: center;
+            margin: 24px 0 2px 0;
+        }
+        
+        .span {
+            margin-right: 5px;
+        }
+
+        .formGroup {
+            .invalidFeedback {
+                margin-top: 2px;
+                min-height: 15px;
+                height: auto;
+                padding: 0px 10px;
+                @include flex-row(flex-start, center);
+                @include font-default(400, 13px, 15.6px, #E31B4B);
+            }
+        }
+
+        .wrapPhone {
+            display: flex;
+            flex-direction: row;
+
+            .flag {
+                width: 105px;
+                height: 44px;
+                background-color: #fff;
+                border-radius: 12px 0 0 12px;
+                padding-top: 5px;
+                outline: none;
+                
+                button {
+                    border: none;
+                }
+            }
+
+            .phone {
+                border-radius: 0 12px 12px 0;
+
+                &::-webkit-outer-spin-button, &::-webkit-inner-spin-button {
+                    -webkit-appearance: none;
+                    margin: 0;
+                }
+            }
+        }
+    }
+}

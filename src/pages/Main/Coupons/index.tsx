@@ -1,20 +1,21 @@
 import {useState, useEffect} from "react";
 import _ from "lodash";
 
-import {DTO} from "@/shared/api";
-import {CouponCard, CouponInfo} from "@/entities/CouponCard";
+import {Api, DTO} from "@/shared/api";
+import {CouponCard, CouponInfo, couponModel} from "@/entities/CouponCard";
 import {CardsContainer} from "@/features/CardsContainer";
 import {Button} from "@/shared/ui/Button";
 import css from "./styles.module.scss";
 
-import {useGetTrendCouponsQuery} from "@/app/store/sevrices";
+import {useQuery} from "@tanstack/react-query";
 
 
 export const Coupons = () => {
+    const {data, isLoading, error} = couponModel.useTrendCouponsCall();
+
     const [coupons, setCoupons] = useState<CouponInfo[]>([]);
 
-    const {data, error, isLoading} = useGetTrendCouponsQuery(1);
-    console.log(error);
+    // const {data, error, isLoading} = useGetTrendCouponsQuery(1);
 
     useEffect(() => {
         if (data) {
@@ -45,7 +46,12 @@ export const Coupons = () => {
             <h2 className={css.title}>Новые купоны</h2>
             <CardsContainer
                 cards={coupons}
-                render={(x, i) => <CouponCard key={x.id} info={x}/>}
+                render={(x, i) =>
+                    <CouponCard
+                        key={x.id}
+                        info={x}
+                        onFavoriteToggle={() => {}}
+                    />}
             />
             {/* TODO: линк на страницу все товары*/}
             <Button className={css.button} linkTo={"/trends"}>

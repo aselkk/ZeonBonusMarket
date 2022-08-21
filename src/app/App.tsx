@@ -19,9 +19,9 @@ import {ErrorPage} from "@/pages/ErrorPage";
 import {Breadcrumbs} from "./Breadcrumbs";
 import React from "react";
 import {getNetworkInfoFromServer} from "./store/networkInfoRequest/networkInfoAction";
-import {Signup} from "@/pages/Signup";
+import {SignUp} from "@/pages/SignUp";
 import {CategoryCoupons} from "@/pages/CategoryCoupons";
-import {Login} from "@/pages/Login";
+import {SignIn} from "@/pages/SignIn";
 
 
 export const App = () => {
@@ -47,11 +47,11 @@ export const App = () => {
                 <Route path="/contacts" element={<Contacts/>}/>
                 <Route path="/about-us" element={<AboutUs/>}/>
                 <Route path="/help" element={<Help/>}/>
-                <Route path="/register" element={<Signup/>}/>
+                <Route path="/register" element={<SignUp/>}/>
                 <Route path="/privacyPolicy" element={<PrivacyPolicy/>}/> {/* TODO: change*/}
                 <Route path="*" element={<ErrorPage/>}/> {/* TODO: change*/}
-                <Route path="/signup" element={<Signup/>}/>
-                <Route path="/login" element={<Login/>}/>
+                <Route path="/signup" element={<SignUp/>}/>
+                <Route path="/login" element={<SignIn/>}/>
             </Routes>
             <Footer/>
         </BrowserRouter>

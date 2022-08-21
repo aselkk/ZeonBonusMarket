@@ -1,0 +1,56 @@
+@import "@/shared/styles/mixins";
+
+
+.root {
+    .wrap {
+        @include flex-row();
+        border-radius: 12px;
+
+        &:focus-within {
+            outline: 1px solid #4B5FA5;
+        }
+
+        .flag {
+            width: 188px;
+            height: 44px;
+            padding-top: 5px;
+            background-color: white;
+            outline: none;
+            border-radius: 12px 0 0 12px;
+
+            button {
+                border: none;
+            }
+        }
+
+        .phoneInput {
+            width: 100%;
+            height: 44px;
+            padding: 0 10px 0 0;
+            background-color: white;
+            border-radius: 0 12px 12px 0;
+            @include font-default(400, 14px, 21px, #171717);
+
+            &::placeholder {
+                @include font-default(400, 14px, 21px, #98949E);
+            }
+
+            &::-webkit-outer-spin-button, &::-webkit-inner-spin-button {
+                -webkit-appearance: none;
+                margin: 0;
+            }
+        }
+    }
+
+    .wrap.error {
+        outline: 1px solid #E31B4B;
+    }
+
+    .errorLabel {
+        margin-top: 1px;
+        height: 20px;
+        padding: 0 10px;
+        @include flex-row(flex-start, center);
+        @include font-default(400, 13px, 15.6px, #E31B4B);
+    }
+}

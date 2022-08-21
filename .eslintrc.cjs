@@ -70,6 +70,9 @@ module.exports = {
         "no-unused-vars": "off",
         "@typescript-eslint/no-unused-vars": ["warn", {vars: "local", args: "none"}],
 
+
+        "@typescript-eslint/member-delimiter-style": "warn",
+
         // React.FC is deprecated
         "@typescript-eslint/ban-types": ["error",
             {

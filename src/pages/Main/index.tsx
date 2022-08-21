@@ -1,5 +1,6 @@
 import cn from "classnames";
-import {Categories} from "./Categories";
+
+import {Categories} from "@/features/Categories";
 import {Coupons} from "./Coupons";
 import {Slider} from "./Slider";
 import {ImagesBlock} from "./ImagesBlock";

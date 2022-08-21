@@ -1,0 +1,56 @@
+@import "@/shared/styles/mixins";
+
+
+.root {
+    .inputWrap {
+        position: relative;
+
+        .input {
+            width: 100%;
+            height: 44px;
+            background-color: white;
+            border: 1px solid #F7F1FE;
+            border-radius: 12px;
+            padding: 0 16px;
+            @include font-default(400, 14px, 21px, #171717);
+
+            &::placeholder {
+                @include font-default(400, 14px, 21px, #98949E);
+            }
+
+            &:focus {
+                border: 1px solid #4B5FA5;
+            }
+        }
+
+        .passwordIcon {
+            position: absolute;
+            cursor: pointer;
+            top: 15px;
+            right: 16px;
+
+            &:hover {
+                transition: 0.2s;
+                transform: scale(1.07);
+            }
+
+            &:active {
+                opacity: 0.6;
+            }
+        }
+
+        .errorBorder {
+            border: 1px solid #E31B4B;
+        }
+    }
+
+    .errorLabel {
+        margin-top: 1px;
+        height: 20px;
+        padding: 0 10px;
+        @include flex-row(flex-start, center);
+        @include font-default(400, 13px, 15.6px, #E31B4B);
+    }
+}
+
+

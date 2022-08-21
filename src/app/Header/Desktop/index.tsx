@@ -1,6 +1,9 @@
+import {useRecoilValue} from "recoil";
 import {Link} from "react-router-dom";
 import cn from "classnames";
 
+import {DTO} from "@/shared/api"
+import {userModel} from "@/entities/user";
 import {SearchControl} from "@/features/SearchControl";
 import css from "./styles.module.scss";
 
@@ -15,6 +18,8 @@ interface Props {
 
 
 export const Desktop = ({phone}: Props) => {
+    const {user} = userModel.useAuth();
+
     return (
         <div className={css.header}>
             <div className={cn("container", css.container)}>
@@ -59,10 +64,10 @@ export const Desktop = ({phone}: Props) => {
                             </Link>
                         </li>
                         <div className={css.divider}></div>
-                        {/* TODO: текушего юзера отображать*/}
                         <li className={css.menuItem}>
                             <Link to="/login">
-                                <LoginIcon width={20} height={20}/> Войти
+                                <LoginIcon width={20} height={20}/>
+                                {user?.first_name || "Boйти"}
                             </Link>
                         </li>
                     </ul>

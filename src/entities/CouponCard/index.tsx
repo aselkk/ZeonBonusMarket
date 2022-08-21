@@ -1,6 +1,7 @@
 import React from "react";
 import {useNavigate} from "react-router-dom";
 import cn from "classnames";
+import {useToggleFav, CouponInfo} from "./model";
 
 import css from "./style.module.scss";
 
@@ -11,29 +12,23 @@ import emptyPreviewImage from "@/assets/images/empty-coupon-preview.jpg";
 import emptyCompanyLogo from "@/assets/images/empty-company-mini-logo.png";
 
 
-export interface CouponInfo {
-    id: number,
-    title: string,
-    previewImage: string,
-    companyName: string,
-    companyLogo: string,
-    isFavorite: boolean,
-    couponPrice: number,
-    productPrice: number,
-    discount: number
-}
 
 interface Props {
-    info: CouponInfo
+    info: CouponInfo,
+    onFavoriteToggle?: () => void
 }
 
 
-export const CouponCard = ({info}: Props) => {
+export const CouponCard = ({info, onFavoriteToggle}: Props) => {
     const navigate = useNavigate();
+
+    const {mutate} = useToggleFav();
 
     const onBtnFavoriteClick = (e: React.MouseEvent<HTMLButtonElement>) => {
         e.stopPropagation();
         console.log("Favorite", info.id);
+        onFavoriteToggle?.();
+        mutate({id: info.id, isFavorite: !info.isFavorite});
     };
 
     const onCardClick = () => {
@@ -103,3 +98,6 @@ export const CouponCard = ({info}: Props) => {
         </div>
     );
 };
+
+
+export * as couponModel from "./model";
