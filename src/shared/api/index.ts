@@ -38,6 +38,33 @@ const confirmSignUp = async (data: DTO.PhoneAuthConfirmData) => {
     const response = await axiosInstance.post("/users/login-confirm/", data);
 };
 
+// recovery
+const recoveryPhoneForSms = async (data: DTO.RecoveryData) => {
+    try {
+        const response = await axiosInstance.post("/users/recovery-password-send-sms/", data);
+        return "success";
+    } catch (err) {
+        // TODO: потому что так работает бэкенд
+        const error = err as any;
+        const data = error?.response?.data;
+        if (error.response?.status === 400 &&
+            data.message === "Не удалось отправить сообщение. Попробуйте позже.") {
+            return "success";
+        }
+        const msg = data.detail || data.message;
+        throw new Error(msg);
+    }
+};
+
+const recoveryWithConfirmCode = async (data: DTO.RecoveryData) => {
+    return  await axiosInstance.post("/users/recovery-password-confirm/", data);
+};
+
+const recoveryChangePassword = async (data: DTO.RecoveryData) => {
+    const response = await axiosInstance.patch("/users/recovery-password/", data);
+};
+// recovery-end
+
 const getNetworkAndContacts = async (): Promise<DTO.ContactInfo> => {
     const response = await axiosInstance.get("info/networks");
     return response.data;
@@ -104,7 +131,10 @@ export const Api = {
         signIn,
         checkAccessToken,
         signUp,
-        confirmSignUp
+        confirmSignUp,
+        recoveryPhoneForSms,
+        recoveryWithConfirmCode,
+        recoveryChangePassword
     },
     Info: {
         getNetworkAndContacts,

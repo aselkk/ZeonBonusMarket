@@ -14,10 +14,16 @@ export interface PhoneAuthData {
     password2: string;
 }
 
+export interface RecoveryData {
+    phone: string;
+    confirmation_code?: string,
+    new_password?: string,
+    new_password_repeat?: string
+}
+
 export type PhoneAuthConfirmData = PhoneAuthData & {
     confirmation_code: string;
 }
-
 
 export interface ContactInfo {
     vkontakte: string;

@@ -63,7 +63,7 @@ export const PasswordForm = ({onSuccess, phone}: Props) => {
                 <Button className={css.button} type="submit">
                     Войти
                 </Button>
-                <Link className={css.link} to="/">
+                <Link className={css.link} to="/recovery">
                     Не помню пароль
                 </Link>
             </form>

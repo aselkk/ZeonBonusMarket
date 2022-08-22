@@ -4,11 +4,11 @@ import {yupResolver} from "@hookform/resolvers/yup";
 import {useForm} from "react-hook-form";
 import * as Yup from "yup";
 import FlagsSelect from "react-flags-select";
-
+import { Alerts } from "@/shared/ui/alerts";
 import {Button} from "@/shared/ui/Button";
 import css from "./styles.module.scss";
 import cn from "classnames";
-
+import { Api } from "@/shared/api";
 
 const countryCodes: any = {
     KG: "+996",
@@ -39,7 +39,7 @@ type RecoveryData = {
 
 
 interface Prop {
-    setActiveBlock: (activeBlock: number) => void;
+    setStep: (step: string) => void;
     setRecoveryData: (recoveryData: RecoverySubmitForm) => void;
 }
 
@@ -58,11 +58,14 @@ const validConfirmSchema = Yup.object().shape({
         .max(10, "Максильное количество символов 10")
 });
 
-export const PasswordRecovery = ({setActiveBlock, setRecoveryData}: Prop) => {
+export const PasswordRecovery = ({setStep, setRecoveryData}: Prop) => {
+   
+ 
+    const {recoveryPhoneForSms, recoveryWithConfirmCode} = Api.User;
+    
     const [isTimeOut, setIsTimeOut] = useState(false);
     const [selectedCountryCode, setSelectedCountryCode] = useState("KG");
     const [isRecovery, setIsRecovery] = useState(false);
-    // const [recoveryData, setRecoveryData] = useState<RecoveryData>({} as RecoveryData);
 
     const {
         register,
@@ -73,12 +76,32 @@ export const PasswordRecovery = ({setActiveBlock, setRecoveryData}: Prop) => {
         resolver: yupResolver(isRecovery ? validConfirmSchema : validPhoneSchema)
     });
 
-    const onSubmit = (data: RecoverySubmitForm) => {
-        console.log(data); 
-
-        isRecovery && setRecoveryData(data); 
-        isRecovery && setActiveBlock(3);
-        setIsRecovery(true);  
+    const onSubmit = async (data: RecoverySubmitForm) => {
+        try {           
+            if(isRecovery){
+                const resp = await recoveryWithConfirmCode({
+                    phone: countryCodes[selectedCountryCode] + data.phone,
+                    confirmation_code: data.confirmCode
+                })
+                console.log("ok", resp.status);
+               
+            } else {  
+                await recoveryPhoneForSms({
+                    phone: countryCodes[selectedCountryCode] + data.phone
+                })
+                console.log("ok");
+                
+            }        
+        } catch (err) {
+            const error = err as Error;
+            await Alerts.showError(error.message);
+        }
+        setIsRecovery(true); 
+        isRecovery && setRecoveryData({
+            ...data, 
+            phone: countryCodes[selectedCountryCode] + data.phone,
+        }); 
+        isRecovery && setStep("new-password");
     };
 
     const handleSendBtn = (e:React.MouseEvent<HTMLButtonElement>) => {

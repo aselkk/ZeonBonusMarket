@@ -14,7 +14,9 @@ import {AboutUs} from "@/pages/AboutUs";
 import {Help} from "@/pages/Help";
 import {PrivacyPolicy} from "@/pages/PrivacyPolicy";
 import {ErrorPage} from "@/pages/ErrorPage";
+import {PasswordChange} from "@/features/auth/__TODO_PasswordChange";
 import { MyCoupons } from "@/pages/MyCoupons";
+
 
 
 export const Router = () => {
@@ -33,6 +35,7 @@ export const Router = () => {
             <Route path="/about-us" element={<AboutUs/>}/>
             <Route path="/help" element={<Help/>}/>
             <Route path="/privacy-policy" element={<PrivacyPolicy/>}/>
+            <Route path="/recovery" element={<PasswordChange/>}/>
             <Route path="/my-coupons" element={<MyCoupons/>}/>
             <Route path="*" element={<ErrorPage/>}/>
         </Routes>

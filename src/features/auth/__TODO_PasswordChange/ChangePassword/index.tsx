@@ -7,6 +7,8 @@ import {ReactComponent as UnvisibleIcon} from "@/assets/icons/unvisible.svg";
 import {Button} from "@/shared/ui/Button";
 import cn  from "classnames";
 import css from "./styles.module.scss";
+import {Api} from "@/shared/api";
+import {Alerts} from "@/shared/ui/alerts";
 
 
 type RecoveryData = {
@@ -21,7 +23,7 @@ type ConfirmSubmitForm = {
 
 interface Props {
     recoveryData: RecoveryData;
-    setActiveBlock : (activeBlock: number) => void;
+    setStep : (step: string) => void;
 }
 
 const validationSchema = Yup.object().shape({
@@ -35,9 +37,11 @@ const validationSchema = Yup.object().shape({
 });
 
 
-export const ChangePassword = ({recoveryData, setActiveBlock}: Props) => {
+export const ChangePassword = ({recoveryData, setStep}: Props) => {
     const [isShowPassword1, setIsShowPassword1] = useState(false);
     const [isShowPassword2, setIsShowPassword2] = useState(false);
+
+    const {recoveryChangePassword} = Api.User
 
     const {
         register,
@@ -48,16 +52,22 @@ export const ChangePassword = ({recoveryData, setActiveBlock}: Props) => {
         resolver: yupResolver(validationSchema)
     });
     
-    const onSubmit = (data: ConfirmSubmitForm) => {
-        const sendObject = {
-            phone: recoveryData.phone,
-            confirmation_code: recoveryData.confirmCode,
-            new_password: data.password,
-            new_password_repeat: data.confirmPassword
-        };
-        console.log(sendObject);
-        //TODO  запрос на бэк
-        setActiveBlock(4);     
+    const onSubmit = async (data: ConfirmSubmitForm) => {
+       
+        try {           
+            const sendObject = {
+                phone: recoveryData.phone,
+                confirmation_code: recoveryData.confirmCode,
+                new_password: data.password,
+                new_password_repeat: data.confirmPassword
+            };
+            await recoveryChangePassword(sendObject);
+            setStep("successed");  
+        } catch (err) {
+            const error = err as Error;
+            await Alerts.showError(error.message);
+        }
+       
     };
 
     return (
