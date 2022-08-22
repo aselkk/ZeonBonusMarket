@@ -14,7 +14,10 @@ interface Props {
 export const SimpleMap = ({info}: Props) => {
     const [geolocation, setGeolocation]:any = useState();
     const coordinates:any = [];
-    
+
+    const MapIcon = ({lat, lng} : {lat: any, lng: any}) => <Map/>;
+
+
     useEffect(() => {
         if (info) {
             setGeolocation(info?.coordinates);
@@ -41,8 +44,6 @@ export const SimpleMap = ({info}: Props) => {
     };
 
     
-    
-
     return (
         <div className={css.map}>
             <GoogleMapReact
@@ -52,10 +53,10 @@ export const SimpleMap = ({info}: Props) => {
             >
                 {
                     coordinates.map((el: any, idx: number) => (
-                        <Map
+                        <MapIcon
                             key = {idx}
-                            lat= {el[0]}
-                            lng = {el[1]}
+                            lat={el[0]}
+                            lng={el[1]}
                         />
                     ))
                 }

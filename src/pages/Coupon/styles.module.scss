@@ -23,6 +23,20 @@
     .items {
         width: 100%;
     }
+}  
+
+.similarCouponsContainer {
+    @include flex-col();
+    padding-bottom: 50px;
+    gap: 12px;
+
+        h3 {
+            @include font-default(700, 24px, 21px, #171717);
+        }
+
+        .similarCoupons {
+            @include flex-row();
+        }
 }
 
 .mapWrapper {

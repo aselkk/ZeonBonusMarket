@@ -4,6 +4,7 @@ import lstore from "store";
 import cn from "classnames";
 
 import {axiosInstance, DTO} from "@/shared/api";
+import {CouponCard, couponModel} from "@/entities/coupon";
 import {SimpleMap} from "@/shared/ui/GoogleMap";
 import {CouponDetails, Details} from "./CouponDetails";
 import {Carousel} from "./Carousel";
@@ -12,10 +13,14 @@ import {CouponInfo} from "./CouponInfo";
 import css from "./styles.module.scss";
 
 
+
 export const Coupon = () => {
     const {id} = useParams();
     const [data, setCouponDetails] = useState<DTO.CouponDetailsType>();
     const [details, setDetails] = useState<Details>();
+    const [coordinates, setCoordinates] = useState();
+    const [coupons, setCoupons] = useState<couponModel.CouponInfo[]>([]);
+
 
     
     useEffect(() => {
@@ -36,6 +41,12 @@ export const Coupon = () => {
                     isFavorite: false,
                     mapLocations: response.data.map_locations
                 };
+
+                response.data.coordinates = response.data.map_locations;
+                const couponRes: any = response.data.similar_products;
+                const couponItems =
+                    couponRes.map((x: DTO.Coupon) => couponModel.convertToCouponInfo(x));
+                setCoupons(couponItems);
                 setDetails(dsd);
                 setCouponDetails(response.data);
             } catch (err) {
@@ -44,6 +55,7 @@ export const Coupon = () => {
         }
         )();
     }, []);
+
 
     return (
         <>
@@ -66,37 +78,24 @@ export const Coupon = () => {
                     />
                 </div>
             </div>
+            <div className={cn("container", css.similarCouponsContainer)}>
+                <h3>Похожие товары</h3>
+                <div className={css.similarCoupons}>
+                    {
+                        coupons?.map(x => <CouponCard key={x.id} info={x}/>)
+                    }
+                </div>
+            </div>
             <div className={cn("container", css.mapWrapper)}>
                 <div className={css.mapContainer}>
-                    <SimpleMap info={details}/>
+                    <SimpleMap info={data}/>
                 </div>
                 <div className={css.listWrapper}>
                     <ul className={css.list} >
-                        <li className={css.listItems}>
-                            <p>Новокосино</p>
-                            <p>г. Москва, ул. Городецкая, д. 5</p>
-                            <p>+996 000 00 00 00</p>
-                        </li>
-                        <li className={css.listItems}>
-                            <p>Новокосино</p>
-                            <p>г. Москва, ул. Городецкая, д. 5</p>
-                            <p>+996 000 00 00 00</p>
-                        </li>
-                        <li className={css.listItems}>
-                            <p>Новокосино</p>
-                            <p>г. Москва, ул. Городецкая, д. 5</p>
-                            <p>+996 000 00 00 00</p>
-                        </li>
-                        <li className={css.listItems}>
-                            <p>Новокосино</p>
-                            <p>г. Москва, ул. Городецкая, д. 5</p>
-                            <p>+996 000 00 00 00</p>
-                        </li>
-                        <li className={css.listItems}>
-                            <p>Новокосино</p>
-                            <p>г. Москва, ул. Городецкая, д. 5</p>
-                            <p>+996 000 00 00 00</p>
-                        </li>
+                        {data ? data.map_locations.map((x:any) => (
+                            <li key={x.id} className={css.listItems}>{x.address}</li>
+                        )) : null
+                        }
                         <li className={css.listItems}>
                             <p>Новокосино</p>
                             <p>г. Москва, ул. Городецкая, д. 5</p>
