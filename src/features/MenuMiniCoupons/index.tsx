@@ -20,7 +20,7 @@ export const MenuCoupons = () => {
             <ul>
                 <li>
                     <NavLink
-                        to="*"
+                        to="/my-profile"
                         className={({isActive}) => cn(css.linkTo, {[css.activePathName]: isActive})}
                     >
                         <div>
@@ -44,7 +44,7 @@ export const MenuCoupons = () => {
                 </li>
                 <li>
                     <NavLink
-                        to={"*"}
+                        to={"/change-nom"}
                         className={({isActive}) => cn(css.linkTo, {[css.activePathName]: isActive})}
                     >
                         <div>
@@ -55,7 +55,7 @@ export const MenuCoupons = () => {
                 </li>
                 <li>
                     <NavLink
-                        to={"*"}
+                        to={"/change-pass"}
                         className={({isActive}) => cn(css.linkTo, {[css.activePathName]: isActive})}
                     >
                         <div>
