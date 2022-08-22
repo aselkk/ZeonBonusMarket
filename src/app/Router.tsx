@@ -14,6 +14,7 @@ import {AboutUs} from "@/pages/AboutUs";
 import {Help} from "@/pages/Help";
 import {PrivacyPolicy} from "@/pages/PrivacyPolicy";
 import {ErrorPage} from "@/pages/ErrorPage";
+import { MyCoupons } from "@/pages/MyCoupons";
 
 
 export const Router = () => {
@@ -32,6 +33,7 @@ export const Router = () => {
             <Route path="/about-us" element={<AboutUs/>}/>
             <Route path="/help" element={<Help/>}/>
             <Route path="/privacy-policy" element={<PrivacyPolicy/>}/>
+            <Route path="/my-coupons" element={<MyCoupons/>}/>
             <Route path="*" element={<ErrorPage/>}/>
         </Routes>
     );

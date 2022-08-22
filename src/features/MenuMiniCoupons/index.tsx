@@ -1,5 +1,5 @@
 import React from "react";
-import {Link, NavLink} from "react-router-dom";
+import {Link, NavLink, useNavigate} from "react-router-dom";
 import css from "./styles.module.scss";
 
 import {ReactComponent as UserIcon} from "@/assets/icons/userIcon.svg";
@@ -8,18 +8,20 @@ import {ReactComponent as Phone} from "@/assets/icons/phone.svg";
 import {ReactComponent as PasswordChangeIcon} from "@/assets/icons/passwordChangeIcon.svg";
 
 import cn from "classnames";
+import { userModel } from "@/entities/user";
+
 
 export const MenuCoupons = () => {
-    const pathName: string = window.location.pathname;
+    const {signOut} = userModel.useAuth();
+    const navigate = useNavigate();
 
     return (
         <div className={css.menu}>
             <ul>
                 <li>
                     <NavLink
-                        to="/about-us"
+                        to="*"
                         className={({isActive}) => cn(css.linkTo, {[css.activePathName]: isActive})}
-
                     >
                         <div>
                             <UserIcon
@@ -30,59 +32,44 @@ export const MenuCoupons = () => {
                     </NavLink>
                 </li>
                 <li>
-                    <Link
-                        to={"/contacts"}
-                        className={`${css.linkTo} ${
-                            pathName === "/contacts" ? css.activePathName : ""
-                        }`}
+                    <NavLink
+                        to={"/my-coupons"}
+                        className={({isActive}) => cn(css.linkTo, {[css.activePathName]: isActive})}
                     >
                         <div>
-                            <CouponIcon
-                                className={`${css.icons} ${
-                                    pathName === "/contacts" ? css.activePathName : ""
-                                }`}
-                            />
+                            <CouponIcon className={css.icons}/>
                         </div>
                         <p>Мои купоны</p>
-                    </Link>
+                    </NavLink>
                 </li>
                 <li>
-                    <Link
-                        to={"/help"}
-                        className={`${css.linkTo} ${
-                            pathName === "/help" ? css.activePathName : ""
-                        }`}
+                    <NavLink
+                        to={"*"}
+                        className={({isActive}) => cn(css.linkTo, {[css.activePathName]: isActive})}
                     >
                         <div>
-                            <Phone
-                                className={`${css.icons} ${
-                                    pathName === "/helpPage" ? css.activePathName : ""
-                                }`}
-                            />
+                            <Phone className={css.icons}/>
                         </div>
                         <p>Сменить номер</p>
-                    </Link>
+                    </NavLink>
                 </li>
                 <li>
-                    <Link
-                        to={"/help"}
-                        className={`${css.linkTo} ${
-                            pathName === "/help" ? css.activePathName : ""
-                        }`}
+                    <NavLink
+                        to={"*"}
+                        className={({isActive}) => cn(css.linkTo, {[css.activePathName]: isActive})}
                     >
                         <div>
-                            <PasswordChangeIcon
-                                className={`${css.icons} ${
-                                    pathName === "/helpPage" ? css.activePathName : ""
-                                }`}
-                            />
+                            <PasswordChangeIcon className={css.icons}/>
                         </div>
                         <p>Сменить пароль</p>
-                    </Link>
+                    </NavLink>
                 </li>
             </ul>
-            <p className={css.quit}>
-                    Выйти из аккаунта
+            <p className={css.quit} onClick={() => {
+                signOut()
+                navigate("/");
+            }}>
+                Выйти из аккаунта
             </p>
             
         </div>
