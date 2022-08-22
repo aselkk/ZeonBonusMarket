@@ -78,6 +78,16 @@ const getTrendCoupons = async (page?: number, tagId?: number): Promise<DTO.Searc
     return response.data;
 };
 
+const getCouponsByCategory = async (categoryId: number, tagId?: number, page?: number): Promise<DTO.SearchResult> => {
+    const params = new URLSearchParams();
+    page && params.append("page", String(page));
+    tagId && params.append("tags", String(tagId));
+
+    const response = await axiosInstance.get(`/coupons/subcategory/${categoryId}?${params}`);
+
+    return response.data;
+};
+
 
 const getCouponsByText = async (text: string): Promise<DTO.SearchResult> => {
     const response = await axiosInstance.get(`coupons/search?search=${text}`);
@@ -101,6 +111,7 @@ export const Api = {
     Coupons: {
         getCoupons,
         getTrendCoupons,
+        getCouponsByCategory,
         getCouponsByText
     }
 };
