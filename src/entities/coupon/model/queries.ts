@@ -164,29 +164,40 @@ export const useFavoriteCouponsInfinite = (page?: number) => {
 };
 
 
-export const useSearchCouponsCall = (page?: number, tageId?: number) => {
-    return useQuery<DTO.SearchResult, Error, DTO.SearchResult>(["coupons", page, tageId],
-        () => getTrendCoupons(page, tageId),
-        {
-            onSuccess: () => console.log("on success, useTrendCouponsCall"),
-            select: data => {
-                const arr: number[] = lstore.get("favorites");
-                if (arr) {
-                    return {
-                        ...data,
-                        results: data.results.map(x => {
-                            if (arr.includes(x.id)) {
-                                return {
-                                    ...x,
-                                    is_favorite: true
-                                };
-                            }
+export const useSearchCouponsInfinite = (text: string) => {
+    const fetchData = async ({pageParam = 1}) => {
+        return await Api.Coupons.getCouponsByText(text, pageParam);
+    };
 
-                            return x;
-                        })
-                    };
-                }
-                return data;
+    return useInfiniteQuery<DTO.SearchResult, Error, DTO.SearchResult>(["coupons-search-infinite", text],
+        fetchData,
+        {
+            getNextPageParam: (lastPage, pages) => {
+                const totalPages = Math.ceil(lastPage.count / 20);
+                if (pages.length < totalPages)
+                    return pages.length + 1;
+                return undefined;
+            },
+            select: data => {
+                const arr: number[] = lstore.get("favorites") || [];
+                return {
+                    ...data,
+                    pages: data.pages.map(page => {
+                        return {
+                            ...page,
+                            results: page.results.map(x => {
+                                if (arr.includes(x.id)) {
+                                    return {
+                                        ...x,
+                                        is_favorite: true
+                                    };
+                                }
+
+                                return x;
+                            })
+                        };
+                    })
+                };
             }
         });
 };
@@ -266,6 +277,27 @@ export const useToggleFav = () => {
                 });
 
                 queryClient.setQueriesData(["coupons-category-infinite"], (data: any) => {
+                    return {
+                        ...data,
+                        pages: data.pages.map((page: DTO.SearchResult) => {
+                            return {
+                                ...page,
+                                results: page.results.map((x) => {
+                                    if (x.id === variables.id) {
+                                        return {
+                                            ...x,
+                                            is_favorite: variables.isFavorite
+                                        };
+                                    }
+
+                                    return x;
+                                })
+                            };
+                        })
+                    };
+                });
+
+                queryClient.setQueriesData(["coupons-search-infinite"], (data: any) => {
                     return {
                         ...data,
                         pages: data.pages.map((page: DTO.SearchResult) => {

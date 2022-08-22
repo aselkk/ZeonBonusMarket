@@ -15,9 +15,15 @@ const enum SortType {
     PriceDesc
 }
 
+const priceLabels: object = {
+    [SortType.AlphabetAsc]: "алфавиту",
+    [SortType.PriceAsc]: "цене (низкая > высокая)",
+    [SortType.PriceDesc]: "цене (высокая > низкая)",
+}
+
 interface LocationState {
     query: string;
-    result: DTO.Coupon[];
+    result: couponModel.CouponInfo[];
 }
 
 
@@ -26,18 +32,31 @@ export const SearchResult = () => {
     const state = location.state as LocationState;
 
     const [coupons, setCoupons] = useState<couponModel.CouponInfo[]>([]);
-    
+
     const [sortOrder, setSortOrder] = useState(SortType.AlphabetAsc);
 
     const [isOpened, setIsOpened] = useState(false)
 
     useEffect(() => {
-        const resultCoupons =
-            state.result.map((x: DTO.Coupon) => couponModel.convertToCouponInfo(x));
-
-        setCoupons(sortCoupons(sortOrder, resultCoupons));
+        setCoupons(sortCoupons(sortOrder, state.result));
     }, [location]);
 
+
+    const {
+        data,
+        isLoading,
+        hasNextPage,
+        fetchNextPage
+    } = couponModel.useSearchCouponsInfinite(state.query);
+
+    useEffect(() => {
+        if (data) {
+            const result = data.pages
+                .map(x => x.results.map(n => couponModel.convertToCouponInfo(n)))
+                .flat();
+            setCoupons(result);
+        }
+    }, [data]);
 
 
     useEffect(() => {
@@ -57,21 +76,35 @@ export const SearchResult = () => {
                         <option value={SortType.PriceDesc}>{"По цене (высокая > низкая) "}</option>
                     </select> */}
                     <div className={css.sort}>
-                        <p onClick={() => setIsOpened(true)}>Сортировать по: ▾</p>
-                        <div style = {isOpened ? {display: 'flex'} : {display: 'none'}} className={css.sortList}>
+                        <p onClick={() => setIsOpened(true)}>Сортировать по: &nbsp;
+                            {priceLabels[sortOrder]}</p>
+                        <div style={isOpened ? {display: 'flex'} : {display: 'none'}} className={css.sortList}>
                             <h3 onClick={() => {
+                                setIsOpened(false);
+                            }}>Сортировать по:</h3>
+                            <div onClick={() => {
                                 setSortOrder(SortType.AlphabetAsc)
                                 setIsOpened(false);
-                            }}>Сортировать по: ▾</h3>
+                            }}>
+                                алфавиту
+                            </div>
+
                             <div onClick={() => {
                                 setSortOrder(SortType.PriceAsc)
                                 setIsOpened(false);
-                            }}>алфавиту</div>
-                            <div>{'По цене (низкая > высокая)'}</div>
+                            }}
+                            >
+                                {'По цене (низкая > высокая)'}
+                            </div>
+
+
                             <div onClick={() => {
                                 setSortOrder(SortType.PriceDesc)
                                 setIsOpened(false);
-                            }}>{'По цене (высокая > низкая)'}</div>
+                            }}
+                            >
+                                {'По цене (высокая > низкая)'}
+                            </div>
                         </div>
                     </div>
 

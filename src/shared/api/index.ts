@@ -89,8 +89,12 @@ const getCouponsByCategory = async (categoryId: number, tagId?: number, page?: n
 };
 
 
-const getCouponsByText = async (text: string): Promise<DTO.SearchResult> => {
-    const response = await axiosInstance.get(`coupons/search?search=${text}`);
+const getCouponsByText = async (text: string, page?: number): Promise<DTO.SearchResult> => {
+    const params = new URLSearchParams();
+    params.append("search", text);
+    page && params.append("page", String(page));
+
+    const response = await axiosInstance.get(`coupons/search?${params}`);
     return response.data;
 };
 

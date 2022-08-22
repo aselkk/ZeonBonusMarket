@@ -20,7 +20,8 @@ export const Coupon = () => {
     
     useEffect(() => {
         (async () => {
-            try { 
+            try {
+                // TODO: перенести, и конвертацию
                 const response = await axiosInstance.get(`coupons/${id}/`);
                 response.data;
                 const dsd: Details = {
