@@ -3,6 +3,7 @@
 
 
 .main {
+    @include font-default(400, 14px, 21px, #171717);
     background-color: white;
 
     .container {
@@ -10,15 +11,49 @@
         padding: 24px 15px 50px 15px;
 
         .header {
+            position: relative;
             width: 100%;
             @include flex-row(space-between);
-
 
             .title {
                 @include font-default(700, 24px, 29px, #181818);
                 align-self: flex-start;
             }
+
+            .sort {
+                cursor: pointer;
+                    .sortList {
+                        position: absolute;
+                        border: 1px solid red;
+                        right: 0;
+                        top: -4px;
+                        background: #fff;
+                        z-index: 100;
+                        padding: 24px;
+                        font-size: 14px;
+                        @include flex-col(flex-end, flex-end);
+                        gap: 16px;
+                        border: 1px solid #EDF1FD;
+                        box-shadow: 0px 24px 24px rgba(0, 0, 0, 0.1);
+                        border-radius: 16px;
+
+                            h3 {
+                                font-size: 15px;
+                                font-weight: 500;
+                                color: #2A2A2A;
+                            }
+
+                            div {
+                                cursor: pointer;
+
+                                &:hover {
+                                    color: #4B5FA5
+                                }
+                            }
+                    }
+            }
         }
+
     }
 }
 
