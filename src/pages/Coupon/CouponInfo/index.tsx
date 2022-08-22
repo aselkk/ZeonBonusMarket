@@ -6,9 +6,9 @@ import {SocialMedia} from "./SocialMedia";
 
 
 interface PropType {
-    begin?: string,
-    end?: string,
-    saled?: number
+    begin?: string;
+    end?: string;
+    saled?: number;
 }
 
 export const CouponInfo = (props: PropType) => {

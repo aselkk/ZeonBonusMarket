@@ -2,7 +2,7 @@ import css from "./styles.module.scss";
 
 
 interface Props {
-    onClick?: () => void
+    onClick?: () => void;
 }
 
 

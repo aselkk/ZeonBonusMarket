@@ -1,7 +1,10 @@
 import {useRef} from "react";
+import {useRecoilValue} from "recoil";
 import {Link} from "react-router-dom";
 import cn from "classnames";
 
+import {userModel} from "@/entities/user";
+import {favoritesAtom} from "@/shared/store/favorites";
 import {useOutsideAlerter} from "@/shared/hooks";
 import css from "./styles.module.scss";
 
@@ -12,12 +15,15 @@ import {ReactComponent as LoginIcon} from "@/assets/icons/log-in.svg";
 
 
 interface Props {
-    phone?: string,
-    onClose?: () => void
+    phone?: string;
+    onClose?: () => void;
 }
 
 
 export const DrawerMenu = ({phone, onClose}: Props) => {
+    const {user} = userModel.useAuth();
+    const isExistFavorites = useRecoilValue(favoritesAtom);
+
     const menuRef = useRef<HTMLDivElement>(null);
     useOutsideAlerter(menuRef, () => onClose?.());
 
@@ -61,6 +67,7 @@ export const DrawerMenu = ({phone, onClose}: Props) => {
                         <li>
                             <Link to="/favorites">
                                 <FavoritesIcon width={20} height={20}/> Избранное
+                                {isExistFavorites && <div className={css.redCircleNotify}/>}
                             </Link>
                         </li>
                         <li>
@@ -70,7 +77,8 @@ export const DrawerMenu = ({phone, onClose}: Props) => {
                         </li>
                         <li>
                             <Link to="/login">
-                                <LoginIcon width={20} height={20}/> Войти
+                                <LoginIcon width={20} height={20}/>
+                                {user?.first_name || "Boйти"}
                             </Link>
                         </li>
                     </ul>

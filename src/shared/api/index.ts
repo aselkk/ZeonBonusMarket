@@ -1,6 +1,6 @@
 import {axiosInstance} from "./axiosInstance";
 import * as DTO from "./types";
-
+import _ from "lodash";
 
 // TODO: сделать так https://github.com/feature-sliced/examples/tree/master/todo-app/src/shared/api
 
@@ -60,9 +60,21 @@ const getFaq = async (): Promise<DTO.FaqItem[]> => {
 };
 
 
+const getCoupons = async (page?: number, tagId?: number): Promise<DTO.SearchResult> => {
+    const params = new URLSearchParams();
+    page && params.append("page", String(page));
+    tagId && params.append("tags", String(tagId));
 
-const getTrendCoupons = async (page: number): Promise<DTO.SearchResult> => {
-    const response = await axiosInstance.get(`coupons/trends?page=${page}`);
+    const response = await axiosInstance.get(`coupons/?${params}`);
+    return response.data;
+};
+
+const getTrendCoupons = async (page?: number, tagId?: number): Promise<DTO.SearchResult> => {
+    const params = new URLSearchParams();
+    page && params.append("page", String(page));
+    tagId && params.append("tags", String(tagId));
+
+    const response = await axiosInstance.get(`coupons/trends?${params}`);
     return response.data;
 };
 
@@ -87,6 +99,7 @@ export const Api = {
         getMapCordinate
     },
     Coupons: {
+        getCoupons,
         getTrendCoupons,
         getCouponsByText
     }

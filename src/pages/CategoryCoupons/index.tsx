@@ -1,21 +1,20 @@
 import {useState, useEffect} from "react";
+import {useLocation, useParams} from "react-router-dom";
 import cn from "classnames";
 
 import {axiosInstance, DTO} from "@/shared/api";
-import {CouponCard, CouponInfo} from "@/entities/CouponCard";
+import {CouponCard, couponModel} from "@/entities/coupon";
 import {CardsContainer} from "@/features/CardsContainer";
 import {Button} from "@/shared/ui/Button";
 import {Tags} from "./Tags";
 import css from "./styles.module.scss";
-import {useLocation, useParams} from "react-router-dom";
-
 
 
 export const CategoryCoupons = () => {
     const location: any = useLocation();
     const params = useParams();
     const [page, setPage] = useState(1);
-    const [coupons, setCoupons] = useState<CouponInfo[]>([]);
+    const [coupons, setCoupons] = useState<couponModel.CouponInfo[]>([]);
     const [tags, setTags] = useState<DTO.Tag[]>([]);
     const [selectedTag, setSelectedTag] = useState<DTO.Tag>();
 
@@ -29,17 +28,7 @@ export const CategoryCoupons = () => {
                 const result: DTO.Coupon[] = response.data.results;
                 // TODO: rename and fix
                 const couponInfos = result//_.take(result, 8)
-                    .map((x: DTO.Coupon): CouponInfo => ({
-                        id: x.id,
-                        title: x.title,
-                        previewImage: x.preview_image,
-                        companyName: x.company_name,
-                        companyLogo: x.company_logo,
-                        isFavorite: x.is_favorite,
-                        couponPrice: Number(x.price_for_coupon),
-                        productPrice: Number(x.price),
-                        discount: x.discount_percent
-                    }));
+                    .map((x: DTO.Coupon) => couponModel.convertToCouponInfo(x));
                 setCoupons(couponInfos);
             } catch (err) {
                 console.error(err);

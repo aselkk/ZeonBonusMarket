@@ -4,12 +4,12 @@ import withReactContent from "sweetalert2-react-content";
 import {Utils} from "@/shared/utils";
 import {Button} from "@/shared/ui/Button";
 
-import css from "./styles.module.scss"
+import css from "./styles.module.scss";
 import {useNavigate} from "react-router-dom";
 import {ReactComponent as Success} from "@/assets/icons/successPurchase.svg";
 
 
-const MySwal = withReactContent(Swal)
+const MySwal = withReactContent(Swal);
 
 
 const showError = async (message: string) => {
@@ -21,8 +21,8 @@ const showError = async (message: string) => {
         icon: "error",
         html: <p className={css.alertText}>{message}</p>,
         buttonsStyling: false,
-        confirmButtonText: <Button className={css.alertBtn}>OK</Button>,
-    })
+        confirmButtonText: <Button className={css.alertBtn}>OK</Button>
+    });
 
     Utils.DOM.enableScrolling();
 };
@@ -34,5 +34,5 @@ const showError = async (message: string) => {
 
 
 export const Alerts = {
-    showError,
+    showError
 };

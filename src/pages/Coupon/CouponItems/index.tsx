@@ -5,8 +5,8 @@ import css from "./styles.module.scss";
 
 
 interface PropType {
-    description: string,
-    condition: string
+    description: string;
+    condition: string;
 }
 
 const titles = ["Условия", "Описание", "Адреса"];

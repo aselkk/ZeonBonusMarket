@@ -3,8 +3,8 @@ import css from "./styles.module.scss";
 
 
 interface Props<T> {
-    cards: T[],
-    render: (item: T, index: number) => ReactElement
+    cards: T[];
+    render: (item: T, index: number) => ReactElement;
 }
 
 

@@ -44,6 +44,7 @@
                 font-size: 14px;
 
                 a {
+                    position: relative;
                     @include flex-row(flex-start, center);
                     gap: 15px;
 
@@ -54,6 +55,16 @@
                             stroke: #4B5FA5;
                             stroke-width: 1.2;
                         }
+                    }
+
+                    .redCircleNotify {
+                        position: absolute;
+                        top: -2px;
+                        left: 13px;
+                        width: 9.28px;
+                        height: 9.28px;
+                        background-color: #E5271B;
+                        border-radius: 50%;
                     }
                 }
             }

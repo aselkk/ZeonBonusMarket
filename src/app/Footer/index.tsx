@@ -46,7 +46,7 @@ export const Footer = () => {
                             </Link>
                         </li>
                         <li>
-                            <Link className={css.linkTo} to={"/privacyPolicy"}>
+                            <Link className={css.linkTo} to={"/privacy-policy"}>
                                 <p>Политика конфиденциальности</p>
                             </Link>
                         </li>

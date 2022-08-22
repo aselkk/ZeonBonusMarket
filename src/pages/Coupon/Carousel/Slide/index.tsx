@@ -2,7 +2,7 @@ import css from "./styles.module.scss";
 
 
 interface PropType {
-    imgSrc: string
+    imgSrc: string;
 }
 
 

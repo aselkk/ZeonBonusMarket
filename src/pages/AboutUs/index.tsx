@@ -2,7 +2,7 @@ import {useState, useEffect} from "react";
 import cn from "classnames";
 
 import {Api} from "@/shared/api";
-import {MenuAboutUs} from "@/features/MenuMini";
+import {SidebarMenu} from "@/features/SidebarMenu";
 import css from "./styles.module.scss";
 
 
@@ -16,7 +16,7 @@ export const AboutUs = () => {
     return (
         <div className={css.aboutUs}>
             <div className={cn("container", css.container)}>
-                <MenuAboutUs />
+                <SidebarMenu/>
                 <div className={css.content}>
                     <h3 className={css.title}>О нас</h3>
                     <div className={css.text}>

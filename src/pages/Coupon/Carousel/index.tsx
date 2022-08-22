@@ -15,8 +15,8 @@ import {Slide} from "./Slide";
 
 interface PropType {
     images?: [
-        { id: number, image: string }
-    ] 
+        { id: number; image: string }
+    ]; 
 }
 
 export const Carousel = ({images}: PropType) => {

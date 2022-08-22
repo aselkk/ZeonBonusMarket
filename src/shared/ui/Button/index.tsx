@@ -7,11 +7,11 @@ import css from "./styles.module.scss";
 
 
 interface Props {
-    component?: ReactElement
-    linkTo?: string,
-    onClick?: () => void,
-    disabled?: boolean,
-    type?: string
+    component?: ReactElement;
+    linkTo?: string;
+    onClick?: () => void;
+    disabled?: boolean;
+    type?: string;
 }
 
 

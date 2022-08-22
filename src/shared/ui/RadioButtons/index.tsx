@@ -3,9 +3,9 @@ import css from "./styles.module.scss";
 
 
 interface Props {
-    titles: string[],
-    selectedItem: number,
-    onSelectedItemChanged: (item: number) => void
+    titles: string[];
+    selectedItem: number;
+    onSelectedItemChanged: (item: number) => void;
 }
 
 

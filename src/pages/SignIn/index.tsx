@@ -1,28 +1,12 @@
-import {Fragment, useState, useEffect} from "react";
-import {useNavigate} from "react-router-dom";
-import {useRecoilValue, useSetRecoilState, useRecoilState} from "recoil";
-
-import {Api} from "@/shared/api";
-import {PhoneForm} from "./PhoneForm";
-import {PasswordForm} from "./PasswordForm";
-import {userModel} from "@/entities/user";
+import {SignInByPhone} from "@/features/auth/SignInByPhone";
 
 
 export const SignIn = () => {
-    const navigate = useNavigate();
-    const [phone, setPhone] = useState("");
-
-
     return (
-        <Fragment>
-            {
-                (!phone)
-                    ? <PhoneForm onSuccess={phone => setPhone(phone)}/>
-                    : <PasswordForm
-                        phone={phone}
-                        onSuccess={() => navigate("/")}
-                    />
-            }
-        </Fragment>
+        <div style={{backgroundColor: "#E5E5E5"}}>
+            <div className="container" style={{padding: "20px 15px"}}>
+                <SignInByPhone/>
+            </div>
+        </div>
     );
 };

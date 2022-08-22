@@ -1,38 +1,24 @@
 import {useState, useEffect} from "react";
 import _ from "lodash";
 
-import {Api, DTO} from "@/shared/api";
-import {CouponCard, CouponInfo, couponModel} from "@/entities/CouponCard";
+import {DTO} from "@/shared/api";
+import {CouponCard, couponModel} from "@/entities/coupon";
 import {CardsContainer} from "@/features/CardsContainer";
 import {Button} from "@/shared/ui/Button";
 import css from "./styles.module.scss";
 
-import {useQuery} from "@tanstack/react-query";
-
 
 export const Coupons = () => {
-    const {data, isLoading, error} = couponModel.useTrendCouponsCall();
+    const {data, isLoading} = couponModel.useTrendCouponsCall(1);
 
-    const [coupons, setCoupons] = useState<CouponInfo[]>([]);
+    const [coupons, setCoupons] = useState<couponModel.CouponInfo[]>([]);
 
-    // const {data, error, isLoading} = useGetTrendCouponsQuery(1);
 
     useEffect(() => {
         if (data) {
-
             const result: DTO.Coupon[] = data.results;
             const couponInfos = _.take(result, 8)
-                .map((x: DTO.Coupon): CouponInfo => ({
-                    id: x.id,
-                    title: x.title,
-                    previewImage: x.preview_image,
-                    companyName: x.company_name,
-                    companyLogo: x.company_logo,
-                    isFavorite: x.is_favorite,
-                    couponPrice: Number(x.price_for_coupon),
-                    productPrice: Number(x.price),
-                    discount: x.discount_percent
-                }));
+                .map((x: DTO.Coupon) => couponModel.convertToCouponInfo(x));
             setCoupons(couponInfos);
         }
     }, [data]);
@@ -50,7 +36,8 @@ export const Coupons = () => {
                     <CouponCard
                         key={x.id}
                         info={x}
-                        onFavoriteToggle={() => {}}
+                        onFavoriteToggle={() => {
+                        }}
                     />}
             />
             {/* TODO: линк на страницу все товары*/}

@@ -9,9 +9,9 @@ export interface AccordionItemType {
 }
 
 interface Props {
-    data: AccordionItemType,
-    isOpen: boolean,
-    onClick?: () => void
+    data: AccordionItemType;
+    isOpen: boolean;
+    onClick?: () => void;
 }
 
 

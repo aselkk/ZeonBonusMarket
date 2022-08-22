@@ -4,9 +4,9 @@ import css from "./styles.module.scss";
 
 
 interface Props {
-    tags: DTO.Tag[],
-    selectedItem?: DTO.Tag,
-    onSelectedItem: (item: DTO.Tag) => void
+    tags: DTO.Tag[];
+    selectedItem?: DTO.Tag;
+    onSelectedItem: (item: DTO.Tag) => void;
 }
 
 export const Tags = (props: Props) => {

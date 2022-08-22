@@ -2,7 +2,7 @@ import {useState, useEffect} from "react";
 import cn from "classnames";
 
 import {axiosInstance, DTO} from "@/shared/api";
-import {CouponCard, CouponInfo} from "@/entities/CouponCard";
+import {CouponCard, couponModel} from "@/entities/coupon";
 import {CardsContainer} from "@/features/CardsContainer";
 import {Button} from "@/shared/ui/Button";
 import {Tags} from "./Tags";
@@ -10,55 +10,44 @@ import css from "./styles.module.scss";
 
 
 export const TrendCoupons = () => {
-    const [page, setPage] = useState(1);
-    const [coupons, setCoupons] = useState<CouponInfo[]>([]);
+    const [coupons, setCoupons] = useState<couponModel.CouponInfo[]>([]);
     const [tags, setTags] = useState<DTO.Tag[]>([]);
     const [selectedTag, setSelectedTag] = useState<DTO.Tag>();
 
-    useEffect(() => {
-        if (!selectedTag)
-            return;
-        (async () => {
-            try {
-                const response = await axiosInstance.get(`coupons/trends?page=1&tags=${selectedTag.id}`);
-                const result: DTO.Coupon[] = response.data.results;
-                // TODO: rename and fix
-                const couponInfos = result//_.take(result, 8)
-                    .map((x: DTO.Coupon): CouponInfo => ({
-                        id: x.id,
-                        title: x.title,
-                        previewImage: x.preview_image,
-                        companyName: x.company_name,
-                        companyLogo: x.company_logo,
-                        isFavorite: x.is_favorite,
-                        couponPrice: Number(x.price_for_coupon),
-                        productPrice: Number(x.price),
-                        discount: x.discount_percent
-                    }));
-                setCoupons(couponInfos);
-            } catch (err) {
-                console.error(err);
-            }
-        })();
-    }, [selectedTag]);
+    const {
+        data,
+        isLoading,
+        hasNextPage,
+        fetchNextPage
+    } = couponModel.useTrendCouponsCallInfinite(1, selectedTag?.id);
 
     useEffect(() => {
-        (async () => {
-            try {
-                const response = await axiosInstance.get("tags");
-                const result: DTO.Tag[] = response.data;
-                setTags(result);
-                setSelectedTag(result[0]);
-            } catch (err) {
-                console.error(err);
-            }
-        })();
+        if (data) {
+            const result = data?.pages
+                .map(x => x.results.map(n => couponModel.convertToCouponInfo(n)))
+                .flat();
+            setCoupons(result);
+        }
+    }, [data]);
+
+    const fetchTags = async () => {
+        try {
+            const response = await axiosInstance.get("tags");
+            const result: DTO.Tag[] = response.data;
+            setTags(result);
+            setSelectedTag(result[0]);
+        } catch (err) {
+            console.error(err);
+        }
+    };
+
+    useEffect(() => {
+        void fetchTags();
     }, []);
 
 
     const onLoadMoreClick = () => {
-        setPage(prev => prev + 1);
-        console.log(page);
+        void fetchNextPage();
     };
 
 
@@ -71,11 +60,16 @@ export const TrendCoupons = () => {
                     selectedItem={selectedTag}
                     onSelectedItem={(tag) => setSelectedTag(tag)}
                 />
+                {
+                    (isLoading)
+                        ? <h2>Loading</h2>
+                        : null
+                }
                 <CardsContainer
                     cards={coupons}
                     render={(x, i) => <CouponCard key={x.id} info={x}/>}
                 />
-                <Button className={css.button} onClick={onLoadMoreClick}>
+                <Button className={css.button} onClick={onLoadMoreClick} disabled={!hasNextPage}>
                     Загрузить еще
                 </Button>
             </div>

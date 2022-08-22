@@ -15,7 +15,7 @@ const currentUser = selector<Nullable<DTO.UserInfo>>({
     key: "currentUser",
     get: ({get}) => get(loginAtom),
     set: ({set}, newValue) => {
-        set(loginAtom, newValue)
+        set(loginAtom, newValue);
     }
 });
 
@@ -27,7 +27,7 @@ const checkAuth = async (accessToken: string): Promise<boolean> => {
     } catch {
         return false;
     }
-}
+};
 
 
 export const useAuth = () => {
@@ -39,7 +39,7 @@ export const useAuth = () => {
         if (userOldValue)
             checkAuth(userOldValue.access)
                 .then(data => {
-                    setIsAuth(data)
+                    setIsAuth(data);
                     setUser(userOldValue);
                 });
     }, []);
@@ -50,7 +50,7 @@ export const useAuth = () => {
         lstore.set("current-user", data);
     };
 
-    const signOut = async () => {
+    const signOut = () => {
         setUser(null);
         lstore.remove("current-user");
     };

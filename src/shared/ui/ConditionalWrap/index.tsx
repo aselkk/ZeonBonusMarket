@@ -2,9 +2,9 @@ import {ReactElement} from "react";
 
 
 interface Props {
-    condition: boolean,
-    wrap: (c: ReactElement ) => ReactElement,
-    children: ReactElement
+    condition: boolean;
+    wrap: (c: ReactElement ) => ReactElement;
+    children: ReactElement;
 }
 
 

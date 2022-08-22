@@ -2,7 +2,7 @@ import {useState, useEffect} from "react";
 import cn from "classnames";
 
 import {Api} from "@/shared/api";
-import {MenuAboutUs} from "@/features/MenuMini";
+import {SidebarMenu} from "@/features/SidebarMenu";
 import {Accordion, AccordionItemType} from "@/shared/ui/Accordion";
 
 import css from "./styles.module.scss";
@@ -21,7 +21,7 @@ export const Help = () => {
     return (
         <div className={css.help}>
             <div className={cn("container", css.container)}>
-                <MenuAboutUs/>
+                <SidebarMenu/>
                 <Accordion items={questions}/>
             </div>
         </div>

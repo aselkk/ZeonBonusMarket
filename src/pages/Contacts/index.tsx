@@ -1,7 +1,7 @@
 import React from "react";
 import cn from "classnames";
 
-import {MenuAboutUs} from "@/features/MenuMini";
+import {SidebarMenu} from "@/features/SidebarMenu";
 import css from "./styles.module.scss";
 
 import {ReactComponent as PhoneIcon} from "@/assets/icons/phone.svg";
@@ -42,7 +42,7 @@ export const Contacts = () => {
     return (
         <div className={css.contacts}>
             <div className={cn("container", css.container)}>
-                <MenuAboutUs />
+                <SidebarMenu />
                 <div className={css.content}>
                     <h3 className={css.title}>Контакты</h3>
                     <div className={css.text}>

@@ -17,9 +17,9 @@ import {ReactComponent as DiscountIcon} from "@/assets/icons/groups/circle-disco
 
 
 interface Category {
-    id: number,
-    title: string,
-    Icon: ReactElement,
+    id: number;
+    title: string;
+    Icon: ReactElement;
 }
 
 

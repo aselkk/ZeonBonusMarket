@@ -15,9 +15,9 @@ const countryCodes: Readonly<{ [key: string]: string }> = {
 
 
 interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
-    countryCode: string,
-    onCountryCodeChanged: (code: string) => void,
-    error?: string
+    countryCode: string;
+    onCountryCodeChanged: (code: string) => void;
+    error?: string;
 }
 
 

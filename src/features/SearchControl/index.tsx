@@ -10,8 +10,8 @@ import {ReactComponent as SearchIcon} from "@/assets/icons/searchIcon.svg";
 
 
 interface Props {
-    className?: string,
-    onRedirectToResult: () => void
+    className?: string;
+    onRedirectToResult: () => void;
 }
 
 

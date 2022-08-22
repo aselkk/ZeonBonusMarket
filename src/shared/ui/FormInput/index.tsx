@@ -6,8 +6,8 @@ import {ReactComponent as UnvisibleIcon} from "@/assets/icons/unvisible.svg";
 
 
 interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
-    error?: string,
-    isPassword?: boolean
+    error?: string;
+    isPassword?: boolean;
 }
 
 

@@ -11,7 +11,7 @@ import {ReactComponent as CloseIcon} from "@/assets/icons/exit.svg";
 
 
 interface Props {
-    phone?: string
+    phone?: string;
 }
 
 

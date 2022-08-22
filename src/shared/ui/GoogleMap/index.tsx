@@ -8,7 +8,7 @@ import {ReactComponent as Map} from "@/assets/icons/pin.svg";
 
 
 interface Props {
-    info: any,
+    info: any;
 }
 
 export const SimpleMap = ({info}: Props) => {
@@ -30,7 +30,6 @@ export const SimpleMap = ({info}: Props) => {
     if (!!geolocation) {
         getCoordinates();
     }
-    console.log(coordinates, "coordinates");
 
     const defaultProps = {
         center: {

@@ -1,21 +1,20 @@
-import {useParams} from "react-router-dom";
 import {useEffect, useState} from "react";
-import {Carousel} from "./Carousel";
+import {useParams} from "react-router-dom";
+import lstore from "store";
+import cn from "classnames";
+
+import {axiosInstance, DTO} from "@/shared/api";
+import {SimpleMap} from "@/shared/ui/GoogleMap";
 import {CouponDetails, Details} from "./CouponDetails";
+import {Carousel} from "./Carousel";
 import {CouponItems} from "./CouponItems";
 import {CouponInfo} from "./CouponInfo";
-import {axiosInstance} from "@/shared/api";
-import {CouponDetailsType} from "@/shared/api/types";
-import {SimpleMap} from "@/shared/ui/GoogleMap";
-
-
 import css from "./styles.module.scss";
-import cn from "classnames";
 
 
 export const Coupon = () => {
     const {id} = useParams();
-    const [data, setCouponDetails] = useState<CouponDetailsType>();
+    const [data, setCouponDetails] = useState<DTO.CouponDetailsType>();
     const [details, setDetails] = useState<Details>();
 
     
@@ -25,6 +24,7 @@ export const Coupon = () => {
                 const response = await axiosInstance.get(`coupons/${id}/`);
                 response.data;
                 const dsd: Details = {
+                    id: response.data.id,
                     companyLogo: response.data.company_logo,
                     companyName: response.data.company_name,
                     companyId: response.data.company_id,
@@ -37,15 +37,13 @@ export const Coupon = () => {
                 };
                 setDetails(dsd);
                 setCouponDetails(response.data);
-            } catch
-            (err) {
+            } catch (err) {
                 console.error(err);
             }
         }
         )();
     }, []);
-    console.log(details);
-    
+
     return (
         <>
             <div className={cn("container", css.root)}>

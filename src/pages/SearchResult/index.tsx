@@ -3,7 +3,7 @@ import {useLocation} from "react-router-dom";
 import cn from "classnames";
 
 import {DTO} from "@/shared/api";
-import {CouponCard, CouponInfo} from "@/entities/CouponCard";
+import {CouponCard, couponModel} from "@/entities/coupon";
 import {CardsContainer} from "@/features/CardsContainer";
 
 import css from "./styles.module.scss";
@@ -16,8 +16,8 @@ const enum SortType {
 }
 
 interface LocationState {
-    query: string,
-    result: DTO.Coupon[]
+    query: string;
+    result: DTO.Coupon[];
 }
 
 
@@ -25,23 +25,13 @@ export const SearchResult = () => {
     const location = useLocation();
     const state = location.state as LocationState;
 
-    const [coupons, setCoupons] = useState<CouponInfo[]>([]);
+    const [coupons, setCoupons] = useState<couponModel.CouponInfo[]>([]);
     
     const [sortOrder, setSortOrder] = useState(SortType.AlphabetAsc);
 
     useEffect(() => {
-        const resultCoupons = state.result.map((x: DTO.Coupon): CouponInfo => ({
-            id: x.id,
-            title: x.title,
-            previewImage: x.preview_image,
-            companyName: x.company_name,
-            companyLogo: x.company_logo,
-            isFavorite: x.is_favorite,
-            couponPrice: Number(x.price_for_coupon),
-            productPrice: Number(x.price),
-            discount: x.discount_percent
-        }));
-
+        const resultCoupons =
+            state.result.map((x: DTO.Coupon) => couponModel.convertToCouponInfo(x));
 
         setCoupons(sortCoupons(sortOrder, resultCoupons));
     }, [location]);
@@ -76,7 +66,7 @@ export const SearchResult = () => {
 };
 
 
-const getComparator = (sortType: SortType): Comparator<CouponInfo> => {
+const getComparator = (sortType: SortType): Comparator<couponModel.CouponInfo> => {
     switch (sortType) {
         case SortType.PriceAsc:
             return (x, y) => x.productPrice - y.productPrice;
@@ -88,7 +78,7 @@ const getComparator = (sortType: SortType): Comparator<CouponInfo> => {
 };
 
 
-const sortCoupons = (sortType: SortType, coupons: CouponInfo[]): CouponInfo[] => {
+const sortCoupons = (sortType: SortType, coupons: couponModel.CouponInfo[]): couponModel.CouponInfo[] => {
     const comparator = getComparator(sortType);
     return coupons.slice()
         .sort(comparator);

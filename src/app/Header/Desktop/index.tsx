@@ -2,7 +2,7 @@ import {useRecoilValue} from "recoil";
 import {Link} from "react-router-dom";
 import cn from "classnames";
 
-import {DTO} from "@/shared/api"
+import {favoritesAtom} from "@/shared/store/favorites";
 import {userModel} from "@/entities/user";
 import {SearchControl} from "@/features/SearchControl";
 import css from "./styles.module.scss";
@@ -13,12 +13,13 @@ import {ReactComponent as LoginIcon} from "@/assets/icons/log-in.svg";
 
 
 interface Props {
-    phone?: string
+    phone?: string;
 }
 
 
 export const Desktop = ({phone}: Props) => {
     const {user} = userModel.useAuth();
+    const isExistFavorites = useRecoilValue(favoritesAtom);
 
     return (
         <div className={css.header}>
@@ -55,6 +56,7 @@ export const Desktop = ({phone}: Props) => {
                         <li className={css.menuItem}>
                             <Link to="/favorites">
                                 <FavoritesIcon width={20} height={20}/> Избранное
+                                {isExistFavorites && <div className={css.redCircleNotify}/>}
                             </Link>
                         </li>
                         <div className={css.divider}></div>

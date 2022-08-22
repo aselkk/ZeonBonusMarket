@@ -1,12 +1,10 @@
 import React, {useState, useEffect} from "react";
 import {useParams} from "react-router-dom";
-
-
 import cn from "classnames";
 
 import {axiosInstance, DTO} from "@/shared/api";
+import {CouponCard, couponModel} from "@/entities/coupon";
 import {RadioButtons} from "@/shared/ui/RadioButtons";
-import {CouponCard, CouponInfo} from "@/entities/CouponCard";
 import {SimpleMap} from "@/shared/ui/GoogleMap";
 import css from "./styles.module.scss";
 
@@ -24,7 +22,7 @@ export const Creator = () => {
     const titles = ["Акции", "Контакты"];
     const [info, setInfo] = useState<DTO.Partner>();
     const [selectedItem, setSelectedItem] = useState(0);
-    const [coupons, setCoupons] = useState<CouponInfo[]>([]);
+    const [coupons, setCoupons] = useState<couponModel.CouponInfo[]>([]);
     const {partnerId} = useParams();
     const onSelectedItemChanged = () => {
         selectedItem === 0 ? setSelectedItem(1) : setSelectedItem(0);
@@ -36,17 +34,8 @@ export const Creator = () => {
                 const response = await axiosInstance.get(`/company/${partnerId}`);
                 const result: DTO.Partner = response.data;
                 const couponRes: any = result.coupons;
-                const couponItems = couponRes.map((x: DTO.Coupon): CouponInfo => ({
-                    id: x.id,
-                    title: x.title,
-                    previewImage: x.preview_image,
-                    companyName: x.company_name,
-                    companyLogo: x.company_logo,
-                    isFavorite: x.is_favorite,
-                    couponPrice: Number(x.price_for_coupon),
-                    productPrice: Number(x.old_price),
-                    discount: x.discount_percent
-                }));
+                const couponItems =
+                    couponRes.map((x: DTO.Coupon) => couponModel.convertToCouponInfo(x));
                 setCoupons(couponItems);
                 setInfo(result);
             } catch (err) {
@@ -56,7 +45,6 @@ export const Creator = () => {
         )();
     }, []);
 
-    
 
     return (
         <div className={cn("container", css.root)}>
