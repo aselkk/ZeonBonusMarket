@@ -1,5 +1,5 @@
 import {ReactElement} from "react";
-import {Link} from "react-router-dom";
+import {NavLink} from "react-router-dom";
 import cn from "classnames";
 import css from "./style.module.scss";
 
@@ -28,13 +28,17 @@ export const Categories = () => {
         <ul className={css.groups}>
             {
                 categories.map((x: Category) => (
-                    <li key={x.id}>
-                        <Link to={`/category/${x.id}`} state={{name: x.title}}>
-                            {x.Icon}
-                            <span className={css.label}>{x.title}</span>
-                        </Link>
-                    </li>
-                )
+                        <li key={x.id}>
+                            <NavLink
+                                className={({isActive}) => isActive ? css.activeLink : undefined}
+                                to={`/category/${x.id}`}
+                                state={{name: x.title}}
+                            >
+                                {x.Icon}
+                                <span className={css.label}>{x.title}</span>
+                            </NavLink>
+                        </li>
+                    )
                 )
             }
         </ul>

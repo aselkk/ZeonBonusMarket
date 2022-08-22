@@ -62,7 +62,7 @@ export const TrendCoupons = () => {
                 />
                 {
                     (isLoading)
-                        ? <h2>Loading</h2>
+                        ? <h2>Loading</h2> /* TODO: loader */
                         : null
                 }
                 <CardsContainer

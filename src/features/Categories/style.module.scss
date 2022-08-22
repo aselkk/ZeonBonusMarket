@@ -48,6 +48,21 @@
             [color] {
                 fill: white;
             }
+
+            &:active {
+                transform: scale(0.95);
+            }
+        }
+    }
+
+    .activeLink {
+        .icon {
+            cursor: pointer;
+            fill: var(--color);
+
+            [color] {
+                fill: white;
+            }
         }
     }
 
