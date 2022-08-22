@@ -15,7 +15,7 @@ const enum SortType {
     PriceDesc
 }
 
-const priceLabels: object = {
+const priceLabels: any = {
     [SortType.AlphabetAsc]: "алфавиту",
     [SortType.PriceAsc]: "цене (низкая > высокая)",
     [SortType.PriceDesc]: "цене (высокая > низкая)",
