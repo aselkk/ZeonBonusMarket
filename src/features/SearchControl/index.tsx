@@ -92,7 +92,15 @@ export const SearchControl = ({className, onRedirectToResult}: Props) => {
                 onChange={searchInputHandle}
                 onKeyDown={searchSubmitByEnter}
             />
-            <div className="grayed-icon-button">
+            <div className="grayed-icon-button" onClick={()=>{
+                submitSearch();
+                navigate("/search", {
+                    state: {
+                        query: searchText,
+                        result: searchResult
+                    }
+                });
+            }}>
                 <SearchIcon/>
             </div>
             {
