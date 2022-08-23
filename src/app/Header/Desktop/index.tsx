@@ -1,9 +1,10 @@
 import {useRecoilValue} from "recoil";
+import {useSelector} from "react-redux";
 import {Link} from "react-router-dom";
 import cn from "classnames";
 
-import {favoritesAtom} from "@/shared/store/favorites";
 import {userModel} from "@/entities/user";
+import {favoritesAtom} from "@/shared/store/favorites";
 import {SearchControl} from "@/features/SearchControl";
 import css from "./styles.module.scss";
 
@@ -12,14 +13,10 @@ import {ReactComponent as TicketIcon} from "@/assets/icons/ticket.svg";
 import {ReactComponent as LoginIcon} from "@/assets/icons/log-in.svg";
 
 
-interface Props {
-    phone?: string;
-}
-
-
-export const Desktop = ({phone}: Props) => {
-    const {user} = userModel.useAuth();
+export const Desktop = () => {
+    const {user, isAuth} = userModel.useAuth();
     const isExistFavorites = useRecoilValue(favoritesAtom);
+    const networkInfo = useSelector((state: any) => state.networkInfo.items); // TODO: убрать
 
     return (
         <div className={css.header}>
@@ -38,7 +35,7 @@ export const Desktop = ({phone}: Props) => {
                     </ul>
                     <p className={css.tel}>
                         Тел. для справок:&nbsp;
-                        <a href={`tel:${phone}`}>{phone}</a>
+                        <a href={`tel:${networkInfo.phone}`}>{networkInfo.phone}</a>
                     </p>
                 </nav>
 
@@ -49,8 +46,7 @@ export const Desktop = ({phone}: Props) => {
                         <Link to="/">Zeon bonus</Link>
                     </div>
 
-                    <SearchControl className={css.inputWrap} onRedirectToResult={() => {
-                    }}/>
+                    <SearchControl className={css.inputWrap}/>
 
                     <ul className={css.menu}>
                         <li className={css.menuItem}>
@@ -67,14 +63,15 @@ export const Desktop = ({phone}: Props) => {
                         </li>
                         <div className={css.divider}></div>
                         <li className={css.menuItem}>
-                            <Link to="/login">
+                            <Link to={isAuth ? "/my-profile" : "/login"}>
                                 <LoginIcon width={20} height={20}/>
-                                {user?.first_name || "Boйти"}
+                                {isAuth ? user?.first_name : "Войти"}
                             </Link>
                         </li>
                     </ul>
                 </div>
             </div>
+
             <div className={css.hLine}></div>
         </div>
     );

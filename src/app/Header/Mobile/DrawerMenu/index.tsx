@@ -1,6 +1,7 @@
 import {useRef} from "react";
+import {useSelector} from "react-redux";
 import {useRecoilValue} from "recoil";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import cn from "classnames";
 
 import {userModel} from "@/entities/user";
@@ -15,17 +16,24 @@ import {ReactComponent as LoginIcon} from "@/assets/icons/log-in.svg";
 
 
 interface Props {
-    phone?: string;
     onClose?: () => void;
 }
 
 
-export const DrawerMenu = ({phone, onClose}: Props) => {
-    const {user} = userModel.useAuth();
+export const DrawerMenu = ({onClose}: Props) => {
+    const navigate = useNavigate();
+    const {user, isAuth, signOut} = userModel.useAuth();
     const isExistFavorites = useRecoilValue(favoritesAtom);
+    const networkInfo = useSelector((state: any) => state.networkInfo.items); // TODO: убрать
+
 
     const menuRef = useRef<HTMLDivElement>(null);
     useOutsideAlerter(menuRef, () => onClose?.());
+
+    const onQuit = () => {
+        signOut()
+        navigate("/");
+    };
 
 
     return (
@@ -48,6 +56,7 @@ export const DrawerMenu = ({phone, onClose}: Props) => {
                         <CloseIcon width={18} height={18}/>
                     </button>
                 </div>
+
                 <nav className={css.body}>
                     <ul className={css.links}>
                         <li>
@@ -71,22 +80,32 @@ export const DrawerMenu = ({phone, onClose}: Props) => {
                             </Link>
                         </li>
                         <li>
-                            <Link to="/coupons/my">
+                            <Link to="/my-coupons">
                                 <TicketIcon width={20} height={20}/> Мои купоны
                             </Link>
                         </li>
                         <li>
-                            <Link to="/login">
+                            <Link to={isAuth ? "/my-profile" : "/login"}>
                                 <LoginIcon width={20} height={20}/>
-                                {user?.first_name || "Boйти"}
+                                {isAuth ? user?.first_name : "Войти"}
                             </Link>
                         </li>
+                        {
+                            isAuth && (
+                                <li className={css.quitLink}>
+                                    <button type="button" onClick={onQuit}>
+                                        Выйти из аккаунта
+                                    </button>
+                                </li>
+                            )
+                        }
                     </ul>
                 </nav>
+
                 <div className={css.footer}>
                     <p className={css.label}>Тел. для справки:</p>
-                    <a className={css.value} href={`tel:${phone}`}>
-                        {phone}
+                    <a className={css.value} href={`tel:${networkInfo.phone}`}>
+                        {networkInfo.phone}
                     </a>
                 </div>
             </div>

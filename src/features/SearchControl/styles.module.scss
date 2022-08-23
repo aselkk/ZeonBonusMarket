@@ -1,29 +1,24 @@
 @import "@/shared/styles/mixins";
 
+
 .root {
     position: relative;
     width: 541px;
     height: 44px;
     border-radius: 12px;
     background-color: #FBFBFB;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
     padding: 0 13px;
+    @include flex-row(space-between, center);
     border: 1px solid #EDF1FD;
-
     @include font-default(400, 14px, 21px, #2D2727);
 
-
     input {
-        background-color: transparent;
-        padding-left: 7px;
         width: 90%;
-        color: #313131;
         height: 100%;
+        padding-left: 7px;
+        background-color: transparent;
+        color: #313131;
         font-size: 15px;
-
 
         &::placeholder {
             color: #98949E;
@@ -37,11 +32,11 @@
         z-index: 2;
         width: 100%;
         max-height: 70vh;
-        background-color: #fff;
-        border-radius: 12px;
-        border: 1px solid #EDF1FD;
         padding: 24px 20px;
         overflow-y: scroll;
+        background-color: white;
+        border-radius: 12px;
+        border: 1px solid #EDF1FD;
 
         &::-webkit-scrollbar {
             width: 4px;
@@ -56,7 +51,7 @@
         }
 
         &::-webkit-scrollbar-thumb {
-            background: #8b9ddf;
+            background: #8B9DDF;
             border-radius: 4px;
         }
 

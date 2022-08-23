@@ -67,6 +67,19 @@
                         border-radius: 50%;
                     }
                 }
+
+                .quitLink {
+                    margin-top: 5px;
+                    margin-left: 15px;
+
+                    button {
+                        color: #E31B4B;
+                    }
+
+                    &:hover {
+                        color: #D25E5E;
+                    }
+                }
             }
         }
 

@@ -46,13 +46,12 @@ export const Slider = () => {
                 {
                     slides.map((x: DTO.SlideImage, i: number) => {
                         return (
-                            <SwiperSlide  className={css.swiperSlide} key={i}>
+                            <SwiperSlide className={css.swiperSlide} key={i}>
                                 <img src={x.image} alt="slide"/>
                             </SwiperSlide>
                         );
                     })
                 }
-
             </Swiper>
             <div className={css.bullets}></div>
         </div>

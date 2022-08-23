@@ -1,8 +1,9 @@
-import React, {useState, useEffect} from "react";
+import {useState, useEffect} from "react";
 import {Link, useLocation} from "react-router-dom";
 
 import {SearchControl} from "@/features/SearchControl";
 import {BurgerButton} from "@/shared/ui/BurgerButton";
+import {Utils} from "@/shared/utils";
 import {DrawerMenu} from "./DrawerMenu";
 import css from "./styles.module.scss";
 
@@ -10,21 +11,17 @@ import {ReactComponent as SearchIcon} from "@/assets/icons/searchIcon.svg";
 import {ReactComponent as CloseIcon} from "@/assets/icons/exit.svg";
 
 
-interface Props {
-    phone?: string;
-}
-
-
-export const Mobile = ({phone}: Props) => {
+export const Mobile = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isSearchOpen, setIsSearchOpen] = useState(false);
 
     useEffect(() => {
-        document.body.style.overflow = isSearchOpen || isMenuOpen
-            ? "hidden"
-            : "auto";
+        if (isSearchOpen || isMenuOpen)
+            Utils.DOM.disableScrolling();
+        else
+            Utils.DOM.enableScrolling();
 
-        return () => void (document.body.style.overflow = "auto");
+        return () => Utils.DOM.enableScrolling();
     }, [isSearchOpen, isMenuOpen]);
 
     useEffect(() => void setIsMenuOpen(false), [useLocation()]);
@@ -34,9 +31,9 @@ export const Mobile = ({phone}: Props) => {
         <div className={css.root}>
             <div className={css.header}>
                 <BurgerButton onClick={() => setIsMenuOpen(true)}/>
-                <p className={css.logo}>
-                    <Link to="/">Zeon bonus</Link>
-                </p>
+                <Link className={css.logo} to="/">
+                    Zeon bonus
+                </Link>
                 <button
                     className="grayed-icon-button"
                     onClick={() => setIsSearchOpen(prev => !prev)}
@@ -48,19 +45,21 @@ export const Mobile = ({phone}: Props) => {
                     }
                 </button>
             </div>
+
             <div className={css.hLine}></div>
+
             {
-                isMenuOpen
-                    ? <DrawerMenu phone={phone} onClose={() => setIsMenuOpen(false)}/>
-                    : null
+                isMenuOpen && <DrawerMenu onClose={() => setIsMenuOpen(false)}/>
             }
             {
-                isSearchOpen
-                    ? (
-                        <div className={css.search}>
-                            <SearchControl className={css.inputWrap} onRedirectToResult={() => setIsSearchOpen(false)}/>
-                        </div>
-                    ) : null
+                isSearchOpen && (
+                    <div className={css.search}>
+                        <SearchControl
+                            className={css.inputWrap}
+                            onRedirectToResult={() => setIsSearchOpen(false)}
+                        />
+                    </div>
+                )
             }
         </div>
     );

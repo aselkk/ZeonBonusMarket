@@ -1,22 +1,13 @@
-import {useEffect, useState} from "react";
-import {atom, selector, useRecoilState} from "recoil";
+import {useEffect} from "react";
+import {atom, useRecoilState} from "recoil";
 import lstore from "store";
+
 import {Api, DTO} from "@/shared/api";
 
 
-
-const loginAtom = atom<Nullable<DTO.UserInfo>>({
-    key: "user",
-    default: null
-});
-
-
-const currentUser = selector<Nullable<DTO.UserInfo>>({
+const currentUser = atom<Nullable<DTO.UserInfo>>({
     key: "currentUser",
-    get: ({get}) => get(loginAtom),
-    set: ({set}, newValue) => {
-        set(loginAtom, newValue);
-    }
+    default: null
 });
 
 
@@ -29,19 +20,37 @@ const checkAuth = async (accessToken: string): Promise<boolean> => {
     }
 };
 
+const signUp = async (data: DTO.PhoneAuthData): Promise<string> => {
+    try {
+        await Api.User.signUp(data);
+        return "success";
+    } catch (err) {
+        // TODO: потому что так работает бэкенд
+        const error = err as any;
+        const data = error?.response?.data;
+        if (error.response?.status === 400 &&
+            data.message === "Не удалось отправить сообщение. Попробуйте позже.") {
+            return "success";
+        }
+
+        throw new Error(data.detail || data.message);
+    }
+};
+
+const confirmSignUp = async (data: DTO.PhoneAuthConfirmData): Promise<string> => {
+    await Api.User.confirmSignUp(data);
+    return "success";
+};
+
 
 export const useAuth = () => {
     const [user, setUser] = useRecoilState(currentUser);
     const userOldValue = lstore.get("current-user") as DTO.UserInfo;
 
-    const [isAuth, setIsAuth] = useState(false);
     useEffect(() => {
         if (userOldValue)
             checkAuth(userOldValue.access)
-                .then(data => {
-                    setIsAuth(data);
-                    setUser(userOldValue);
-                });
+                .then(() => setUser(userOldValue));
     }, []);
 
     const signIn = async (phone: string, password: string): Promise<void> => {
@@ -56,32 +65,8 @@ export const useAuth = () => {
     };
 
 
-    const signUp = async (data: DTO.PhoneAuthData): Promise<string> => {
-        try {
-            await Api.User.signUp(data);
-            return "success";
-        } catch (err) {
-            // TODO: потому что так работает бэкенд
-            const error = err as any;
-            const data = error?.response?.data;
-            if (error.response?.status === 400 &&
-                data.message === "Не удалось отправить сообщение. Попробуйте позже.") {
-                return "success";
-            }
-
-            const msg = data.detail || data.message;
-            throw new Error(msg);
-        }
-    };
-
-
-    const confirmSignUp = async (data: DTO.PhoneAuthConfirmData): Promise<string> => {
-        await Api.User.confirmSignUp(data);
-        return "success";
-    };
-
     return {
-        isAuth: isAuth,
+        isAuth: Boolean(user),
         user,
         signIn,
         signOut,
@@ -89,5 +74,3 @@ export const useAuth = () => {
         confirmSignUp
     };
 };
-
-// TODO: https://newdevzone.com/posts/how-to-update-atoms-state-in-recoiljs-outside-components-react

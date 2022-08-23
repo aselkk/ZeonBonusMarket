@@ -14,24 +14,16 @@
         border-bottom: 1px solid #F7F1FE;
     }
 
-
-
     .header {
         @include flex-row(space-between, center);
 
         .logo {
             width: 86px;
+            @include font-face("Raleway", 900, 25px, 29.35px, black);
             text-align: left;
-
-            a {
-                @include font-face("Raleway", 900, 25px, 29.35px, black);
-                letter-spacing: 0.11em;
-            }
+            letter-spacing: 0.11em;
         }
     }
-
-
-    // TODO: почистть
 
     .search {
         position: fixed;
@@ -40,58 +32,28 @@
         z-index: 15;
         width: 100vw;
         height: 100vh;
-
-        display: flex;
-        justify-content: center;
-
+        @include flex-row(center);
         background-color: rgba(0, 0, 0, 0.3);
 
         .inputWrap {
             margin-top: 12px;
             width: 90%;
             height: 44px;
-
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            @include flex-row(center, center);
             padding: 10px 14px;
-
             background-color: #F8F8F8;
             border: 1px solid #F8F8F8;
 
             input {
                 width: 100%;
                 height: 100%;
-
                 background-color: #F8F8F8;
                 border: 0;
-
                 @include font-default(16px, 400, 19.5px, #393939);
 
                 &::placeholder {
                     @include font-default(16px, 400, 19.5px, #858F9B);
                 }
-            }
-        }
-
-        button {
-            position: absolute;
-            top: 12px;
-            right: 5%;
-        }
-
-        .searchResult {
-            width: 90%;
-            height: 250px;
-            margin: 0 auto;
-            background: #fff;
-            text-align: left;
-            overflow: scroll;
-
-            div {
-                width: 100%;
-                height: 50px;
-                padding: 15px 5px;
             }
         }
     }

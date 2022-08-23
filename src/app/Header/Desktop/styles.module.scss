@@ -3,11 +3,9 @@
 
 
 .header {
-    position: sticky;
-    top: 0;
-    z-index: 20;
     background-color: white;
     @include font-default(400, 15px, 18.15px, #171717);
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.15);
 
     .hLine {
         position: absolute;

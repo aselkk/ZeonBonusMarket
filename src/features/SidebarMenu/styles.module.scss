@@ -118,7 +118,7 @@
     }
 
     .quit {
-        color: #e31b4b;
+        color: #E31B4B;
         cursor: pointer;
 
         @media (max-width: 576.98px) {
@@ -130,7 +130,8 @@
         }
 
         &:hover {
-            color: red;
+            color: #D25E5E;
+            transform: scale(1.04);
         }
     }
 }

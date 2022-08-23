@@ -1,9 +1,8 @@
-import {KeyboardEvent, useState, useRef, useEffect} from "react";
+import {useState, useEffect, useRef, KeyboardEvent, ChangeEvent} from "react";
 import {useNavigate} from "react-router-dom";
 import InfiniteScroll from "react-infinite-scroller";
 import cn from "classnames";
 
-import {Api, DTO} from "@/shared/api";
 import {couponModel} from "@/entities/coupon";
 import {useOutsideAlerter} from "@/shared/hooks";
 import css from "./styles.module.scss";
@@ -12,24 +11,17 @@ import {ReactComponent as SearchIcon} from "@/assets/icons/searchIcon.svg";
 
 
 interface Props {
-    className?: string;
-    onRedirectToResult: () => void;
+    onRedirectToResult?: () => void;
 }
 
 
-export const SearchControl = ({className, onRedirectToResult}: Props) => {
+export const SearchControl = ({className, onRedirectToResult}: PropsWithClassName<Props>) => {
     const navigate = useNavigate();
 
     const [searchText, setSearchText] = useState("");
     const [searchResult, setSearchResult] = useState<couponModel.CouponInfo[]>([]);
-    const [isShowSearchResult, setIsShowSearchResult] = useState<boolean>(false);
-
-    const inputRef = useRef<HTMLInputElement>(null);
-
+    const [isShowSearchResult, setIsShowSearchResult] = useState(false);
     const [isSubmit, setIsSubmit] = useState(false);
-
-    const searchResultRef = useRef<HTMLUListElement>(null);
-    useOutsideAlerter(searchResultRef, () => setIsShowSearchResult(false));
 
     const {
         data,
@@ -53,8 +45,11 @@ export const SearchControl = ({className, onRedirectToResult}: Props) => {
         }
     }, [data]);
 
+    const searchResultRef = useRef<HTMLUListElement>(null);
+    useOutsideAlerter(searchResultRef, () => setIsShowSearchResult(false));
 
-    const searchInputHandle = (e: any) => {
+
+    const searchInputHandle = (e: ChangeEvent<HTMLInputElement>) => {
         const text = e.target.value;
         setSearchText(text);
         setIsShowSearchResult(true);
@@ -81,8 +76,8 @@ export const SearchControl = ({className, onRedirectToResult}: Props) => {
         setIsShowSearchResult(false);
         onRedirectToResult?.();
         setIsSubmit(true);
-
     };
+
 
     return (
         <div className={cn(css.root, className)}>
@@ -92,7 +87,7 @@ export const SearchControl = ({className, onRedirectToResult}: Props) => {
                 onChange={searchInputHandle}
                 onKeyDown={searchSubmitByEnter}
             />
-            <div className="grayed-icon-button" onClick={()=>{
+            <div className="grayed-icon-button" onClick={() => {
                 submitSearch();
                 navigate("/search", {
                     state: {
@@ -114,21 +109,22 @@ export const SearchControl = ({className, onRedirectToResult}: Props) => {
                                 hasMore={true}
                             >
                                 {
-                                searchResult.map((x, i) => {
-                                    return (
-                                        <li
-                                            key={x.id}
-                                            className={css.searchItem}
-                                            onClick={() => {
-                                                submitSearch();
-                                                navigate(`/coupon/${x.id}`);
-                                            }}
-                                        >
-                                            {x.title}
-                                        </li>
-                                    );
-                                })
-                            }</InfiniteScroll>
+                                    searchResult.map((x, i) => {
+                                        return (
+                                            <li
+                                                key={x.id}
+                                                className={css.searchItem}
+                                                onClick={() => {
+                                                    submitSearch();
+                                                    navigate(`/coupon/${x.id}`);
+                                                }}
+                                            >
+                                                {x.title}
+                                            </li>
+                                        );
+                                    })
+                                }
+                            </InfiniteScroll>
                         </ul>
                     )
                     : null
@@ -136,5 +132,3 @@ export const SearchControl = ({className, onRedirectToResult}: Props) => {
         </div>
     );
 };
-
-// SearchControl.propTypes = propTypes;
