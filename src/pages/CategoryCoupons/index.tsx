@@ -6,8 +6,8 @@ import {axiosInstance, DTO} from "@/shared/api";
 import {CouponCard, couponModel} from "@/entities/coupon";
 import {Categories} from "@/features/Categories";
 import {CardsContainer} from "@/features/CardsContainer";
+import {Tags} from "@/features/Tags";
 import {Button} from "@/shared/ui/Button";
-import {Tags} from "./Tags";
 import css from "./styles.module.scss";
 
 
