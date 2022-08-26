@@ -25,7 +25,7 @@ export const CategoryCoupons = () => {
         hasNextPage,
         refetch,
         fetchNextPage
-    } = couponModel.useCategoryCouponsCallInfinite(Number(params.id), selectedTag?.id);
+    } = couponModel.useCategoryCouponsInfQuery(Number(params.id), selectedTag?.id);
 
 
     useEffect(() => {

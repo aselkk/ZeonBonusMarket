@@ -28,7 +28,7 @@ export const SearchControl = ({className, onRedirectToResult}: PropsWithClassNam
         isLoading,
         hasNextPage,
         fetchNextPage
-    } = couponModel.useSearchCouponsInfinite(searchText);
+    } = couponModel.useSearchCouponsInfQuery(searchText);
 
 
     useEffect(() => {

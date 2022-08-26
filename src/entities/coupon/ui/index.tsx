@@ -2,7 +2,7 @@ import React from "react";
 import {useNavigate} from "react-router-dom";
 import cn from "classnames";
 
-import {useToggleFav, CouponInfo} from "../model";
+import {useToggleFavoriteQuery, CouponInfo} from "../model";
 import css from "./style.module.scss";
 
 import {ReactComponent as HotDiscountLogo} from "@/assets/icons/hot-discount.svg";
@@ -22,7 +22,7 @@ interface Props {
 export const CouponCard = ({info, onFavoriteToggle}: Props) => {
     const navigate = useNavigate();
 
-    const {mutate} = useToggleFav();
+    const {mutate} = useToggleFavoriteQuery();
 
     const onBtnFavoriteClick = (e: React.MouseEvent<HTMLButtonElement>) => {
         e.stopPropagation();

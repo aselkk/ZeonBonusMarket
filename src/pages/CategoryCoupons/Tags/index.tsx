@@ -1,6 +1,7 @@
-import cn from "classnames";
 import {DTO} from "@/shared/api";
 import css from "./styles.module.scss";
+import cn from "classnames";
+
 
 
 interface Props {
@@ -9,6 +10,8 @@ interface Props {
     onSelectedItem: (item: DTO.Tag) => void;
 }
 
+
+// TODO: дубликаты в TrendCoupons
 export const Tags = (props: Props) => {
 
     return (

@@ -96,10 +96,10 @@ const getCoupons = async (page?: number, tagId?: number): Promise<DTO.SearchResu
     return response.data;
 };
 
-const getTrendCoupons = async (page?: number, tagId?: number): Promise<DTO.SearchResult> => {
+const getTrendCoupons = async (tagId?: number, page?: number): Promise<DTO.SearchResult> => {
     const params = new URLSearchParams();
-    page && params.append("page", String(page));
     tagId && params.append("tags", String(tagId));
+    page && params.append("page", String(page));
 
     const response = await axiosInstance.get(`coupons/trends?${params}`);
     return response.data;

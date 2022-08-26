@@ -1,6 +1,8 @@
 import {useEffect} from "react";
 import {useDispatch} from "react-redux";
 import {BrowserRouter} from "react-router-dom";
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
+
 
 import {Router} from "./Router";
 import {Breadcrumbs} from "./Breadcrumbs";

@@ -31,7 +31,7 @@ interface Props {
 
 export const CouponDetails = ({info}: Props) => {
     const [isShowQRModal, setIsShowQRModal] = useState(false);
-    const {mutate, data} = couponModel.useToggleFav()
+    const {mutate, data} = couponModel.useToggleFavoriteQuery()
     const [btnIsBuy, setBtnIsBuy] = useState(true);
 
     const [isFavorite, setIsFavorite] = useState(false);

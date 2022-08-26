@@ -1,3 +1,3 @@
-export * from "./queries";
+export * from "./queires";
 export * from "./types";
 export * from "./utils";

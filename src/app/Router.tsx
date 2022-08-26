@@ -1,4 +1,4 @@
-import { Route, Routes} from "react-router-dom";
+import {Route, Routes} from "react-router-dom";
 
 import {SignUp} from "@/pages/SignUp";
 import {SignIn} from "@/pages/SignIn";
@@ -15,11 +15,10 @@ import {Help} from "@/pages/Help";
 import {PrivacyPolicy} from "@/pages/PrivacyPolicy";
 import {ErrorPage} from "@/pages/ErrorPage";
 import {PasswordChange} from "@/features/auth/__TODO_PasswordChange";
-import { MyCoupons } from "@/pages/MyCoupons";
-import { Profile } from "@/pages/Personal/Profile";
-import { Smena } from "@/pages/Personal/Smena";
-import { SmenaNomera } from "@/pages/Personal/SmenaNomera";
-
+import {MyCoupons} from "@/pages/MyCoupons";
+import {Profile} from "@/pages/Personal/Profile";
+import {Smena} from "@/pages/Personal/Smena";
+import {SmenaNomera} from "@/pages/Personal/SmenaNomera";
 
 
 export const Router = () => {

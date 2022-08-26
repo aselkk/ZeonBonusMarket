@@ -19,7 +19,7 @@ export const TrendCoupons = () => {
         isLoading,
         hasNextPage,
         fetchNextPage
-    } = couponModel.useTrendCouponsCallInfinite(1, selectedTag?.id);
+    } = couponModel.useTrendCouponsInfQuery(selectedTag?.id);
 
     useEffect(() => {
         if (data) {

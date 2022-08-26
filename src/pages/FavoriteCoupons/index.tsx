@@ -24,7 +24,7 @@ export const FavoriteCoupons = () => {
         isLoading,
         hasNextPage,
         fetchNextPage
-    } = couponModel.useFavoriteCouponsInfinite(1);
+    } = couponModel.useFavoriteCouponsInfQuery(1);
 
     useEffect(() => {
         if (!data?.pages[0]?.results?.length && !isLoading)

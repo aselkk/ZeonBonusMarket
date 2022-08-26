@@ -9,7 +9,7 @@ import css from "./styles.module.scss";
 
 
 export const Coupons = () => {
-    const {data, isLoading} = couponModel.useTrendCouponsCall(1);
+    const {data, isLoading} = couponModel.useTrendCouponsQuery(undefined, 1);
 
     const [coupons, setCoupons] = useState<couponModel.CouponInfo[]>([]);
 
