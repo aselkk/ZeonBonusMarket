@@ -33,14 +33,14 @@ export const FormInput = forwardRef((props: Props, ref: React.Ref<HTMLInputEleme
                     {...restProps}
                 />
                 {
-                    (isPassword)
-                        ? <UnvisibleIcon
+                    isPassword && (
+                        <UnvisibleIcon
                             className={css.passwordIcon}
                             onMouseDown={() => setIsShowValue(true)}
                             onMouseUp={() => setIsShowValue(false)}
                             onMouseLeave={() => setIsShowValue(false)}
                         />
-                        : null
+                    )
                 }
             </div>
             <div className={css.errorLabel}>
