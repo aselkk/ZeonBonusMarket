@@ -47,7 +47,7 @@ export const SearchResult = () => {
         isLoading,
         hasNextPage,
         fetchNextPage
-    } = couponModel.useSearchCouponsInfinite(state.query);
+    } = couponModel.useSearchCouponsInfQuery(state.query);
 
     useEffect(() => {
         if (data) {

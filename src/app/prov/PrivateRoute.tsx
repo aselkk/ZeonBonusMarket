@@ -23,18 +23,18 @@
 import React from "react";
 import {useRecoilValue} from "recoil";
 import {Navigate} from "react-router-dom";
-import {loginAtom} from "@/features/auth/state";
+import {userModel} from "@/entities/user";
 
 
 
 export function withAuthRoute<T>(Component: React.ComponentType<T>) {
     return (props: any) => {
 
-        const login = useRecoilValue(loginAtom);
-        if (!!login?.firstName)
+        const {isAuth} = userModel.useAuth();
+        // const login = useRecoilValue(loginAtom);
+        if (!isAuth)
             return <Navigate to="/"/>;
         return <Component {...props}/>;
     };
 }
-
 
